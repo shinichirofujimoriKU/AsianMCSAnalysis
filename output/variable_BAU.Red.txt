@@ -1,0 +1,1013 @@
+Change rate from BAU|Emissions|BC
+Change rate from BAU|Emissions|C2F6
+Change rate from BAU|Emissions|C6F14
+Change rate from BAU|Emissions|CF4
+Change rate from BAU|Emissions|CO
+Change rate from BAU|Emissions|CO|Energy
+Change rate from BAU|Emissions|CO|Energy|Demand|Transportation
+Change rate from BAU|Emissions|F-Gases
+Change rate from BAU|Emissions|HFC
+Change rate from BAU|Emissions|HFC|HFC125
+Change rate from BAU|Emissions|HFC|HFC134a
+Change rate from BAU|Emissions|HFC|HFC143a
+Change rate from BAU|Emissions|HFC|HFC227ea
+Change rate from BAU|Emissions|HFC|HFC23
+Change rate from BAU|Emissions|HFC|HFC245fa
+Change rate from BAU|Emissions|HFC|HFC32
+Change rate from BAU|Emissions|Kyoto Gases
+Change rate from BAU|Emissions|NH3
+Change rate from BAU|Emissions|NH3|AFOLU
+Change rate from BAU|Emissions|NOx
+Change rate from BAU|Emissions|NOx|Energy
+Change rate from BAU|Emissions|NOx|Energy|Demand|Transportation
+Change rate from BAU|Emissions|OC
+Change rate from BAU|Emissions|PFC
+Change rate from BAU|Emissions|SF6
+Change rate from BAU|Emissions|Sulfur
+Change rate from BAU|Emissions|Sulfur|Energy
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Transportation
+Change rate from BAU|Emissions|VOC
+Change rate from BAU|Emissions|VOC|Energy
+Change rate from BAU|Emissions|VOC|Energy|Demand|Transportation
+Change rate from BAU|Land Cover
+Change rate from BAU|Agricultural Demand
+Change rate from BAU|Agricultural Production
+Change rate from BAU|Capacity Additions|Electricity|Biomass
+Change rate from BAU|Capacity Additions|Electricity|Biomass|w/o CCS
+Change rate from BAU|Capacity Additions|Electricity|Coal
+Change rate from BAU|Capacity Additions|Electricity|Coal|w/o CCS
+Change rate from BAU|Capacity Additions|Electricity|Gas
+Change rate from BAU|Capacity Additions|Electricity|Gas|w/o CCS
+Change rate from BAU|Capacity Additions|Electricity|Geothermal
+Change rate from BAU|Capacity Additions|Electricity|Hydro
+Change rate from BAU|Capacity Additions|Electricity|Oil
+Change rate from BAU|Capacity Additions|Electricity|Oil|w/o CCS
+Change rate from BAU|Capacity Additions|Electricity|Solar
+Change rate from BAU|Capacity Additions|Electricity|Solar|PV
+Change rate from BAU|Capacity Additions|Electricity|Wind
+Change rate from BAU|Capacity Additions|Electricity|Wind|Onshore
+Change rate from BAU|Capacity|Electricity
+Change rate from BAU|Capacity|Electricity|Biomass
+Change rate from BAU|Capacity|Electricity|Biomass|w/o CCS
+Change rate from BAU|Capacity|Electricity|Coal
+Change rate from BAU|Capacity|Electricity|Coal|w/o CCS
+Change rate from BAU|Capacity|Electricity|Gas
+Change rate from BAU|Capacity|Electricity|Gas|w/o CCS
+Change rate from BAU|Capacity|Electricity|Geothermal
+Change rate from BAU|Capacity|Electricity|Hydro
+Change rate from BAU|Capacity|Electricity|Oil
+Change rate from BAU|Capacity|Electricity|Oil|w/o CCS
+Change rate from BAU|Capacity|Electricity|Other
+Change rate from BAU|Capacity|Electricity|Solar
+Change rate from BAU|Capacity|Electricity|Solar|PV
+Change rate from BAU|Capacity|Electricity|Wind
+Change rate from BAU|Capacity|Electricity|Wind|Onshore
+Change rate from BAU|Capital Cost|Electricity|Biomass|w/o CCS
+Change rate from BAU|Capital Cost|Electricity|Coal|w/o CCS
+Change rate from BAU|Capital Cost|Electricity|Gas|w/o CCS
+Change rate from BAU|Capital Cost|Electricity|Geothermal
+Change rate from BAU|Capital Cost|Electricity|Hydro
+Change rate from BAU|Capital Cost|Electricity|Nuclear
+Change rate from BAU|Capital Cost|Electricity|Solar|PV
+Change rate from BAU|Capital Cost|Electricity|Wind|Onshore
+Change rate from BAU|Consumption
+Change rate from BAU|Cumulative Capacity|Electricity|Biomass|w/o CCS
+Change rate from BAU|Cumulative Capacity|Electricity|Coal|w/o CCS
+Change rate from BAU|Cumulative Capacity|Electricity|Gas|w/o CCS
+Change rate from BAU|Cumulative Capacity|Electricity|Geothermal
+Change rate from BAU|Cumulative Capacity|Electricity|Hydro
+Change rate from BAU|Cumulative Capacity|Electricity|Oil|w/o CCS
+Change rate from BAU|Cumulative Capacity|Electricity|Solar|PV
+Change rate from BAU|Cumulative Capacity|Electricity|Wind|Onshore
+Change rate from BAU|Emissions|BC|AFOLU
+Change rate from BAU|Emissions|BC|Energy
+Change rate from BAU|Emissions|BC|Energy|Demand|Industry
+Change rate from BAU|Emissions|BC|Energy|Demand|Residential and Commercial
+Change rate from BAU|Emissions|BC|Energy|Demand|Transportation
+Change rate from BAU|Emissions|BC|Energy|Supply
+Change rate from BAU|Emissions|CH4
+Change rate from BAU|Emissions|CH4|AFOLU
+Change rate from BAU|Emissions|CH4|Energy
+Change rate from BAU|Emissions|CH4|Energy|Demand|Industry
+Change rate from BAU|Emissions|CH4|Energy|Demand|Residential and Commercial
+Change rate from BAU|Emissions|CH4|Energy|Demand|Transportation
+Change rate from BAU|Emissions|CH4|Energy|Supply
+Change rate from BAU|Emissions|CO|AFOLU
+Change rate from BAU|Emissions|CO|Energy|Demand|Industry
+Change rate from BAU|Emissions|CO|Energy|Demand|Residential and Commercial
+Change rate from BAU|Emissions|CO|Energy|Supply
+Change rate from BAU|Emissions|CO2
+Change rate from BAU|Emissions|CO2|AFOLU
+Change rate from BAU|Emissions|CO2|Energy
+Change rate from BAU|Emissions|CO2|Energy and Industrial Processes
+Change rate from BAU|Emissions|CO2|Energy|Demand
+Change rate from BAU|Emissions|CO2|Energy|Demand|AFOFI
+Change rate from BAU|Emissions|CO2|Energy|Demand|Commercial
+Change rate from BAU|Emissions|CO2|Energy|Demand|Industry
+Change rate from BAU|Emissions|CO2|Energy|Demand|Residential
+Change rate from BAU|Emissions|CO2|Energy|Demand|Residential and Commercial
+Change rate from BAU|Emissions|CO2|Energy|Demand|Transportation
+Change rate from BAU|Emissions|CO2|Energy|Supply
+Change rate from BAU|Emissions|CO2|Energy|Supply|Electricity
+Change rate from BAU|Emissions|CO2|Industrial Processes
+Change rate from BAU|Emissions|N2O
+Change rate from BAU|Emissions|N2O|AFOLU
+Change rate from BAU|Emissions|N2O|Energy
+Change rate from BAU|Emissions|NH3|Energy
+Change rate from BAU|Emissions|NH3|Energy|Demand|Industry
+Change rate from BAU|Emissions|NH3|Energy|Demand|Residential and Commercial
+Change rate from BAU|Emissions|NH3|Energy|Demand|Transportation
+Change rate from BAU|Emissions|NH3|Energy|Supply
+Change rate from BAU|Emissions|NOx|AFOLU
+Change rate from BAU|Emissions|NOx|Energy|Demand|Industry
+Change rate from BAU|Emissions|NOx|Energy|Demand|Residential and Commercial
+Change rate from BAU|Emissions|NOx|Energy|Supply
+Change rate from BAU|Emissions|OC|AFOLU
+Change rate from BAU|Emissions|OC|Energy
+Change rate from BAU|Emissions|OC|Energy|Demand|Industry
+Change rate from BAU|Emissions|OC|Energy|Demand|Residential and Commercial
+Change rate from BAU|Emissions|OC|Energy|Demand|Transportation
+Change rate from BAU|Emissions|OC|Energy|Supply
+Change rate from BAU|Emissions|Sulfur|AFOLU
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Industry
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Residential and Commercial
+Change rate from BAU|Emissions|Sulfur|Energy|Supply
+Change rate from BAU|Emissions|VOC|AFOLU
+Change rate from BAU|Emissions|VOC|Energy|Demand|Industry
+Change rate from BAU|Emissions|VOC|Energy|Demand|Residential and Commercial
+Change rate from BAU|Emissions|VOC|Energy|Supply
+Change rate from BAU|Fertilizer Use|Nitrogen
+Change rate from BAU|Final Energy
+Change rate from BAU|Final Energy|Commercial
+Change rate from BAU|Final Energy|Commercial|Electricity
+Change rate from BAU|Final Energy|Commercial|Gases
+Change rate from BAU|Final Energy|Commercial|Heat
+Change rate from BAU|Final Energy|Commercial|Liquids
+Change rate from BAU|Final Energy|Commercial|Solids
+Change rate from BAU|Final Energy|Commercial|Solids|Coal
+Change rate from BAU|Final Energy|Electricity
+Change rate from BAU|Final Energy|Gases
+Change rate from BAU|Final Energy|Heat
+Change rate from BAU|Final Energy|Industry
+Change rate from BAU|Final Energy|Industry|Electricity
+Change rate from BAU|Final Energy|Industry|Gases
+Change rate from BAU|Final Energy|Industry|Liquids
+Change rate from BAU|Final Energy|Industry|Solids
+Change rate from BAU|Final Energy|Industry|Solids|Biomass
+Change rate from BAU|Final Energy|Industry|Solids|Coal
+Change rate from BAU|Final Energy|Liquids
+Change rate from BAU|Final Energy|Non-Energy Use
+Change rate from BAU|Final Energy|Non-Energy Use|Oil
+Change rate from BAU|Final Energy|Residential
+Change rate from BAU|Final Energy|Residential and Commercial
+Change rate from BAU|Final Energy|Residential and Commercial|Electricity
+Change rate from BAU|Final Energy|Residential and Commercial|Gases
+Change rate from BAU|Final Energy|Residential and Commercial|Heat
+Change rate from BAU|Final Energy|Residential and Commercial|Liquids
+Change rate from BAU|Final Energy|Residential and Commercial|Solids
+Change rate from BAU|Final Energy|Residential and Commercial|Solids|Coal
+Change rate from BAU|Final Energy|Residential|Electricity
+Change rate from BAU|Final Energy|Residential|Gases
+Change rate from BAU|Final Energy|Residential|Heat
+Change rate from BAU|Final Energy|Residential|Liquids
+Change rate from BAU|Final Energy|Residential|Solids
+Change rate from BAU|Final Energy|Residential|Solids|Coal
+Change rate from BAU|Final Energy|Solids
+Change rate from BAU|Final Energy|Solids|Biomass
+Change rate from BAU|Final Energy|Solids|Coal
+Change rate from BAU|Final Energy|Transportation
+Change rate from BAU|Final Energy|Transportation|Electricity
+Change rate from BAU|Final Energy|Transportation|Freight
+Change rate from BAU|Final Energy|Transportation|Freight|Electricity
+Change rate from BAU|Final Energy|Transportation|Freight|Liquids
+Change rate from BAU|Final Energy|Transportation|Freight|Liquids|Biomass
+Change rate from BAU|Final Energy|Transportation|Freight|Liquids|Oil
+Change rate from BAU|Final Energy|Transportation|Freight|Other
+Change rate from BAU|Final Energy|Transportation|Gases
+Change rate from BAU|Final Energy|Transportation|Liquids
+Change rate from BAU|Final Energy|Transportation|Liquids|Biomass
+Change rate from BAU|Final Energy|Transportation|Liquids|Oil
+Change rate from BAU|Final Energy|Transportation|Other
+Change rate from BAU|Final Energy|Transportation|Passenger
+Change rate from BAU|Final Energy|Transportation|Passenger|Electricity
+Change rate from BAU|Final Energy|Transportation|Passenger|Liquids
+Change rate from BAU|Final Energy|Transportation|Passenger|Liquids|Biomass
+Change rate from BAU|Final Energy|Transportation|Passenger|Liquids|Oil
+Change rate from BAU|Final Energy|Transportation|Passenger|Other
+Change rate from BAU|Food Demand
+Change rate from BAU|Food Demand|Crops
+Change rate from BAU|Food Demand|Livestock
+Change rate from BAU|Food Energy Supply
+Change rate from BAU|Food Energy Supply|Livestock
+Change rate from BAU|Forestry Demand|Roundwood
+Change rate from BAU|Forestry Demand|Roundwood|Industrial Roundwood
+Change rate from BAU|Forestry Demand|Roundwood|Wood Fuel
+Change rate from BAU|Forestry Production|Roundwood
+Change rate from BAU|Forestry Production|Roundwood|Industrial Roundwood
+Change rate from BAU|Forestry Production|Roundwood|Wood Fuel
+Change rate from BAU|GDP|MER
+Change rate from BAU|GDP|PPP
+Change rate from BAU|Investment|Energy Supply
+Change rate from BAU|Investment|Energy Supply|Electricity
+Change rate from BAU|Investment|Energy Supply|Electricity|Biomass
+Change rate from BAU|Investment|Energy Supply|Electricity|Biomass|w/o CCS
+Change rate from BAU|Investment|Energy Supply|Electricity|Coal
+Change rate from BAU|Investment|Energy Supply|Electricity|Coal|w/o CCS
+Change rate from BAU|Investment|Energy Supply|Electricity|Fossil
+Change rate from BAU|Investment|Energy Supply|Electricity|Gas
+Change rate from BAU|Investment|Energy Supply|Electricity|Gas|w/o CCS
+Change rate from BAU|Investment|Energy Supply|Electricity|Geothermal
+Change rate from BAU|Investment|Energy Supply|Electricity|Hydro
+Change rate from BAU|Investment|Energy Supply|Electricity|Non-Biomass Renewables
+Change rate from BAU|Investment|Energy Supply|Electricity|Non-fossil
+Change rate from BAU|Investment|Energy Supply|Electricity|Oil
+Change rate from BAU|Investment|Energy Supply|Electricity|Oil|w/o CCS
+Change rate from BAU|Investment|Energy Supply|Electricity|Solar
+Change rate from BAU|Investment|Energy Supply|Electricity|Transmission and Distribution
+Change rate from BAU|Investment|Energy Supply|Electricity|Wind
+Change rate from BAU|Investment|Energy Supply|Extraction|Bioenergy
+Change rate from BAU|Investment|Energy Supply|Extraction|Fossil
+Change rate from BAU|Investment|Energy Supply|Extraction|Gas
+Change rate from BAU|Investment|Energy Supply|Extraction|Oil
+Change rate from BAU|Investment|Energy Supply|Heat
+Change rate from BAU|Investment|Energy Supply|Liquids
+Change rate from BAU|Investment|Energy Supply|Liquids|Biomass
+Change rate from BAU|Investment|Energy Supply|Liquids|Oil
+Change rate from BAU|Land Cover|Cropland
+Change rate from BAU|Land Cover|Cropland|Cereals
+Change rate from BAU|Land Cover|Cropland|Energy Crops
+Change rate from BAU|Land Cover|Forest
+Change rate from BAU|Land Cover|Forest|Forestry|Harvested Area
+Change rate from BAU|Land Cover|Forest|Natural Forest
+Change rate from BAU|Land Cover|Other Arable Land
+Change rate from BAU|Land Cover|Pasture
+Change rate from BAU|LCOE|Electricity|Biomass|w/o CCS
+Change rate from BAU|LCOE|Electricity|Coal|w/o CCS
+Change rate from BAU|LCOE|Electricity|Gas|w/o CCS
+Change rate from BAU|LCOE|Electricity|Nuclear
+Change rate from BAU|LCOE|Electricity|Solar|Average
+Change rate from BAU|LCOE|Electricity|Solar|PV|Average
+Change rate from BAU|LCOE|Electricity|Wind|Average
+Change rate from BAU|LCOE|Electricity|Wind|Onshore|Average
+Change rate from BAU|OM Cost|Fixed|Electricity|Biomass|w/o CCS
+Change rate from BAU|OM Cost|Fixed|Electricity|Coal|w/o CCS
+Change rate from BAU|OM Cost|Fixed|Electricity|Gas|w/o CCS
+Change rate from BAU|OM Cost|Fixed|Electricity|Geothermal
+Change rate from BAU|OM Cost|Fixed|Electricity|Hydro
+Change rate from BAU|OM Cost|Fixed|Electricity|Nuclear
+Change rate from BAU|OM Cost|Fixed|Electricity|Solar|PV
+Change rate from BAU|OM Cost|Fixed|Electricity|Wind
+Change rate from BAU|OM Cost|Fixed|Electricity|Wind|Onshore
+Change rate from BAU|Price|Agriculture|Corn|Index
+Change rate from BAU|Price|Agriculture|Non-Energy Crops and Livestock|Index
+Change rate from BAU|Price|Agriculture|Non-Energy Crops|Index
+Change rate from BAU|Price|Agriculture|Soybean|Index
+Change rate from BAU|Price|Agriculture|Wheat|Index
+Change rate from BAU|Price|Final Energy|Residential|Electricity
+Change rate from BAU|Price|Final Energy|Residential|Gases|Natural Gas
+Change rate from BAU|Price|Final Energy|Residential|Liquids|Biomass
+Change rate from BAU|Price|Final Energy|Residential|Liquids|Oil
+Change rate from BAU|Price|Final Energy|Residential|Solids|Coal
+Change rate from BAU|Price|Primary Energy|Coal
+Change rate from BAU|Price|Primary Energy|Gas
+Change rate from BAU|Price|Primary Energy|Oil
+Change rate from BAU|Price|Secondary Energy|Electricity
+Change rate from BAU|Price|Secondary Energy|Liquids|Biomass
+Change rate from BAU|Primary Energy
+Change rate from BAU|Primary Energy|Biomass
+Change rate from BAU|Primary Energy|Biomass|Electricity
+Change rate from BAU|Primary Energy|Biomass|Electricity|w/o CCS
+Change rate from BAU|Primary Energy|Biomass|Energy Crops
+Change rate from BAU|Primary Energy|Biomass|Residues
+Change rate from BAU|Primary Energy|Biomass|w/o CCS
+Change rate from BAU|Primary Energy|Coal
+Change rate from BAU|Primary Energy|Coal|Electricity
+Change rate from BAU|Primary Energy|Coal|Electricity|w/o CCS
+Change rate from BAU|Primary Energy|Coal|w/o CCS
+Change rate from BAU|Primary Energy|Fossil
+Change rate from BAU|Primary Energy|Fossil|w/o CCS
+Change rate from BAU|Primary Energy|Gas
+Change rate from BAU|Primary Energy|Gas|Electricity
+Change rate from BAU|Primary Energy|Gas|Electricity|w/o CCS
+Change rate from BAU|Primary Energy|Gas|w/o CCS
+Change rate from BAU|Primary Energy|Geothermal
+Change rate from BAU|Primary Energy|Hydro
+Change rate from BAU|Primary Energy|Non-Biomass Renewables
+Change rate from BAU|Primary Energy|Oil
+Change rate from BAU|Primary Energy|Oil|Electricity
+Change rate from BAU|Primary Energy|Oil|Electricity|w/o CCS
+Change rate from BAU|Primary Energy|Oil|w/o CCS
+Change rate from BAU|Primary Energy|Secondary Energy Trade
+Change rate from BAU|Primary Energy|Solar
+Change rate from BAU|Primary Energy|Wind
+Change rate from BAU|Secondary Energy
+Change rate from BAU|Secondary Energy|Electricity
+Change rate from BAU|Secondary Energy|Electricity|Biomass
+Change rate from BAU|Secondary Energy|Electricity|Biomass|w/o CCS
+Change rate from BAU|Secondary Energy|Electricity|Coal
+Change rate from BAU|Secondary Energy|Electricity|Coal|w/o CCS
+Change rate from BAU|Secondary Energy|Electricity|Fossil
+Change rate from BAU|Secondary Energy|Electricity|Fossil|w/o CCS
+Change rate from BAU|Secondary Energy|Electricity|Gas
+Change rate from BAU|Secondary Energy|Electricity|Gas|w/o CCS
+Change rate from BAU|Secondary Energy|Electricity|Geothermal
+Change rate from BAU|Secondary Energy|Electricity|Hydro
+Change rate from BAU|Secondary Energy|Electricity|Non-Biomass Renewables
+Change rate from BAU|Secondary Energy|Electricity|Oil
+Change rate from BAU|Secondary Energy|Electricity|Oil|w/o CCS
+Change rate from BAU|Secondary Energy|Electricity|Other
+Change rate from BAU|Secondary Energy|Electricity|Solar
+Change rate from BAU|Secondary Energy|Electricity|Solar|PV
+Change rate from BAU|Secondary Energy|Electricity|Transmission Losses
+Change rate from BAU|Secondary Energy|Electricity|Wind
+Change rate from BAU|Secondary Energy|Electricity|Wind|Onshore
+Change rate from BAU|Secondary Energy|Gases
+Change rate from BAU|Secondary Energy|Gases|Natural Gas
+Change rate from BAU|Secondary Energy|Heat
+Change rate from BAU|Secondary Energy|Heat|Biomass
+Change rate from BAU|Secondary Energy|Heat|Coal
+Change rate from BAU|Secondary Energy|Heat|Gas
+Change rate from BAU|Secondary Energy|Heat|Oil
+Change rate from BAU|Secondary Energy|Liquids
+Change rate from BAU|Secondary Energy|Liquids|Biomass
+Change rate from BAU|Secondary Energy|Liquids|Biomass|Energy Crops
+Change rate from BAU|Secondary Energy|Liquids|Biomass|Residues
+Change rate from BAU|Secondary Energy|Liquids|Biomass|w/o CCS
+Change rate from BAU|Secondary Energy|Liquids|Fossil
+Change rate from BAU|Secondary Energy|Liquids|Fossil|w/o CCS
+Change rate from BAU|Secondary Energy|Liquids|Oil
+Change rate from BAU|Secondary Energy|Solids
+Change rate from BAU|Secondary Energy|Solids|Biomass
+Change rate from BAU|Secondary Energy|Solids|Coal
+Change rate from BAU|Trade|Primary Energy|Coal|Volume
+Change rate from BAU|Trade|Primary Energy|Gas|Volume
+Change rate from BAU|Trade|Primary Energy|Oil|Volume
+Change rate from BAU|Trade|Secondary Energy|Liquids|Biomass|Volume
+Change rate from BAU|Water Consumption|Electricity
+Change rate from BAU|Water Consumption|Electricity|Biomass
+Change rate from BAU|Water Consumption|Electricity|Biomass|w/o CCS
+Change rate from BAU|Water Consumption|Electricity|Coal
+Change rate from BAU|Water Consumption|Electricity|Coal|w/o CCS
+Change rate from BAU|Water Consumption|Electricity|Fossil
+Change rate from BAU|Water Consumption|Electricity|Fossil|w/o CCS
+Change rate from BAU|Water Consumption|Electricity|Gas
+Change rate from BAU|Water Consumption|Electricity|Gas|w/o CCS
+Change rate from BAU|Water Consumption|Electricity|Geothermal
+Change rate from BAU|Water Consumption|Electricity|Hydro
+Change rate from BAU|Water Consumption|Electricity|Non-Biomass Renewables
+Change rate from BAU|Water Consumption|Electricity|Oil
+Change rate from BAU|Water Consumption|Electricity|Oil|w/o CCS
+Change rate from BAU|Water Consumption|Electricity|Wind
+Change rate from BAU|Water Consumption|Industrial Water
+Change rate from BAU|Water Withdrawal|Electricity
+Change rate from BAU|Water Withdrawal|Electricity|Biomass
+Change rate from BAU|Water Withdrawal|Electricity|Biomass|w/o CCS
+Change rate from BAU|Water Withdrawal|Electricity|Coal
+Change rate from BAU|Water Withdrawal|Electricity|Coal|w/o CCS
+Change rate from BAU|Water Withdrawal|Electricity|Fossil
+Change rate from BAU|Water Withdrawal|Electricity|Fossil|w/o CCS
+Change rate from BAU|Water Withdrawal|Electricity|Gas
+Change rate from BAU|Water Withdrawal|Electricity|Gas|w/o CCS
+Change rate from BAU|Water Withdrawal|Electricity|Geothermal
+Change rate from BAU|Water Withdrawal|Electricity|Hydro
+Change rate from BAU|Water Withdrawal|Electricity|Non-Biomass Renewables
+Change rate from BAU|Water Withdrawal|Electricity|Oil
+Change rate from BAU|Water Withdrawal|Electricity|Oil|w/o CCS
+Change rate from BAU|Water Withdrawal|Electricity|Wind
+Change rate from BAU|Water Withdrawal|Industrial Water
+Change rate from BAU|Yield|Cereal
+Change rate from BAU|Yield|Oilcrops
+Change rate from BAU|Yield|Sugarcrops
+Change rate from BAU|AGMIP|AGR|Area
+Change rate from BAU|AGMIP|AGR|CONS
+Change rate from BAU|AGMIP|AGR|Feed
+Change rate from BAU|AGMIP|AGR|food
+Change rate from BAU|AGMIP|AGR|Prod
+Change rate from BAU|AGMIP|AGR|XPRP
+Change rate from BAU|AGMIP|AGR|YILD
+Change rate from BAU|AGMIP|CGR|Area
+Change rate from BAU|AGMIP|CGR|CONS
+Change rate from BAU|AGMIP|CGR|Feed
+Change rate from BAU|AGMIP|CGR|food
+Change rate from BAU|AGMIP|CGR|PELA
+Change rate from BAU|AGMIP|CGR|Prod
+Change rate from BAU|AGMIP|CGR|XPRP
+Change rate from BAU|AGMIP|CGR|YELA
+Change rate from BAU|AGMIP|CGR|YILD
+Change rate from BAU|AGMIP|CR5|Area
+Change rate from BAU|AGMIP|CR5|CONS
+Change rate from BAU|AGMIP|CR5|Feed
+Change rate from BAU|AGMIP|CR5|food
+Change rate from BAU|AGMIP|CR5|Prod
+Change rate from BAU|AGMIP|CR5|XPRP
+Change rate from BAU|AGMIP|CR5|YILD
+Change rate from BAU|AGMIP|CRP|Area
+Change rate from BAU|AGMIP|CRP|CONS
+Change rate from BAU|AGMIP|CRP|Feed
+Change rate from BAU|AGMIP|CRP|food
+Change rate from BAU|AGMIP|CRP|Prod
+Change rate from BAU|AGMIP|CRP|XPRP
+Change rate from BAU|AGMIP|CRP|YILD
+Change rate from BAU|AGMIP|DRY|CONS
+Change rate from BAU|AGMIP|DRY|food
+Change rate from BAU|AGMIP|DRY|PELA
+Change rate from BAU|AGMIP|DRY|Prod
+Change rate from BAU|AGMIP|DRY|XPRP
+Change rate from BAU|AGMIP|DRY|YELA
+Change rate from BAU|AGMIP|NRM|CONS
+Change rate from BAU|AGMIP|NRM|food
+Change rate from BAU|AGMIP|NRM|PELA
+Change rate from BAU|AGMIP|NRM|Prod
+Change rate from BAU|AGMIP|NRM|XPRP
+Change rate from BAU|AGMIP|NRM|YELA
+Change rate from BAU|AGMIP|OSD|Area
+Change rate from BAU|AGMIP|OSD|CONS
+Change rate from BAU|AGMIP|OSD|Feed
+Change rate from BAU|AGMIP|OSD|food
+Change rate from BAU|AGMIP|OSD|PELA
+Change rate from BAU|AGMIP|OSD|Prod
+Change rate from BAU|AGMIP|OSD|XPRP
+Change rate from BAU|AGMIP|OSD|YELA
+Change rate from BAU|AGMIP|OSD|YILD
+Change rate from BAU|AGMIP|PAS|Area
+Change rate from BAU|AGMIP|PAS|CONS
+Change rate from BAU|AGMIP|PAS|food
+Change rate from BAU|AGMIP|PAS|Prod
+Change rate from BAU|AGMIP|PAS|XPRP
+Change rate from BAU|AGMIP|PAS|YILD
+Change rate from BAU|AGMIP|RIC|Area
+Change rate from BAU|AGMIP|RIC|CONS
+Change rate from BAU|AGMIP|RIC|food
+Change rate from BAU|AGMIP|RIC|PELA
+Change rate from BAU|AGMIP|RIC|Prod
+Change rate from BAU|AGMIP|RIC|XPRP
+Change rate from BAU|AGMIP|RIC|YELA
+Change rate from BAU|AGMIP|RIC|YILD
+Change rate from BAU|AGMIP|RUM|CONS
+Change rate from BAU|AGMIP|RUM|food
+Change rate from BAU|AGMIP|RUM|PELA
+Change rate from BAU|AGMIP|RUM|Prod
+Change rate from BAU|AGMIP|RUM|XPRP
+Change rate from BAU|AGMIP|RUM|YELA
+Change rate from BAU|AGMIP|SUG|CONS
+Change rate from BAU|AGMIP|SUG|food
+Change rate from BAU|AGMIP|SUG|Prod
+Change rate from BAU|AGMIP|SUG|XPRP
+Change rate from BAU|AGMIP|WHT|Area
+Change rate from BAU|AGMIP|WHT|CONS
+Change rate from BAU|AGMIP|WHT|Feed
+Change rate from BAU|AGMIP|WHT|food
+Change rate from BAU|AGMIP|WHT|PELA
+Change rate from BAU|AGMIP|WHT|Prod
+Change rate from BAU|AGMIP|WHT|XPRP
+Change rate from BAU|AGMIP|WHT|YELA
+Change rate from BAU|AGMIP|WHT|YILD
+Change rate from BAU|Agricultural Demand|Bioenergy
+Change rate from BAU|Agricultural Demand|Bioenergy|2nd generation
+Change rate from BAU|Agricultural Demand|Crops|Feed
+Change rate from BAU|Agricultural Demand|Crops|Food
+Change rate from BAU|Agricultural Demand|Crops|Other
+Change rate from BAU|Agricultural Demand|Energy
+Change rate from BAU|Agricultural Demand|Energy|Crops
+Change rate from BAU|Agricultural Demand|Energy|Crops|2nd generation
+Change rate from BAU|Agricultural Demand|Feed
+Change rate from BAU|Agricultural Demand|Food
+Change rate from BAU|Agricultural Demand|Livestock|Food
+Change rate from BAU|Agricultural Demand|Livestock|Other
+Change rate from BAU|Agricultural Demand|Non-Energy
+Change rate from BAU|Agricultural Demand|Non-Energy|Crops
+Change rate from BAU|Agricultural Demand|Non-Energy|Crops|Feed
+Change rate from BAU|Agricultural Demand|Non-Energy|Crops|Food
+Change rate from BAU|Agricultural Demand|Non-Energy|Crops|Other
+Change rate from BAU|Agricultural Demand|Non-Energy|Livestock
+Change rate from BAU|Agricultural Demand|Non-Energy|Livestock|Food
+Change rate from BAU|Agricultural Demand|Non-Energy|Livestock|Other
+Change rate from BAU|Agricultural Demand|Other
+Change rate from BAU|Agricultural Producer Price|Coarse grain
+Change rate from BAU|Agricultural Producer Price|Oil Seed
+Change rate from BAU|Agricultural Producer Price|Rice
+Change rate from BAU|Agricultural Producer Price|Wheat
+Change rate from BAU|Agricultural Production|Coarse grain
+Change rate from BAU|Agricultural Production|Crops|Energy
+Change rate from BAU|Agricultural Production|Crops|Non-Energy
+Change rate from BAU|Agricultural Production|Crops|Non-Energy|Cereals
+Change rate from BAU|Agricultural Production|Energy
+Change rate from BAU|Agricultural Production|Energy|Crops
+Change rate from BAU|Agricultural Production|Livestock
+Change rate from BAU|Agricultural Production|Non-Energy
+Change rate from BAU|Agricultural Production|Non-Energy|Crops
+Change rate from BAU|Agricultural Production|Non-Energy|Livestock
+Change rate from BAU|Agricultural Production|Oil Seed
+Change rate from BAU|Agricultural Production|Rice
+Change rate from BAU|Agricultural Production|Wheat
+Change rate from BAU|Capacity Additions|Electricity
+Change rate from BAU|Capacity Additions|Electricity|Nuclear
+Change rate from BAU|Capacity|Electricity|Nuclear
+Change rate from BAU|Capacity|Liquids|Biomass|w/o CCS
+Change rate from BAU|Capacity|Liquids|Oil
+Change rate from BAU|Capital Cost|Liquids|Oil
+Change rate from BAU|Carbon Intensity
+Change rate from BAU|Carbon Intensity Improvement Speed
+Change rate from BAU|Cumulative Capacity|Electricity
+Change rate from BAU|Cumulative Capacity|Electricity|Non-Biomass Renewables
+Change rate from BAU|Cumulative Capacity|Electricity|Nuclear
+Change rate from BAU|Efficiency|Electricity|Coal|w/o CCS
+Change rate from BAU|Efficiency|Electricity|Gas|w/o CCS
+Change rate from BAU|Electrification rate (Ele/TFC)
+Change rate from BAU|Emissions|BC|AFOLU|Aggregate - Agriculture and Biomass Burning
+Change rate from BAU|Emissions|BC|AFOLU|Biomass Burning
+Change rate from BAU|Emissions|BC|Aggregate - Fossil Fuels and Industry
+Change rate from BAU|Emissions|BC|Energy|Demand
+Change rate from BAU|Emissions|BC|Energy|Demand|Aggregate - Residential and Commercial
+Change rate from BAU|Emissions|BC|Energy|Demand|Commercial
+Change rate from BAU|Emissions|BC|Energy|Demand|Residential
+Change rate from BAU|Emissions|BC|Energy|Demand|Residential and Commercial and AFOFI
+Change rate from BAU|Emissions|BC|Energy|Demand|Transportation|Aggregate - Rail and Domestic Shipping
+Change rate from BAU|Emissions|BC|Energy|Demand|Transportation|Road
+Change rate from BAU|Emissions|BC|Energy|Demand|Transportation|Shipping
+Change rate from BAU|Emissions|BC|Energy|Demand|Transportation|Shipping|Domestic
+Change rate from BAU|Emissions|BC|Energy|Supply|Aggregate - Electricity and Heat
+Change rate from BAU|Emissions|BC|Energy|Supply|Electricity
+Change rate from BAU|Emissions|BC|Industrial Processes
+Change rate from BAU|Emissions|CH4|AFOLU|Aggregate - Agriculture and Biomass Burning
+Change rate from BAU|Emissions|CH4|AFOLU|Agriculture
+Change rate from BAU|Emissions|CH4|AFOLU|Agriculture|Livestock
+Change rate from BAU|Emissions|CH4|AFOLU|Agriculture|Livestock|Enteric Fermentation
+Change rate from BAU|Emissions|CH4|AFOLU|Agriculture|Livestock|Manure Management
+Change rate from BAU|Emissions|CH4|AFOLU|Agriculture|Rice
+Change rate from BAU|Emissions|CH4|AFOLU|Biomass Burning
+Change rate from BAU|Emissions|CH4|AFOLU|Land
+Change rate from BAU|Emissions|CH4|AFOLU|Land|Forest Burning
+Change rate from BAU|Emissions|CH4|Aggregate - Fossil Fuels and Industry
+Change rate from BAU|Emissions|CH4|Energy|Demand
+Change rate from BAU|Emissions|CH4|Energy|Demand|AFOFI
+Change rate from BAU|Emissions|CH4|Energy|Demand|Aggregate - Residential and Commercial
+Change rate from BAU|Emissions|CH4|Energy|Demand|Commercial
+Change rate from BAU|Emissions|CH4|Energy|Demand|Residential
+Change rate from BAU|Emissions|CH4|Energy|Demand|Residential and Commercial and AFOFI
+Change rate from BAU|Emissions|CH4|Energy|Demand|Transportation|Aggregate - Rail and Domestic Shipping
+Change rate from BAU|Emissions|CH4|Energy|Demand|Transportation|Road
+Change rate from BAU|Emissions|CH4|Energy|Demand|Transportation|Shipping
+Change rate from BAU|Emissions|CH4|Energy|Demand|Transportation|Shipping|Domestic
+Change rate from BAU|Emissions|CH4|Energy|Supply|Aggregate - Electricity and Heat
+Change rate from BAU|Emissions|CH4|Energy|Supply|Aggregate - Fuel Production and Transformation
+Change rate from BAU|Emissions|CH4|Energy|Supply|Aggregate - Fugitive
+Change rate from BAU|Emissions|CH4|Energy|Supply|Aggregate - Gases and Liquids Fugitive
+Change rate from BAU|Emissions|CH4|Energy|Supply|Aggregate - Solids and Other Fugitive
+Change rate from BAU|Emissions|CH4|Energy|Supply|Electricity
+Change rate from BAU|Emissions|CH4|Energy|Supply|Gases and Liquids|Fugitive
+Change rate from BAU|Emissions|CH4|Energy|Supply|Gases|Fugitive
+Change rate from BAU|Emissions|CH4|Energy|Supply|Liquids|Fugitive
+Change rate from BAU|Emissions|CH4|Energy|Supply|Solids|Fugitive
+Change rate from BAU|Emissions|CH4|Industrial Processes
+Change rate from BAU|Emissions|CH4|Waste
+Change rate from BAU|Emissions|CH4|Waste|Solid Waste Disposal
+Change rate from BAU|Emissions|CH4|Waste|Wastewater Treatment
+Change rate from BAU|Emissions|CO|AFOLU|Aggregate - Agriculture and Biomass Burning
+Change rate from BAU|Emissions|CO|AFOLU|Biomass Burning
+Change rate from BAU|Emissions|CO|AFOLU|Land
+Change rate from BAU|Emissions|CO|AFOLU|Land|Forest Burning
+Change rate from BAU|Emissions|CO|AFOLU|Land|Grassland Burning
+Change rate from BAU|Emissions|CO|Aggregate - Fossil Fuels and Industry
+Change rate from BAU|Emissions|CO|Energy|Demand
+Change rate from BAU|Emissions|CO|Energy|Demand|AFOFI
+Change rate from BAU|Emissions|CO|Energy|Demand|Aggregate - Residential and Commercial
+Change rate from BAU|Emissions|CO|Energy|Demand|Commercial
+Change rate from BAU|Emissions|CO|Energy|Demand|Residential
+Change rate from BAU|Emissions|CO|Energy|Demand|Residential and Commercial and AFOFI
+Change rate from BAU|Emissions|CO|Energy|Demand|Transportation|Aggregate - Rail and Domestic Shipping
+Change rate from BAU|Emissions|CO|Energy|Demand|Transportation|Aviation
+Change rate from BAU|Emissions|CO|Energy|Demand|Transportation|Aviation|Domestic
+Change rate from BAU|Emissions|CO|Energy|Demand|Transportation|Rail
+Change rate from BAU|Emissions|CO|Energy|Demand|Transportation|Road
+Change rate from BAU|Emissions|CO|Energy|Demand|Transportation|Shipping
+Change rate from BAU|Emissions|CO|Energy|Demand|Transportation|Shipping|Domestic
+Change rate from BAU|Emissions|CO|Energy|Supply|Aggregate - Electricity and Heat
+Change rate from BAU|Emissions|CO|Energy|Supply|Aggregate - Fuel Production and Transformation
+Change rate from BAU|Emissions|CO|Energy|Supply|Aggregate - Fugitive
+Change rate from BAU|Emissions|CO|Energy|Supply|Aggregate - Solids and Other Fugitive
+Change rate from BAU|Emissions|CO|Energy|Supply|Electricity
+Change rate from BAU|Emissions|CO|Energy|Supply|Solids|Fugitive
+Change rate from BAU|Emissions|CO|Industrial Processes
+Change rate from BAU|Emissions|CO2|AFOLU|Land
+Change rate from BAU|Emissions|CO2|AFOLU|Land|Forest
+Change rate from BAU|Emissions|CO2|AFOLU|Land|Forest Burning
+Change rate from BAU|Emissions|CO2|Aggregate - Fossil Fuels and Industry
+Change rate from BAU|Emissions|CO2|Energy|Demand|Aggregate - Residential and Commercial
+Change rate from BAU|Emissions|CO2|Energy|Demand|Residential and Commercial and AFOFI
+Change rate from BAU|Emissions|CO2|Energy|Demand|Transportation|Aggregate - Rail and Domestic Shipping
+Change rate from BAU|Emissions|CO2|Energy|Demand|Transportation|Aviation
+Change rate from BAU|Emissions|CO2|Energy|Demand|Transportation|Aviation|Domestic
+Change rate from BAU|Emissions|CO2|Energy|Demand|Transportation|Rail
+Change rate from BAU|Emissions|CO2|Energy|Demand|Transportation|Road
+Change rate from BAU|Emissions|CO2|Energy|Demand|Transportation|Shipping
+Change rate from BAU|Emissions|CO2|Energy|Demand|Transportation|Shipping|Domestic
+Change rate from BAU|Emissions|CO2|Energy|Supply|Aggregate - Electricity and Heat
+Change rate from BAU|Emissions|CO2|Energy|Supply|Aggregate - Fuel Production and Transformation
+Change rate from BAU|Emissions|CO2|Energy|Supply|Aggregate - Fugitive
+Change rate from BAU|Emissions|CO2|Energy|Supply|Aggregate - Solids and Other Fugitive
+Change rate from BAU|Emissions|CO2|Energy|Supply|Solids|Fugitive
+Change rate from BAU|Emissions|CO2|Fossil Fuels and Industry|Cumulative
+Change rate from BAU|Emissions|CO2|Land Use|Flows|Negative (Sequestration)
+Change rate from BAU|Emissions|CO2|Land Use|Flows|Positive (Emission)
+Change rate from BAU|Emissions|CO2|Product Use
+Change rate from BAU|Emissions|CO2|Product Use|Solvents
+Change rate from BAU|Emissions|N2O|AFOLU|Aggregate - Agriculture and Biomass Burning
+Change rate from BAU|Emissions|N2O|AFOLU|Agriculture
+Change rate from BAU|Emissions|N2O|AFOLU|Agriculture|Livestock
+Change rate from BAU|Emissions|N2O|AFOLU|Agriculture|Livestock|Manure Management
+Change rate from BAU|Emissions|N2O|AFOLU|Agriculture|Managed Soils
+Change rate from BAU|Emissions|N2O|AFOLU|Biomass Burning
+Change rate from BAU|Emissions|N2O|AFOLU|Land
+Change rate from BAU|Emissions|N2O|AFOLU|Land|Grassland Pastures
+Change rate from BAU|Emissions|N2O|Aggregate - Fossil Fuels and Industry
+Change rate from BAU|Emissions|N2O|Energy|Demand
+Change rate from BAU|Emissions|N2O|Energy|Demand|AFOFI
+Change rate from BAU|Emissions|N2O|Energy|Demand|Aggregate - Residential and Commercial
+Change rate from BAU|Emissions|N2O|Energy|Demand|Commercial
+Change rate from BAU|Emissions|N2O|Energy|Demand|Industry
+Change rate from BAU|Emissions|N2O|Energy|Demand|Residential
+Change rate from BAU|Emissions|N2O|Energy|Demand|Residential and Commercial and AFOFI
+Change rate from BAU|Emissions|N2O|Energy|Demand|Transportation
+Change rate from BAU|Emissions|N2O|Energy|Demand|Transportation|Aggregate - Rail and Domestic Shipping
+Change rate from BAU|Emissions|N2O|Energy|Demand|Transportation|Aviation
+Change rate from BAU|Emissions|N2O|Energy|Demand|Transportation|Aviation|Domestic
+Change rate from BAU|Emissions|N2O|Energy|Demand|Transportation|Rail
+Change rate from BAU|Emissions|N2O|Energy|Demand|Transportation|Road
+Change rate from BAU|Emissions|N2O|Energy|Demand|Transportation|Shipping
+Change rate from BAU|Emissions|N2O|Energy|Demand|Transportation|Shipping|Domestic
+Change rate from BAU|Emissions|N2O|Energy|Supply
+Change rate from BAU|Emissions|N2O|Energy|Supply|Aggregate - Electricity and Heat
+Change rate from BAU|Emissions|N2O|Energy|Supply|Aggregate - Fuel Production and Transformation
+Change rate from BAU|Emissions|N2O|Energy|Supply|Aggregate - Fugitive
+Change rate from BAU|Emissions|N2O|Energy|Supply|Aggregate - Solids and Other Fugitive
+Change rate from BAU|Emissions|N2O|Energy|Supply|Electricity
+Change rate from BAU|Emissions|N2O|Energy|Supply|Solids|Fugitive
+Change rate from BAU|Emissions|N2O|Industrial Processes
+Change rate from BAU|Emissions|N2O|Product Use
+Change rate from BAU|Emissions|N2O|Product Use|Solvents
+Change rate from BAU|Emissions|N2O|Waste
+Change rate from BAU|Emissions|N2O|Waste|Wastewater Treatment
+Change rate from BAU|Emissions|NH3|AFOLU|Aggregate - Agriculture and Biomass Burning
+Change rate from BAU|Emissions|NH3|AFOLU|Agriculture
+Change rate from BAU|Emissions|NH3|AFOLU|Agriculture|Livestock
+Change rate from BAU|Emissions|NH3|AFOLU|Agriculture|Livestock|Manure Management
+Change rate from BAU|Emissions|NH3|AFOLU|Agriculture|Managed Soils
+Change rate from BAU|Emissions|NH3|AFOLU|Biomass Burning
+Change rate from BAU|Emissions|NH3|AFOLU|Land
+Change rate from BAU|Emissions|NH3|AFOLU|Land|Forest Burning
+Change rate from BAU|Emissions|NH3|AFOLU|Land|Grassland Pastures
+Change rate from BAU|Emissions|NH3|Aggregate - Fossil Fuels and Industry
+Change rate from BAU|Emissions|NH3|Energy|Demand
+Change rate from BAU|Emissions|NH3|Energy|Demand|Transportation|Aggregate - Rail and Domestic Shipping
+Change rate from BAU|Emissions|NH3|Energy|Demand|Transportation|Road
+Change rate from BAU|Emissions|NH3|Energy|Supply|Aggregate - Electricity and Heat
+Change rate from BAU|Emissions|NH3|Energy|Supply|Aggregate - Fuel Production and Transformation
+Change rate from BAU|Emissions|NH3|Energy|Supply|Aggregate - Fugitive
+Change rate from BAU|Emissions|NH3|Energy|Supply|Aggregate - Solids and Other Fugitive
+Change rate from BAU|Emissions|NH3|Energy|Supply|Electricity
+Change rate from BAU|Emissions|NH3|Energy|Supply|Solids|Fugitive
+Change rate from BAU|Emissions|NH3|Industrial Processes
+Change rate from BAU|Emissions|NOx|AFOLU|Aggregate - Agriculture and Biomass Burning
+Change rate from BAU|Emissions|NOx|AFOLU|Agriculture
+Change rate from BAU|Emissions|NOx|AFOLU|Agriculture|Livestock
+Change rate from BAU|Emissions|NOx|AFOLU|Agriculture|Livestock|Manure Management
+Change rate from BAU|Emissions|NOx|AFOLU|Agriculture|Managed Soils
+Change rate from BAU|Emissions|NOx|AFOLU|Biomass Burning
+Change rate from BAU|Emissions|NOx|AFOLU|Land
+Change rate from BAU|Emissions|NOx|AFOLU|Land|Forest Burning
+Change rate from BAU|Emissions|NOx|AFOLU|Land|Grassland Pastures
+Change rate from BAU|Emissions|NOx|Aggregate - Fossil Fuels and Industry
+Change rate from BAU|Emissions|NOx|Energy|Demand
+Change rate from BAU|Emissions|NOx|Energy|Demand|AFOFI
+Change rate from BAU|Emissions|NOx|Energy|Demand|Aggregate - Residential and Commercial
+Change rate from BAU|Emissions|NOx|Energy|Demand|Commercial
+Change rate from BAU|Emissions|NOx|Energy|Demand|Residential
+Change rate from BAU|Emissions|NOx|Energy|Demand|Residential and Commercial and AFOFI
+Change rate from BAU|Emissions|NOx|Energy|Demand|Transportation|Aggregate - Rail and Domestic Shipping
+Change rate from BAU|Emissions|NOx|Energy|Demand|Transportation|Aviation
+Change rate from BAU|Emissions|NOx|Energy|Demand|Transportation|Aviation|Domestic
+Change rate from BAU|Emissions|NOx|Energy|Demand|Transportation|Rail
+Change rate from BAU|Emissions|NOx|Energy|Demand|Transportation|Road
+Change rate from BAU|Emissions|NOx|Energy|Demand|Transportation|Shipping
+Change rate from BAU|Emissions|NOx|Energy|Demand|Transportation|Shipping|Domestic
+Change rate from BAU|Emissions|NOx|Energy|Supply|Aggregate - Electricity and Heat
+Change rate from BAU|Emissions|NOx|Energy|Supply|Aggregate - Fuel Production and Transformation
+Change rate from BAU|Emissions|NOx|Energy|Supply|Electricity
+Change rate from BAU|Emissions|NOx|Industrial Processes
+Change rate from BAU|Emissions|OC|AFOLU|Aggregate - Agriculture and Biomass Burning
+Change rate from BAU|Emissions|OC|AFOLU|Biomass Burning
+Change rate from BAU|Emissions|OC|AFOLU|Land
+Change rate from BAU|Emissions|OC|AFOLU|Land|Forest Burning
+Change rate from BAU|Emissions|OC|Aggregate - Fossil Fuels and Industry
+Change rate from BAU|Emissions|OC|Energy|Demand
+Change rate from BAU|Emissions|OC|Energy|Demand|Aggregate - Residential and Commercial
+Change rate from BAU|Emissions|OC|Energy|Demand|Commercial
+Change rate from BAU|Emissions|OC|Energy|Demand|Residential
+Change rate from BAU|Emissions|OC|Energy|Demand|Residential and Commercial and AFOFI
+Change rate from BAU|Emissions|OC|Energy|Demand|Transportation|Aggregate - Rail and Domestic Shipping
+Change rate from BAU|Emissions|OC|Energy|Demand|Transportation|Road
+Change rate from BAU|Emissions|OC|Energy|Demand|Transportation|Shipping
+Change rate from BAU|Emissions|OC|Energy|Demand|Transportation|Shipping|Domestic
+Change rate from BAU|Emissions|OC|Energy|Supply|Aggregate - Electricity and Heat
+Change rate from BAU|Emissions|OC|Energy|Supply|Electricity
+Change rate from BAU|Emissions|OC|Industrial Processes
+Change rate from BAU|Emissions|Sulfur|AFOLU|Land
+Change rate from BAU|Emissions|Sulfur|AFOLU|Land|Forest Burning
+Change rate from BAU|Emissions|Sulfur|Aggregate - Fossil Fuels and Industry
+Change rate from BAU|Emissions|Sulfur|Energy|Demand
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|AFOFI
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Aggregate - Residential and Commercial
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Commercial
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Residential
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Residential and Commercial and AFOFI
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Transportation|Aggregate - Rail and Domestic Shipping
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Transportation|Aviation
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Transportation|Aviation|Domestic
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Transportation|Rail
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Transportation|Road
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Transportation|Shipping
+Change rate from BAU|Emissions|Sulfur|Energy|Demand|Transportation|Shipping|Domestic
+Change rate from BAU|Emissions|Sulfur|Energy|Supply|Aggregate - Electricity and Heat
+Change rate from BAU|Emissions|Sulfur|Energy|Supply|Aggregate - Fuel Production and Transformation
+Change rate from BAU|Emissions|Sulfur|Energy|Supply|Electricity
+Change rate from BAU|Emissions|Sulfur|Industrial Processes
+Change rate from BAU|Emissions|VOC|AFOLU|Aggregate - Agriculture and Biomass Burning
+Change rate from BAU|Emissions|VOC|AFOLU|Biomass Burning
+Change rate from BAU|Emissions|VOC|AFOLU|Land
+Change rate from BAU|Emissions|VOC|AFOLU|Land|Forest Burning
+Change rate from BAU|Emissions|VOC|Aggregate - Fossil Fuels and Industry
+Change rate from BAU|Emissions|VOC|Energy|Demand
+Change rate from BAU|Emissions|VOC|Energy|Demand|AFOFI
+Change rate from BAU|Emissions|VOC|Energy|Demand|Aggregate - Residential and Commercial
+Change rate from BAU|Emissions|VOC|Energy|Demand|Commercial
+Change rate from BAU|Emissions|VOC|Energy|Demand|Residential
+Change rate from BAU|Emissions|VOC|Energy|Demand|Residential and Commercial and AFOFI
+Change rate from BAU|Emissions|VOC|Energy|Demand|Transportation|Aggregate - Rail and Domestic Shipping
+Change rate from BAU|Emissions|VOC|Energy|Demand|Transportation|Aviation
+Change rate from BAU|Emissions|VOC|Energy|Demand|Transportation|Aviation|Domestic
+Change rate from BAU|Emissions|VOC|Energy|Demand|Transportation|Rail
+Change rate from BAU|Emissions|VOC|Energy|Demand|Transportation|Road
+Change rate from BAU|Emissions|VOC|Energy|Demand|Transportation|Shipping
+Change rate from BAU|Emissions|VOC|Energy|Demand|Transportation|Shipping|Domestic
+Change rate from BAU|Emissions|VOC|Energy|Supply|Aggregate - Electricity and Heat
+Change rate from BAU|Emissions|VOC|Energy|Supply|Aggregate - Fuel Production and Transformation
+Change rate from BAU|Emissions|VOC|Energy|Supply|Aggregate - Fugitive
+Change rate from BAU|Emissions|VOC|Energy|Supply|Aggregate - Gases and Liquids Fugitive
+Change rate from BAU|Emissions|VOC|Energy|Supply|Aggregate - Solids and Other Fugitive
+Change rate from BAU|Emissions|VOC|Energy|Supply|Electricity
+Change rate from BAU|Emissions|VOC|Energy|Supply|Gases and Liquids|Fugitive
+Change rate from BAU|Emissions|VOC|Energy|Supply|Gases|Fugitive
+Change rate from BAU|Emissions|VOC|Energy|Supply|Liquids|Fugitive
+Change rate from BAU|Emissions|VOC|Energy|Supply|Solids|Fugitive
+Change rate from BAU|Emissions|VOC|Industrial Processes
+Change rate from BAU|Emissions|VOC|Product Use
+Change rate from BAU|Emissions|VOC|Product Use|Solvents
+Change rate from BAU|Emissions|VOC|Waste
+Change rate from BAU|Emissions|VOC|Waste|Biological Treatment
+Change rate from BAU|Emissions|VOC|Waste|Solid Waste Disposal
+Change rate from BAU|Energy Intensity
+Change rate from BAU|Energy Intensity Improvement Speed
+Change rate from BAU|Final Energy per capita
+Change rate from BAU|Final Energy|AFOFI
+Change rate from BAU|Final Energy|Commercial|Liquids|Oil
+Change rate from BAU|Final Energy|Commercial|Solids|Biomass
+Change rate from BAU|Final Energy|Commercial|Solids|Biomass|Traditional
+Change rate from BAU|Final Energy|Electricity and Heat
+Change rate from BAU|Final Energy|Industry|Electricity and Heat
+Change rate from BAU|Final Energy|Industry|Heat
+Change rate from BAU|Final Energy|Industry|Liquids|Biomass
+Change rate from BAU|Final Energy|Industry|Liquids|Oil
+Change rate from BAU|Final Energy|Liquids|Biomass
+Change rate from BAU|Final Energy|Liquids|Oil
+Change rate from BAU|Final Energy|Other Sector
+Change rate from BAU|Final Energy|Other Sector|Electricity
+Change rate from BAU|Final Energy|Other Sector|Liquids
+Change rate from BAU|Final Energy|Residential and Commercial and AFOFI
+Change rate from BAU|Final Energy|Residential and Commercial|Electricity and Heat
+Change rate from BAU|Final Energy|Residential and Commercial|Gases|Natural gas
+Change rate from BAU|Final Energy|Residential and Commercial|Liquids|Oil
+Change rate from BAU|Final Energy|Residential and Commercial|Solids|Biomass
+Change rate from BAU|Final Energy|Residential and Commercial|Solids|Biomass|Traditional
+Change rate from BAU|Final Energy|Residential|Liquids|Oil
+Change rate from BAU|Final Energy|Solids|Biomass|Traditional
+Change rate from BAU|Final Energy|Transportation|Aviation
+Change rate from BAU|Final Energy|Transportation|Aviation|Domestic
+Change rate from BAU|Final Energy|Transportation|Rail
+Change rate from BAU|Final Energy|Transportation|Road
+Change rate from BAU|Final Energy|Transportation|Shipping
+Change rate from BAU|Final Energy|Transportation|Shipping|Domestic
+Change rate from BAU|Food Energy Supply|Crops|Per Capita
+Change rate from BAU|Food Energy Supply|Livestock|Per Capita
+Change rate from BAU|Food Energy Supply|Per Capita
+Change rate from BAU|Food Waste
+Change rate from BAU|Food Waste|Consumption
+Change rate from BAU|Food Waste|Distribution
+Change rate from BAU|Food Waste|Food process
+Change rate from BAU|Food Waste|Production
+Change rate from BAU|Full LCOE|Electricity|Biomass|w/o CCS
+Change rate from BAU|Full LCOE|Electricity|Coal|w/o CCS
+Change rate from BAU|Full LCOE|Electricity|Gas|w/o CCS
+Change rate from BAU|Full LCOE|Electricity|Nuclear
+Change rate from BAU|Full LCOE|Electricity|Solar|Average
+Change rate from BAU|Full LCOE|Electricity|Solar|PV|Average
+Change rate from BAU|Full LCOE|Electricity|Wind|Average
+Change rate from BAU|Full LCOE|Electricity|Wind|Onshore|Average
+Change rate from BAU|GDP per capita
+Change rate from BAU|Income Elasticity|Coarse grain
+Change rate from BAU|Income Elasticity|Oil seed
+Change rate from BAU|Income Elasticity|Rice
+Change rate from BAU|Income Elasticity|Wheat
+Change rate from BAU|Investment|Energy Supply|Electricity|Nuclear
+Change rate from BAU|Investment|Energy Supply|Extraction|Coal
+Change rate from BAU|Land Cover|Cropland|Coarse grain
+Change rate from BAU|Land Cover|Cropland|Non-Energy Crops
+Change rate from BAU|Land Cover|Cropland|Oil Seed
+Change rate from BAU|Land Cover|Cropland|Rice
+Change rate from BAU|Land Cover|Cropland|Wheat
+Change rate from BAU|Land Cover|Forest|Forestry
+Change rate from BAU|Land Cover|Other Natural Land
+Change rate from BAU|NOx Emission Intensity
+Change rate from BAU|NOx Emission Intensity|Energy Supply
+Change rate from BAU|NOx Emission Intensity|GDP
+Change rate from BAU|OM Cost|Fixed|Liquids|Biomass|Cellulosic Nondiesel|w/o CCS
+Change rate from BAU|OM Cost|Fixed|Liquids|Biomass|w/o CCS
+Change rate from BAU|OM Cost|Fixed|Liquids|Oil
+Change rate from BAU|OM Cost|Variable|Electricity|Coal|w/o CCS
+Change rate from BAU|OM Cost|Variable|Electricity|Gas|w/o CCS
+Change rate from BAU|OM Cost|Variable|Liquids|Biomass|Cellulosic Nondiesel|w/o CCS
+Change rate from BAU|OM Cost|Variable|Liquids|Biomass|w/o CCS
+Change rate from BAU|OM Cost|Variable|Liquids|Oil
+Change rate from BAU|Policy Cost|Consumption Loss rate
+Change rate from BAU|Policy Cost|GDP Loss rate
+Change rate from BAU|Price Elasticity|Coarse grain
+Change rate from BAU|Price Elasticity|Oil seed
+Change rate from BAU|Price Elasticity|Rice
+Change rate from BAU|Price Elasticity|Wheat
+Change rate from BAU|Price|Primary Energy|Biomass
+Change rate from BAU|Price|Primary Energy|Biomass|Delivered
+Change rate from BAU|Price|Primary Energy|Biomass|Farmgate
+Change rate from BAU|Price|Secondary Energy|Liquids
+Change rate from BAU|Primary Energy|Biomass|Liquids
+Change rate from BAU|Primary Energy|Biomass|Liquids|Biodiesel
+Change rate from BAU|Primary Energy|Biomass|Liquids|Biodiesel|w/o CCS
+Change rate from BAU|Primary Energy|Biomass|Liquids|Cellulosic Nondiesel
+Change rate from BAU|Primary Energy|Biomass|Liquids|Cellulosic Nondiesel|w/o CCS
+Change rate from BAU|Primary Energy|Biomass|Liquids|w/o CCS
+Change rate from BAU|Primary Energy|Biomass|Modern
+Change rate from BAU|Primary Energy|Biomass|Solids
+Change rate from BAU|Primary Energy|Biomass|Traditional
+Change rate from BAU|Primary Energy|Nuclear
+Change rate from BAU|Primary industry share
+Change rate from BAU|Resource|Cumulative Extraction|Coal
+Change rate from BAU|Resource|Cumulative Extraction|Gas
+Change rate from BAU|Resource|Cumulative Extraction|Oil
+Change rate from BAU|Secondary Energy|Electricity and Heat
+Change rate from BAU|Secondary Energy|Electricity and Heat|Biomass
+Change rate from BAU|Secondary Energy|Electricity and Heat|Biomass|w/o CCS
+Change rate from BAU|Secondary Energy|Electricity and Heat|Coal
+Change rate from BAU|Secondary Energy|Electricity and Heat|Coal|w/o CCS
+Change rate from BAU|Secondary Energy|Electricity and Heat|Fossil
+Change rate from BAU|Secondary Energy|Electricity and Heat|Fossil|w/o CCS
+Change rate from BAU|Secondary Energy|Electricity and Heat|Gas
+Change rate from BAU|Secondary Energy|Electricity and Heat|Gas|w/o CCS
+Change rate from BAU|Secondary Energy|Electricity and Heat|Hydro
+Change rate from BAU|Secondary Energy|Electricity and Heat|Non-Biomass Renewables
+Change rate from BAU|Secondary Energy|Electricity and Heat|Nuclear
+Change rate from BAU|Secondary Energy|Electricity and Heat|Oil
+Change rate from BAU|Secondary Energy|Electricity and Heat|Oil|w/o CCS
+Change rate from BAU|Secondary Energy|Electricity and Heat|Solar
+Change rate from BAU|Secondary Energy|Electricity and Heat|Solar|PV
+Change rate from BAU|Secondary Energy|Electricity and Heat|Wind
+Change rate from BAU|Secondary Energy|Electricity and Heat|Wind|Onshore
+Change rate from BAU|Secondary Energy|Electricity|Nuclear
+Change rate from BAU|Secondary Energy|Liquids|Biomass|1st Generation
+Change rate from BAU|Secondary Energy|Liquids|Biomass|Cellulosic Nondiesel|w/o CCS
+Change rate from BAU|Secondary Energy|Liquids|Biomass|Conventional Ethanol|w/o CCS
+Change rate from BAU|Secondary industry share
+Change rate from BAU|Sulfur Emission Intensity
+Change rate from BAU|Sulfur Emission Intensity|Energy Supply
+Change rate from BAU|Sulfur Emission Intensity|GDP
+Change rate from BAU|Tertiary industry share
+Change rate from BAU|Total capital formation share
+Change rate from BAU|Total export share
+Change rate from BAU|Total household share
+Change rate from BAU|Total import share
+Change rate from BAU|Trade Dependency|Coal
+Change rate from BAU|Trade Dependency|Coarse grain
+Change rate from BAU|Trade Dependency|Oil
+Change rate from BAU|Trade Dependency|Rice
+Change rate from BAU|Trade Dependency|Wheat
+Change rate from BAU|Trade|Primary Energy|Biomass|Volume
+Change rate from BAU|Trade|Secondary Energy|Liquids|Oil|Volume
+Change rate from BAU|Unemployment|Rate
+Change rate from BAU|Value Added|Agriculture
+Change rate from BAU|Value added|chemical ind
+Change rate from BAU|Value added|Iron Steel
+Change rate from BAU|Value added|non metallic minerals
+Change rate from BAU|Value added|non-ferrous metals
+Change rate from BAU|Value added|other ind
+Change rate from BAU|Value added|pulp and paper
+Change rate from BAU|Value added|Service sector
+Change rate from BAU|Water Biophysical Consumption for Agriculture
+Change rate from BAU|Water Consumption
+Change rate from BAU|Water Consumption|Electricity|Nuclear
+Change rate from BAU|Water Consumption|Irrigation
+Change rate from BAU|Water Consumption|Municipal Water
+Change rate from BAU|Water Withdrawal
+Change rate from BAU|Water Withdrawal|Electricity|Nuclear
+Change rate from BAU|Water Withdrawal|Irrigation
+Change rate from BAU|Water Withdrawal|Municipal Water
+Change rate from BAU|Emissions|VOC|AFOLU|Land|Grassland Burning
+Change rate from BAU|Primary Energy|Biomass|1st Generation
+Change rate from BAU|Primary Energy|Biomass|Liquids|Conventional Ethanol
+Change rate from BAU|Primary Energy|Biomass|Liquids|Conventional Ethanol|w/o CCS
+Change rate from BAU|Primary Energy|Biomass|Liquids|Non-Cellulosic
+Change rate from BAU|AGMIP|RIC|Feed
+Change rate from BAU|AGMIP|SUG|Area
+Change rate from BAU|AGMIP|SUG|Feed
+Change rate from BAU|AGMIP|SUG|PELA
+Change rate from BAU|AGMIP|SUG|YELA
+Change rate from BAU|AGMIP|SUG|YILD
+Change rate from BAU|Emissions|BC|AFOLU|Land
+Change rate from BAU|Emissions|BC|AFOLU|Land|Forest Burning
+Change rate from BAU|Emissions|BC|AFOLU|Land|Grassland Burning
+Change rate from BAU|Emissions|BC|Energy|Demand|AFOFI
+Change rate from BAU|Emissions|BC|Energy|Supply|Aggregate - Fugitive
+Change rate from BAU|Emissions|BC|Energy|Supply|Aggregate - Solids and Other Fugitive
+Change rate from BAU|Emissions|BC|Energy|Supply|Solids|Fugitive
+Change rate from BAU|Emissions|BC|Waste
+Change rate from BAU|Emissions|BC|Waste|Incineration
+Change rate from BAU|Emissions|CH4|AFOLU|Land|Grassland Burning
+Change rate from BAU|Emissions|CH4|Energy|Demand|Transportation|Rail
+Change rate from BAU|Emissions|CH4|Waste|Biological Treatment
+Change rate from BAU|Emissions|CO|Energy|Supply|Aggregate - Gases and Liquids Fugitive
+Change rate from BAU|Emissions|CO|Energy|Supply|Gases and Liquids|Fugitive
+Change rate from BAU|Emissions|CO|Energy|Supply|Gases|Fugitive
+Change rate from BAU|Emissions|CO|Energy|Supply|Liquids|Fugitive
+Change rate from BAU|Emissions|CO2|Energy|Supply|Aggregate - Gases and Liquids Fugitive
+Change rate from BAU|Emissions|CO2|Energy|Supply|Gases and Liquids|Fugitive
+Change rate from BAU|Emissions|CO2|Energy|Supply|Gases|Fugitive
+Change rate from BAU|Emissions|CO2|Energy|Supply|Liquids|Fugitive
+Change rate from BAU|Emissions|N2O|AFOLU|Land|Grassland Burning
+Change rate from BAU|Emissions|N2O|Energy|Supply|Aggregate - Gases and Liquids Fugitive
+Change rate from BAU|Emissions|N2O|Energy|Supply|Gases and Liquids|Fugitive
+Change rate from BAU|Emissions|N2O|Energy|Supply|Gases|Fugitive
+Change rate from BAU|Emissions|N2O|Energy|Supply|Liquids|Fugitive
+Change rate from BAU|Emissions|N2O|Waste|Biological Treatment
+Change rate from BAU|Emissions|NH3|AFOLU|Land|Grassland Burning
+Change rate from BAU|Emissions|NH3|Energy|Demand|Aggregate - Residential and Commercial
+Change rate from BAU|Emissions|NH3|Energy|Demand|Commercial
+Change rate from BAU|Emissions|NH3|Energy|Demand|Residential
+Change rate from BAU|Emissions|NH3|Energy|Demand|Residential and Commercial and AFOFI
+Change rate from BAU|Emissions|NH3|Waste
+Change rate from BAU|Emissions|NH3|Waste|Biological Treatment
+Change rate from BAU|Emissions|NOx|AFOLU|Land|Grassland Burning
+Change rate from BAU|Emissions|NOx|Energy|Supply|Aggregate - Fugitive
+Change rate from BAU|Emissions|NOx|Energy|Supply|Aggregate - Gases and Liquids Fugitive
+Change rate from BAU|Emissions|NOx|Energy|Supply|Aggregate - Solids and Other Fugitive
+Change rate from BAU|Emissions|NOx|Energy|Supply|Gases and Liquids|Fugitive
+Change rate from BAU|Emissions|NOx|Energy|Supply|Liquids|Fugitive
+Change rate from BAU|Emissions|NOx|Energy|Supply|Solids|Fugitive
+Change rate from BAU|Emissions|OC|AFOLU|Land|Grassland Burning
+Change rate from BAU|Emissions|OC|Energy|Demand|AFOFI
+Change rate from BAU|Emissions|OC|Energy|Supply|Aggregate - Fugitive
+Change rate from BAU|Emissions|OC|Energy|Supply|Aggregate - Solids and Other Fugitive
+Change rate from BAU|Emissions|OC|Energy|Supply|Solids|Fugitive
+Change rate from BAU|Emissions|OC|Waste
+Change rate from BAU|Emissions|OC|Waste|Incineration
+Change rate from BAU|Emissions|Sulfur|AFOLU|Aggregate - Agriculture and Biomass Burning
+Change rate from BAU|Emissions|Sulfur|AFOLU|Biomass Burning
+Change rate from BAU|Emissions|Sulfur|AFOLU|Land|Grassland Burning
+Change rate from BAU|Final Energy|Non-Energy Use|Gas
+Change rate from BAU|Final Energy|Other Sector|Gases
+Change rate from BAU|Investment|Energy Supply|Electricity|Electricity Storage
+Change rate from BAU|Population|Risk of Hunger
+Change rate from BAU|Secondary Energy|Electricity and Heat|Other
+Change rate from BAU|Trade Dependency|Gas
+Change rate from BAU|Trade|Secondary Energy|Electricity|Volume
+Change rate from BAU|Emissions|NOx|Energy|Supply|Gases|Fugitive
+Change rate from BAU|Emissions|NH3|Energy|Demand|Transportation|Rail
+Change rate from BAU|Agricultural Demand|Livestock|Feed
+Change rate from BAU|Emissions|CH4|Energy|Demand|Transportation|Aviation
+Change rate from BAU|Emissions|CH4|Energy|Demand|Transportation|Aviation|Domestic
+Change rate from BAU|Emissions|CH4|Waste|Incineration
+Change rate from BAU|Emissions|CO|Waste
+Change rate from BAU|Emissions|CO|Waste|Incineration
+Change rate from BAU|Emissions|CO2|Energy|Demand|Transportation|Other Sector
+Change rate from BAU|Emissions|CO2|Waste
+Change rate from BAU|Emissions|CO2|Waste|Incineration
+Change rate from BAU|Emissions|N2O|Waste|Incineration
+Change rate from BAU|Emissions|NOx|Waste
+Change rate from BAU|Emissions|NOx|Waste|Incineration
+Change rate from BAU|Emissions|Sulfur|Waste
+Change rate from BAU|Emissions|Sulfur|Waste|Incineration
+Change rate from BAU|Final Energy|Other Sector|Solids
+Change rate from BAU|Final Energy|Other Sector|Solids|Coal
+Change rate from BAU|Secondary Energy|Heat|Nuclear
+Change rate from BAU|Emissions|NH3|Energy|Demand|Transportation|Shipping
+Change rate from BAU|Emissions|NH3|Energy|Demand|Transportation|Shipping|Domestic
+Change rate from BAU|Final Energy|Other Sector|Heat
+Change rate from BAU|Final Energy|Residential|Solids|Biomass
+Change rate from BAU|Final Energy|Residential|Solids|Biomass|Traditional
+Change rate from BAU|Population
