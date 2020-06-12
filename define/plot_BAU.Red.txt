@@ -1,0 +1,54 @@
+Change rate from BAU|Agricultural Demand
+Change rate from BAU|Agricultural Production
+Change rate from BAU|Capacity Additions|Electricity|Biomass
+Change rate from BAU|Capacity Additions|Electricity|Biomass|w/o CCS
+Change rate from BAU|Capacity Additions|Electricity|Coal
+Change rate from BAU|Capacity Additions|Electricity|Coal|w/o CCS
+Change rate from BAU|Capacity Additions|Electricity|Gas
+Change rate from BAU|Capacity Additions|Electricity|Gas|w/o CCS
+Change rate from BAU|Capacity Additions|Electricity|Geothermal
+Change rate from BAU|Capacity Additions|Electricity|Hydro
+Change rate from BAU|Capacity Additions|Electricity|Oil
+Change rate from BAU|Capacity Additions|Electricity|Oil|w/o CCS
+Change rate from BAU|Capacity Additions|Electricity|Solar
+Change rate from BAU|Capacity Additions|Electricity|Solar|PV
+Change rate from BAU|Capacity Additions|Electricity|Wind
+Change rate from BAU|Capacity Additions|Electricity|Wind|Onshore
+Change rate from BAU|Capacity|Electricity
+Change rate from BAU|Capacity|Electricity|Biomass
+Change rate from BAU|Capacity|Electricity|Biomass|w/o CCS
+Change rate from BAU|Capacity|Electricity|Coal
+Change rate from BAU|Capacity|Electricity|Coal|w/o CCS
+Change rate from BAU|Capacity|Electricity|Gas
+Change rate from BAU|Capacity|Electricity|Gas|w/o CCS
+Change rate from BAU|Capacity|Electricity|Geothermal
+Change rate from BAU|Capacity|Electricity|Hydro
+Change rate from BAU|Capacity|Electricity|Oil
+Change rate from BAU|Capacity|Electricity|Oil|w/o CCS
+Change rate from BAU|Capacity|Electricity|Other
+Change rate from BAU|Capacity|Electricity|Solar
+Change rate from BAU|Capacity|Electricity|Solar|PV
+Change rate from BAU|Capacity|Electricity|Wind
+Change rate from BAU|Capacity|Electricity|Wind|Onshore
+Change rate from BAU|Final Energy
+Change rate from BAU|Final Energy|Electricity
+Change rate from BAU|Final Energy|Gases
+Change rate from BAU|Food Demand
+Change rate from BAU|GDP|MER
+Change rate from BAU|GDP|PPP
+Change rate from BAU|Investment|Energy Supply
+Change rate from BAU|Price|Primary Energy|Coal
+Change rate from BAU|Price|Primary Energy|Gas
+Change rate from BAU|Price|Primary Energy|Oil
+Change rate from BAU|Price|Secondary Energy|Electricity
+Change rate from BAU|Primary Energy
+Change rate from BAU|Primary Energy|Biomass
+Change rate from BAU|Primary Energy|Coal
+Change rate from BAU|Primary Energy|Gas
+Change rate from BAU|Primary Energy|Oil
+Change rate from BAU|Primary Energy|Solar
+Change rate from BAU|Primary Energy|Wind
+Change rate from BAU|Secondary Energy|Electricity
+Change rate from BAU|Population|Risk of Hunger
+Change rate from BAU|Population
+Change rate from BAU|Policy Cost|GDP Loss rate
