@@ -17,12 +17,15 @@ library(cowplot)
 
 #-------------------------
 # Make directories
+#-------------------------
 dir.create("../output/")
 dir.create("../output/fig/")
 dir.create("../output/fig/CrossCountries/")
+dir.create("../output/fig/EffortSharing/")
 
 #-------------------------
 # Set figure theme
+#-------------------------
 pastelpal1 <- brewer.pal(9, "Pastel1")
 spectpal <- brewer.pal(11, "Spectral")
 AR6pal <- c("C1: 1.5C with no or low OS"="#8fbc8f","C2: 1.5C with high OS"="#7fffd4","C3: lower 2C"="#6495ed","C4: higher 2C"="#f0e68c","C5: below 2.5C"="#ffa07a","C6: below 3.0C"="#ee82ee","C7: above 3.0C"="#a9a9a9")
@@ -50,6 +53,8 @@ MyThemeLine_grid2 <- MyThemeLine_grid +
 
 #-------------------------
 # Read data and definitions
+#-------------------------
+# Results from AIM/CGE
 CHN <- read.csv("../data/CHN_iiasa_database.csv", header=T) 
 IND <- read.csv("../data/IND_iiasa_database.csv", header=T) 
 JPN <- read.csv("../data/JPN_iiasa_database_final.csv", header=T) 
@@ -71,8 +76,17 @@ colhead2 <- c("MODELN","SCENARIO","REGION","VARIABLE2","UNIT")
 variablemap <- read.table("../define/variablemap.txt",sep="\t",header=T) 
 variablemap2 <- read.table("../define/variablemap2.txt",sep="\t",header=T) 
 
+# Effort sharing
+EA2 <- rgdx.param("../data/EA_2deg.gdx", "EA") 
+EA15 <- rgdx.param("../data/EA_15deg.gdx", "EA") 
+names(EA2) <- c("Approach","Country","Range","Year","Emission_Pathway")
+names(EA15) <- c("Approach","Country","Range","Year","Emission_Pathway")
+Country_List <- scan("../define/countries.txt", what=character(), sep="\n", blank.lines.skip=F, quiet=T)
+
 #-------------------------
 # Data processing
+#-------------------------
+# Arrange data format of AIM/CGE results
 bind_rows_all <- function(dfs, ...){
   base <- dfs[1]
   lapply(dfs[-1], function(i) base <<- bind_rows(base, i, ...))
@@ -140,8 +154,16 @@ name_BAU.Red <- plot_BAU.Red %>% str_sub(start = 22)
 name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="|", replacement="_", fixed=TRUE)
 name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
 
+# Arrange data format of Effort sharing data
+EA2$Goal <- "2C"
+EA15$Goal <- "1.5C"
+EA <- bind_rows(EA2, EA15)
+EA <- EA[,c(1,2,6,3,4,5)]
+
 #-------------------------
 # Make Graphs
+#-------------------------
+# Relation between each variables and GHG reduction rate (Cross-countries)
 for (i in 1:length(plot_BAU.Red)){
   vsBAU.Red.sel <- filter(vsBAU.Red, YEAR %in% c(2050) & VARIABLE==plot_BAU.Red[i]) 
   if(nrow(vsBAU.Red.sel)>=2){
@@ -155,4 +177,12 @@ for (i in 1:length(plot_BAU.Red)){
   }
 }
 
+# GHG emissions in 2050 for 1.5/2 degree goal in each effort sharing approach (By country)
+for(i in Country_List){
+  g2 <- ggplot(subset(EA, Country==i & Year=="2050"), aes(x=Approach, y=Emission_Pathway, group=Approach, shape=Approach, colour=Goal)) +
+    geom_point() + geom_line() + labs(y="Emission Pathway (MtCO2eq/year)", title=i) + facet_wrap(~Goal) + 
+    MyThemeLine_grid
+  outname <- paste0("../output/fig/EffortSharing/Emission_Pathway_",i,".png")
+  ggsave(g2, file=outname, dpi=300, width=8, height=5, limitsize=F)
+}
 
