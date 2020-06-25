@@ -1158,3 +1158,4 @@ VARIABLE2	VARIABLE
 "Yield|Cereal"	Yield|Cereal
 "Yield|Oilcrops"	Yield|Oilcrops
 "Yield|Sugarcrops"	Yield|Sugarcrops
+"Emissions|3 Gases"	Emissions|3 Gases

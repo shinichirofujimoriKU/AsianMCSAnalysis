@@ -1,4 +1,4 @@
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/04/20 16:56:32 Page 1
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/25/20 15:38:02 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -56,7 +56,7 @@ INCLUDE    C:\Users\ochie\Documents\AsianMCSAnalysis\prog\../define/allvariables
   51  "AGMIP|NRM|CONS"
   52  "AGMIP|NRM|food"
   53  "AGMIP|NRM|PELA"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/04/20 16:56:32 Page 2
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/25/20 15:38:02 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -114,7 +114,7 @@ C o m p i l a t i o n
  104  "AGMIP|SUG|YILD"
  105  "AGMIP|WHT|Area"
  106  "AGMIP|WHT|CONS"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/04/20 16:56:32 Page 3
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/25/20 15:38:02 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -172,7 +172,7 @@ C o m p i l a t i o n
  157  "Capacity Additions|Electricity"
  158  "Capacity Additions|Electricity|Biomass"
  159  "Capacity Additions|Electricity|Biomass|w/ CCS"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/04/20 16:56:32 Page 4
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/25/20 15:38:02 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -230,7 +230,7 @@ C o m p i l a t i o n
  210  "Capital Cost|Electricity|Solar|PV"
  211  "Capital Cost|Electricity|Wind|Onshore"
  212  "Capital Cost|Liquids|Biomass|Cellulosic Nondiesel|w/ CCS"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/04/20 16:56:32 Page 5
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/25/20 15:38:02 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -288,7 +288,7 @@ C o m p i l a t i o n
  263  "Emissions|BC|AFOLU|Aggregate - Agriculture and Biomass Burning"
  264  "Emissions|BC|AFOLU|Biomass Burning"
  265  "Emissions|BC|AFOLU|Land"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/04/20 16:56:32 Page 6
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/25/20 15:38:02 Page 6
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -346,7 +346,7 @@ C o m p i l a t i o n
  316  "Emissions|CH4|Energy|Demand|Residential and Commercial"
  317  "Emissions|CH4|Energy|Demand|Res and Com and AFOFI"
  318  "Emissions|CH4|Energy|Demand|Transportation"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/04/20 16:56:32 Page 7
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/25/20 15:38:02 Page 7
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -404,7 +404,7 @@ C o m p i l a t i o n
  369  "Emissions|CO|Energy|Supply|Aggregate - Electricity and Heat"
  370  "Emissions|CO|Energy|Supply|Agg-Fuel Pro and Trans"
  371  "Emissions|CO|Energy|Supply|Aggregate - Fugitive"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/04/20 16:56:32 Page 8
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/25/20 15:38:02 Page 8
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -462,7 +462,7 @@ C o m p i l a t i o n
  422  "Emissions|CO2|Product Use"
  423  "Emissions|CO2|Product Use|Solvents"
  424  "Emissions|CO2|Waste"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/04/20 16:56:32 Page 9
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                 06/25/20 15:38:02 Page 9
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -520,7 +520,7 @@ C o m p i l a t i o n
  475  "Emissions|N2O|Industrial Processes"
  476  "Emissions|N2O|Product Use"
  477  "Emissions|N2O|Product Use|Solvents"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 10
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 10
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -578,7 +578,7 @@ C o m p i l a t i o n
  528  "Emissions|NOx|AFOLU|Land"
  529  "Emissions|NOx|AFOLU|Land|Forest Burning"
  530  "Emissions|NOx|AFOLU|Land|Grassland Burning"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 11
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 11
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -636,7 +636,7 @@ C o m p i l a t i o n
  581  "Emissions|OC|Energy|Demand|Transportation"
  582  "Emissions|OC|Energy|Demand|Transportation|Agg-Rail and DShip"
  583  "Emissions|OC|Energy|Demand|Transportation|Road"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 12
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 12
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -694,7 +694,7 @@ C o m p i l a t i o n
  634  "Emissions|VOC"
  635  "Emissions|VOC|AFOLU"
  636  "Emissions|VOC|AFOLU|Aggregate - Agriculture and Biomass Burning"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 13
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 13
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -752,7 +752,7 @@ C o m p i l a t i o n
  687  "Final Energy|Commercial|Liquids"
  688  "Final Energy|Commercial|Liquids|Oil"
  689  "Final Energy|Commercial|Solids"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 14
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 14
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -810,7 +810,7 @@ C o m p i l a t i o n
  740  "Final Energy|Residential and Commercial|Solids|Biomass|Tradi"
  741  "Final Energy|Residential and Commercial|Solids|Coal"
  742  "Final Energy|Residential|Electricity"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 15
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 15
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -868,7 +868,7 @@ C o m p i l a t i o n
  793  "Food Waste|Distribution"
  794  "Food Waste|Food process"
  795  "Food Waste|Postharvest handling and storage "
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 16
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 16
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -926,7 +926,7 @@ C o m p i l a t i o n
  846  "Investment|Energy Supply|Electricity|Oil|w/o CCS"
  847  "Investment|Energy Supply|Electricity|Solar"
  848  "Investment|Energy Supply|Electricity|Trans and Distri"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 17
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 17
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -984,7 +984,7 @@ C o m p i l a t i o n
  899  "OM Cost|Fixed|Electricity|Nuclear"
  900  "OM Cost|Fixed|Electricity|Solar|PV"
  901  "OM Cost|Fixed|Electricity|Wind"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 18
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 18
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -1042,7 +1042,7 @@ C o m p i l a t i o n
  952  "Primary Energy|Biomass|Electricity|w/o CCS"
  953  "Primary Energy|Biomass|Energy Crops"
  954  "Primary Energy|Biomass|Liquids"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 19
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 19
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -1100,7 +1100,7 @@ C o m p i l a t i o n
 1005  "Secondary Energy|Electricity"
 1006  "Secondary Energy|Electricity and Heat"
 1007  "Secondary Energy|Electricity and Heat|Biomass"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 20
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 20
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -1158,7 +1158,7 @@ C o m p i l a t i o n
 1058  "Secondary Energy|Heat"
 1059  "Secondary Energy|Heat|Biomass"
 1060  "Secondary Energy|Heat|Coal"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 21
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 21
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -1216,7 +1216,7 @@ C o m p i l a t i o n
 1111  "Value added|Service sector"
 1112  "Water Biophysical Consumption for Agriculture"
 1113  "Water Consumption"
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 22
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 22
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -1273,44 +1273,58 @@ C o m p i l a t i o n
 1163  "Yield|Cereal"
 1164  "Yield|Oilcrops"
 1165  "Yield|Sugarcrops"
-1166  /
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 23
+1166  "Emissions|3 Gases"
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 23
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
-1167  UNIT
-1168  YEAR
-1169  VAR_LossRate(VARIABLE2)/
-1170  "Policy Cost|GDP Loss rate"
-1171  "Policy Cost|Consumption Loss rate"
-1172  /
-1173  ;
-1174   
-1175  PARAMETER
-1176  ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR,*)    All Data
-1177  BAUDATA(MODELN,REGION,VARIABLE2,UNIT,YEAR,*)             All BAU Data
-1178  vsBAU(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR)        Change rate from BAU
-1179  ;
-1180   
+1167  /
+1168  UNIT
+1169  YEAR
+1170  VAR_LossRate(VARIABLE2)/
+1171  "Policy Cost|GDP Loss rate"
+1172  "Policy Cost|Consumption Loss rate"
+1173  /
+1174  ;
+1175   
+1176  PARAMETER
+1177  ALLDATA_load(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR,*)       All Data (input data)
+1178  *BAUDATA(MODELN,REGION,VARIABLE2,UNIT,YEAR,*)             All BAU Data
+1179  ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR)              All Data for output
+1180  vsBAU(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR)                Change rate from BAU
+1181  ;
+1182   
 GDXIN   C:\Users\ochie\Documents\AsianMCSAnalysis\prog\../output/ALLDATA.gdx
 --- LOAD  MODELN = 1:MODELN
 --- LOAD  REGION = 3:REGION
 --- LOAD  SCENARIO = 2:SCENARIO
 --- LOAD  UNIT = 5:UNIT
 --- LOAD  YEAR = 6:YEAR
---- LOAD  ALLDATA = 8:ALLDATA
-GDXIN   C:\Users\ochie\Documents\AsianMCSAnalysis\prog\../output/ALL_BAU.gdx
---- LOAD  BAUDATA = 7:BAUDATA
-1185   
-1186  vsBAU(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR)$(ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR,"Value") AND BAUDATA(MODELN,REGION,VARIABLE2,UNIT,YEAR,"Value"))
-1187           =(ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR,"Value")/BAUDATA(MODELN,REGION,VARIABLE2,UNIT,YEAR,"Value")-1)*100;
-1188  vsBAU(MODELN,SCENARIO,REGION,VAR_LossRate,UNIT,YEAR)$ALLDATA(MODELN,SCENARIO,REGION,VAR_LossRate,UNIT,YEAR,"Value")
-1189           =ALLDATA(MODELN,SCENARIO,REGION,VAR_LossRate,UNIT,YEAR,"Value");
-1190   
-1191  execute_unload '../output/vsBAU.gdx' vsBAU
-1192  vsBAU
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 24
+--- LOAD  ALLDATA_load = 8:ALLDATA
+1185  *$gdxin "../output/ALL_BAU.gdx"
+1186  *$load BAUDATA
+1187   
+1188  ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR)=ALLDATA_load(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR,"Value");
+1189   
+1190  ALLDATA(MODELN,SCENARIO,REGION,"Emissions|3 Gases","Mt CO2-equiv/yr",YEAR)
+1191           =ALLDATA(MODELN,SCENARIO,REGION,"Emissions|CO2","Mt CO2/yr",YEAR)
+1192           +ALLDATA(MODELN,SCENARIO,REGION,"Emissions|CH4","Mt CH4/yr",YEAR)*25
+1193           +ALLDATA(MODELN,SCENARIO,REGION,"Emissions|N2O","kt N2O/yr",YEAR)*298/1000;
+1194   
+1195  vsBAU(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR)$(ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR) AND ALLDATA(MODELN,"BAU",REGION,VARIABLE2,UNIT,YEAR))
+1196           =(ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR)/ALLDATA(MODELN,"BAU",REGION,VARIABLE2,UNIT,YEAR)-1)*100;
+1197  vsBAU(MODELN,SCENARIO,REGION,VAR_LossRate,UNIT,YEAR)$ALLDATA(MODELN,SCENARIO,REGION,VAR_LossRate,UNIT,YEAR)
+1198           =ALLDATA(MODELN,SCENARIO,REGION,VAR_LossRate,UNIT,YEAR);
+1199   
+      vsBAU(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR)$(ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR,"Value") AND BAUDATA(MODELN,REGION,VARIABLE2,UNIT,YEAR,"Value"))
+               =(ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR,"Value")/BAUDATA(MODELN,REGION,VARIABLE2,UNIT,YEAR,"Value")-1)*100;
+      vsBAU(MODELN,SCENARIO,REGION,VAR_LossRate,UNIT,YEAR)$ALLDATA(MODELN,SCENARIO,REGION,VAR_LossRate,UNIT,YEAR,"Value")
+               =ALLDATA(MODELN,SCENARIO,REGION,VAR_LossRate,UNIT,YEAR,"Value");
+1206   
+1207  execute_unload '../output/vsBAU_out.gdx'
+1208  ALLDATA,vsBAU
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 24
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -1319,17 +1333,16 @@ Include File Summary
 
      1        1 INPUT          0       0  C:\Users\ochie\Documents\AsianMCSAnalysis\prog\vsBAU.gms
      2        6 INCLUDE        1       6  .C:\Users\ochie\Documents\AsianMCSAnalysis\prog\../define/allvariables2.txt
-     3     1181 GDXIN          1      22  C:\Users\ochie\Documents\AsianMCSAnalysis\prog\../output/ALLDATA.gdx
-     4     1183 GDXIN          1      24  C:\Users\ochie\Documents\AsianMCSAnalysis\prog\../output/ALL_BAU.gdx
+     3     1183 GDXIN          1      24  C:\Users\ochie\Documents\AsianMCSAnalysis\prog\../output/ALLDATA.gdx
 
 
-COMPILATION TIME     =        0.282 SECONDS     67 MB  24.5.6 r55090 WEX-WEI
-GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/04/20 16:56:32 Page 25
+COMPILATION TIME     =        0.187 SECONDS     32 MB  24.5.6 r55090 WEX-WEI
+GAMS 24.5.6  r55090 Released Nov 27, 2015 WEX-WEI x86 64bit/MS Windows                                                                                                                                                                06/25/20 15:38:02 Page 25
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
 
-EXECUTION TIME       =        0.328 SECONDS     93 MB  24.5.6 r55090 WEX-WEI
+EXECUTION TIME       =        0.359 SECONDS     60 MB  24.5.6 r55090 WEX-WEI
 
 
 USER: Urban and Environment Engineering              G141201:0503AO-WIN

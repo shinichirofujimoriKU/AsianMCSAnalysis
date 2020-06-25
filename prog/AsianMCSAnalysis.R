@@ -52,65 +52,41 @@ MyThemeLine_grid2 <- MyThemeLine_grid +
   )
 
 #-------------------------
-# Read data and definitions
+# Country data of AIM/CGE results
 #-------------------------
-# Results from AIM/CGE
-CHN <- read.csv("../data/CHN_iiasa_database.csv", header=T) 
-IND <- read.csv("../data/IND_iiasa_database.csv", header=T) 
-JPN <- read.csv("../data/JPN_iiasa_database_final.csv", header=T) 
-KOR <- read.csv("../data/KOR_iiasa_database.csv", header=T) 
-THA <- read.csv("../data/THA_iiasa_database.csv", header=T) 
-VNM <- read.csv("../data/VNM_iiasa_database.csv", header=T) 
+# Read and arrange data
+LoadingCountries <- scan("../define/country_load.txt", what=character(), sep="\n", blank.lines.skip=F, quiet=T)
+n <- 0
+for(i in LoadingCountries){
+  tmp <- read.csv(paste0("../data/",i,"_iiasa_database.csv"), header=T)
+  assign(i, tmp)
+  scenariomap <- read.table(paste0("../define/scenariomap_",i,".txt"),sep="\t",header=T)
+  tmp2 <- tmp %>% inner_join(scenariomap,by="SCENARIO") %>% select(-SCENARIO) %>% rename(SCENARIO = SCENARIO2)
+  assign(paste0(i,"2"),tmp2)
+  n <- n + 1
+  if(n==1){
+    ALLDATA <- tmp2
+  } else if(n>1){
+    ALLDATA <- bind_rows(ALLDATA, tmp2)
+  }   
+}
 
-CHN_BAU <- subset(CHN, SCENARIO=="SSP2_BaU_NoCC")
-IND_BAU <- subset(IND, SCENARIO=="SSP2_BaU_NoCC")
-JPN_BAU <- subset(JPN, SCENARIO=="NDC_Nuk_M_BaU_NoCC")
-KOR_BAU <- subset(KOR, SCENARIO=="SSP2-NS2_BaU_NoCC")
-THA_BAU <- subset(THA, SCENARIO=="SSP2_THA_BaU_NoCC")
-VNM_BAU <- subset(VNM, SCENARIO=="SSP2_NS1_BaU_NoCC")
+ALLDATA1.0 <- rename(ALLDATA, "2005"=X2005,"2010"=X2010,"2015"=X2015,"2020"=X2020,"2025"=X2025,"2030"=X2030,"2035"=X2035,"2040"=X2040,"2045"=X2045,"2050"=X2050)
 
 colhead <- c("MODEL","SCENARIO","REGION","VARIABLE","UNIT")
 colhead2 <- c("MODELN","SCENARIO","REGION","VARIABLE2","UNIT")
-#yearxlist <- c("X2005","X2010","X2015","X2020","X2025","X2030","X2035","X2040","X2045","X2050")
 
 variablemap <- read.table("../define/variablemap.txt",sep="\t",header=T) 
 variablemap2 <- read.table("../define/variablemap2.txt",sep="\t",header=T) 
 
-# Effort sharing
-EA2 <- rgdx.param("../data/EA_2deg.gdx", "EA") 
-EA15 <- rgdx.param("../data/EA_15deg.gdx", "EA") 
-names(EA2) <- c("Approach","Country","Range","Year","Emission_Pathway")
-names(EA15) <- c("Approach","Country","Range","Year","Emission_Pathway")
-Country_List <- scan("../define/countries.txt", what=character(), sep="\n", blank.lines.skip=F, quiet=T)
-
-#-------------------------
-# Data processing
-#-------------------------
-# Arrange data format of AIM/CGE results
-bind_rows_all <- function(dfs, ...){
-  base <- dfs[1]
-  lapply(dfs[-1], function(i) base <<- bind_rows(base, i, ...))
-  return(base)
-}
-
-ALLDATA <- bind_rows_all(list(CHN, IND, JPN, KOR, THA, VNM))
-ALL_BAU <- bind_rows_all(list(CHN_BAU, IND_BAU, JPN_BAU, KOR_BAU, THA_BAU, VNM_BAU))
-
-ALLDATA1.0 <- rename(ALLDATA, "2005"=X2005,"2010"=X2010,"2015"=X2015,"2020"=X2020,"2025"=X2025,"2030"=X2030,"2035"=X2035,"2040"=X2040,"2045"=X2045,"2050"=X2050)
-ALL_BAU1.0 <- rename(ALL_BAU, "2005"=X2005,"2010"=X2010,"2015"=X2015,"2020"=X2020,"2025"=X2025,"2030"=X2030,"2035"=X2035,"2040"=X2040,"2045"=X2045,"2050"=X2050)
-
-
 ALLDATA1.1 <- ALLDATA1.0 %>% gather(key=YEAR,value=VALUE,-MODEL,-SCENARIO,-REGION,-VARIABLE,-UNIT) %>% 
   inner_join(variablemap,by="VARIABLE") %>% select(-VARIABLE) %>% rename(MODELN = MODEL) %>%
   select(append(colhead2,c("YEAR","VALUE")))
-ALL_BAU1.1 <- ALL_BAU1.0 %>% gather(key=YEAR,value=VALUE,-MODEL,-SCENARIO,-REGION,-VARIABLE,-UNIT) %>% 
-  inner_join(variablemap,by="VARIABLE") %>% select(-VARIABLE) %>% rename(MODELN = MODEL) %>%
-  select(append(colhead2,c("YEAR","VALUE"))) %>% select(-SCENARIO)
 
 row.has.na.ALLDATA <- apply(ALLDATA1.1, 1, function(x){any(is.na(x))})
 ALLDATA1.2 <- ALLDATA1.1[!row.has.na.ALLDATA,] 
-row.has.na.ALL_BAU <- apply(ALL_BAU1.1, 1, function(x){any(is.na(x))})
-ALL_BAU1.2 <- ALL_BAU1.1[!row.has.na.ALL_BAU,] 
+
+ALL_BAU1.2 <- ALLDATA1.2 %>% subset(SCENARIO=="BAU") %>% select(-SCENARIO)
 
 # Make data of change rate from BAU
 symDim1 <- 7
@@ -124,26 +100,27 @@ wgdx.lst(gdxName = "../output/ALL_BAU.gdx",lst2)
 
 system(paste("gams vsBAU.gms",sep=" "))
 
-vsBAU1.2 <- rgdx.param("../output/vsBAU.gdx","vsBAU") %>% rename("Value"=vsBAU)
-vsBAU1.2$UNIT <- "%" 
+vsBAU2.0 <- rgdx.param("../output/vsBAU_out.gdx","vsBAU") %>% rename("VALUE"=vsBAU)
+vsBAU2.0$UNIT <- "%" 
+ALLDATA2.0 <- rgdx.param("../output/vsBAU_out.gdx","ALLDATA") %>% rename("VALUE"=ALLDATA)
 
-ALLDATA1.3 <- ALLDATA1.2 %>% inner_join(variablemap2,by="VARIABLE2") %>% select(-VARIABLE2) %>% 
+ALLDATA2.1 <- ALLDATA2.0 %>% inner_join(variablemap2,by="VARIABLE2") %>% select(-VARIABLE2) %>% 
   rename(MODEL = MODELN) %>% select(append(colhead,c("YEAR","VALUE")))
-vsBAU1.3 <- vsBAU1.2 %>% inner_join(variablemap2,by="VARIABLE2") %>% select(-VARIABLE2) %>% 
-  rename(MODEL = MODELN) %>% rename(VALUE = Value) %>% select(append(colhead,c("YEAR","VALUE")))
+vsBAU2.1 <- vsBAU2.0 %>% inner_join(variablemap2,by="VARIABLE2") %>% select(-VARIABLE2) %>% 
+  rename(MODEL = MODELN) %>% select(append(colhead,c("YEAR","VALUE")))
 
-vsBAU1.3$vsBAU <- "Change rate from BAU|"
-vsBAU1.3 <- mutate(vsBAU1.3, VARIABLE_vsBAU = paste(!!!rlang::syms(c("vsBAU", "VARIABLE")), sep=""))
-vsBAU1.4 <- vsBAU1.3 %>% select(-VARIABLE) %>% select(-vsBAU) %>%
+vsBAU2.1$vsBAU <- "Change rate from BAU|"
+vsBAU2.1 <- mutate(vsBAU2.1, VARIABLE_vsBAU = paste(!!!rlang::syms(c("vsBAU", "VARIABLE")), sep=""))
+vsBAU2.2 <- vsBAU2.1 %>% select(-VARIABLE) %>% select(-vsBAU) %>%
   rename(VARIABLE = VARIABLE_vsBAU) %>% select(append(colhead,c("YEAR","VALUE")))
 
-ALLDATA2.0 <- bind_rows(ALLDATA1.3, vsBAU1.4)
+ALLDATA3.0 <- bind_rows(ALLDATA2.1, vsBAU2.2)
 
-GHGReductionRate <- vsBAU1.4 %>% subset(VARIABLE=="Change rate from BAU|Emissions|Kyoto Gases") %>%
+RedRate_3gas <- vsBAU2.2 %>% subset(VARIABLE=="Change rate from BAU|Emissions|3 Gases") %>%
   select(-VARIABLE) %>% rename(ReductionRate = VALUE)
-GHGReductionRate$ReductionRate <- -1 * GHGReductionRate$ReductionRate 
+RedRate_3gas$ReductionRate <- -1 * RedRate_3gas$ReductionRate 
 
-vsBAU.Red <- inner_join(vsBAU1.4, select(GHGReductionRate,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
+vsBAU.Red <- inner_join(vsBAU2.2, select(RedRate_3gas,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
 
 variable_BAU.Red <- as.vector(unique(vsBAU.Red$VARIABLE))
 write(variable_BAU.Red, "../output/variable_BAU.Red.txt")
@@ -154,11 +131,38 @@ name_BAU.Red <- plot_BAU.Red %>% str_sub(start = 22)
 name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="|", replacement="_", fixed=TRUE)
 name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
 
-# Arrange data format of Effort sharing data
-EA2$Goal <- "2C"
-EA15$Goal <- "1.5C"
-EA <- bind_rows(EA2, EA15)
-EA <- EA[,c(1,2,6,3,4,5)]
+#-------------------------
+# Effort sharing
+#-------------------------
+EA <- rgdx.param("../data/Results.gdx", "EA")
+names(EA) <- c("Approach","Country","Range","Goal","Year","Emission_Pathway")
+EMI <- rgdx.param("../data/EA_15deg.gdx", "EMI")
+names(EMI) <- c("Country","Type","Year","Emission")
+EA$Year <- as.numeric(levels(EA$Year))[EA$Year]
+EMI$Year <- as.numeric(levels(EMI$Year))[EMI$Year]
+Country_List <- scan("../define/countries.txt", what=character(), sep="\n", blank.lines.skip=F, quiet=T)
+
+EMI$Red10 <- EMI$Emission * 0.9
+EMI$Red20 <- EMI$Emission * 0.8
+EMI$Red30 <- EMI$Emission * 0.7
+EMI$Red40 <- EMI$Emission * 0.6
+EMI$Red50 <- EMI$Emission * 0.5
+EMI$Red60 <- EMI$Emission * 0.4
+EMI$Red70 <- EMI$Emission * 0.3
+EMI$Red80 <- EMI$Emission * 0.2
+EMI$Red90 <- EMI$Emission * 0.1
+
+TGT <- data.frame(Country=c(Country_List))
+TGT$MIN <- 0
+TGT$MAX <- 0
+n <- 0
+for(i in Country_List){
+  n <- n + 1
+  if(i=="JPN"){
+    TGT[n,2] <- min((subset(EMI, Country==i & Type=="GHGinLU" & Year>=1990, c(Emission)))) * 0.2
+    TGT[n,3] <- max((subset(EMI, Country==i & Type=="GHGinLU" & Year>=1990, c(Emission)))) * 0.2
+  }
+}
 
 #-------------------------
 # Make Graphs
@@ -169,7 +173,7 @@ for (i in 1:length(plot_BAU.Red)){
   if(nrow(vsBAU.Red.sel)>=2){
     g1 <- ggplot() +
       geom_point(data=vsBAU.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION),shape=21) + 
-      ylab("%") + xlab("GHG emission reduction rate from BAU (%)") +
+      ylab("%") + xlab("3 gases emission reduction rate from BAU (%)") +
       MyThemeLine_grid + 
       ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/CrossCountries/",name_BAU.Red[i],".png")
@@ -179,10 +183,26 @@ for (i in 1:length(plot_BAU.Red)){
 
 # GHG emissions in 2050 for 1.5/2 degree goal in each effort sharing approach (By country)
 for(i in Country_List){
-  g2 <- ggplot(subset(EA, Country==i & Year=="2050"), aes(x=Approach, y=Emission_Pathway, group=Approach, shape=Approach, colour=Goal)) +
+  minv <- subset(TGT, Country==i, c(MIN))
+  maxv <- subset(TGT, Country==i, c(MAX))
+  minv <- as.vector(minv$MIN)
+  maxv <- as.vector(maxv$MAX)
+  g2 <- ggplot(subset(EA, Country==i & Year==2050), aes(x=Approach, y=Emission_Pathway, group=Approach, shape=Approach, colour=Goal)) +
     geom_point() + geom_line() + labs(y="Emission Pathway (MtCO2eq/year)", title=i) + facet_wrap(~Goal) + 
+    geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Emission), linetype="dashed", colour="red") +
+    geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red10), linetype="dashed", colour="gray") +
+    geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red20), linetype="dashed", colour="gray") +
+    geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red30), linetype="dashed", colour="gray") +
+    geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red40), linetype="dashed", colour="gray") +
+    geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red50), linetype="dashed", colour="gray") +
+    geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red60), linetype="dashed", colour="gray") +
+    geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red70), linetype="dashed", colour="gray") +
+    geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red80), linetype="dashed", colour="gray") +
+    geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red90), linetype="dashed", colour="gray") +
+    geom_hline(yintercept=0, linetype="dashed", colour="black") +
+    annotate("rect", ymin=minv, ymax=maxv, xmin=-Inf, xmax=Inf, alpha=0.2, fill=spectpal[10]) +
     MyThemeLine_grid
   outname <- paste0("../output/fig/EffortSharing/Emission_Pathway_",i,".png")
-  ggsave(g2, file=outname, dpi=300, width=8, height=5, limitsize=F)
+  ggsave(g2, file=outname, dpi=600, width=8, height=5, limitsize=FALSE)
 }
 
