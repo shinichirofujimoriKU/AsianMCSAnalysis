@@ -136,7 +136,7 @@ name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="w/o", replacement="wo", fixe
 #-------------------------
 EA <- rgdx.param("../data/Results.gdx", "EA")
 names(EA) <- c("Approach","Country","Range","Goal","Year","Emission_Pathway")
-EMI <- rgdx.param("../data/EA_15deg.gdx", "EMI")
+EMI <- rgdx.param("../data/Results.gdx", "EMI")
 names(EMI) <- c("Country","Type","Year","Emission")
 EA$Year <- as.numeric(levels(EA$Year))[EA$Year]
 EMI$Year <- as.numeric(levels(EMI$Year))[EMI$Year]
