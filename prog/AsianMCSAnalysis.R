@@ -1,5 +1,5 @@
 # This program is for Asian Mid-Centry Strategy Analysis
-# 03, 06, 2020
+# 26, 06, 2020
 # Yuki Ochi
 
 library(gdxrrw)
@@ -20,7 +20,8 @@ library(cowplot)
 #-------------------------
 dir.create("../output/")
 dir.create("../output/fig/")
-dir.create("../output/fig/CrossCountries/")
+dir.create("../output/fig/CrossCountries_vsBAU/")
+dir.create("../output/fig/CrossCountries_vsBASE/")
 dir.create("../output/fig/EffortSharing/")
 
 #-------------------------
@@ -86,27 +87,31 @@ ALLDATA1.1 <- ALLDATA1.0 %>% gather(key=YEAR,value=VALUE,-MODEL,-SCENARIO,-REGIO
 row.has.na.ALLDATA <- apply(ALLDATA1.1, 1, function(x){any(is.na(x))})
 ALLDATA1.2 <- ALLDATA1.1[!row.has.na.ALLDATA,] 
 
-ALL_BAU1.2 <- ALLDATA1.2 %>% subset(SCENARIO=="BAU") %>% select(-SCENARIO)
+allvariables2 <- paste0("\"",sort(as.vector(unique(ALLDATA1.2$VARIABLE2))),"\"")
+write(allvariables2, "../output/allvariables2.txt")
+
+allunits <- paste0("\"",sort(as.vector(unique(ALLDATA1.2$UNIT))),"\"")
+write(allunits, "../output/allunits.txt")
 
 # Make data of change rate from BAU
 symDim1 <- 7
-symDim2 <- 6
 attr(ALLDATA1.2, "symName") <- "ALLDATA"
-attr(ALL_BAU1.2, "symName") <- "BAUDATA"
 lst1 <- wgdx.reshape(ALLDATA1.2, symDim1)
 wgdx.lst(gdxName = "../output/ALLDATA.gdx",lst1)
-lst2 <- wgdx.reshape(ALL_BAU1.2, symDim2)
-wgdx.lst(gdxName = "../output/ALL_BAU.gdx",lst2)
 
-system(paste("gams vsBAU.gms",sep=" "))
+system(paste("gams ChangeRate.gms",sep=" "))
 
-vsBAU2.0 <- rgdx.param("../output/vsBAU_out.gdx","vsBAU") %>% rename("VALUE"=vsBAU)
+vsBAU2.0 <- rgdx.param("../output/ChangeRate_out.gdx","vsBAU") %>% rename("VALUE"=vsBAU)
 vsBAU2.0$UNIT <- "%" 
-ALLDATA2.0 <- rgdx.param("../output/vsBAU_out.gdx","ALLDATA") %>% rename("VALUE"=ALLDATA)
+vsBASE2.0 <- rgdx.param("../output/ChangeRate_out.gdx","vsBASE") %>% rename("VALUE"=vsBASE)
+vsBASE2.0$UNIT <- "%" 
+ALLDATA2.0 <- rgdx.param("../output/ChangeRate_out.gdx","ALLDATA") %>% rename("VALUE"=ALLDATA)
 
 ALLDATA2.1 <- ALLDATA2.0 %>% inner_join(variablemap2,by="VARIABLE2") %>% select(-VARIABLE2) %>% 
   rename(MODEL = MODELN) %>% select(append(colhead,c("YEAR","VALUE")))
 vsBAU2.1 <- vsBAU2.0 %>% inner_join(variablemap2,by="VARIABLE2") %>% select(-VARIABLE2) %>% 
+  rename(MODEL = MODELN) %>% select(append(colhead,c("YEAR","VALUE")))
+vsBASE2.1 <- vsBASE2.0 %>% inner_join(variablemap2,by="VARIABLE2") %>% select(-VARIABLE2) %>% 
   rename(MODEL = MODELN) %>% select(append(colhead,c("YEAR","VALUE")))
 
 vsBAU2.1$vsBAU <- "Change rate from BAU|"
@@ -114,13 +119,23 @@ vsBAU2.1 <- mutate(vsBAU2.1, VARIABLE_vsBAU = paste(!!!rlang::syms(c("vsBAU", "V
 vsBAU2.2 <- vsBAU2.1 %>% select(-VARIABLE) %>% select(-vsBAU) %>%
   rename(VARIABLE = VARIABLE_vsBAU) %>% select(append(colhead,c("YEAR","VALUE")))
 
+vsBASE2.1$vsBASE <- "Change rate from 2010|"
+vsBASE2.1 <- mutate(vsBASE2.1, VARIABLE_vsBASE = paste(!!!rlang::syms(c("vsBASE", "VARIABLE")), sep=""))
+vsBASE2.2 <- vsBASE2.1 %>% select(-VARIABLE) %>% select(-vsBASE) %>%
+  rename(VARIABLE = VARIABLE_vsBASE) %>% select(append(colhead,c("YEAR","VALUE")))
+
 ALLDATA3.0 <- bind_rows(ALLDATA2.1, vsBAU2.2)
 
-RedRate_3gas <- vsBAU2.2 %>% subset(VARIABLE=="Change rate from BAU|Emissions|3 Gases") %>%
+RedRate_3gas_vsBAU <- vsBAU2.2 %>% subset(VARIABLE=="Change rate from BAU|Emissions|3 Gases") %>%
   select(-VARIABLE) %>% rename(ReductionRate = VALUE)
-RedRate_3gas$ReductionRate <- -1 * RedRate_3gas$ReductionRate 
+RedRate_3gas_vsBAU$ReductionRate <- -1 * RedRate_3gas_vsBAU$ReductionRate 
 
-vsBAU.Red <- inner_join(vsBAU2.2, select(RedRate_3gas,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
+RedRate_3gas_vsBASE <- vsBASE2.2 %>% subset(VARIABLE=="Change rate from 2010|Emissions|3 Gases") %>%
+  select(-VARIABLE) %>% rename(ReductionRate = VALUE)
+RedRate_3gas_vsBASE$ReductionRate <- -1 * RedRate_3gas_vsBASE$ReductionRate 
+
+vsBAU.Red <- inner_join(vsBAU2.2, select(RedRate_3gas_vsBAU,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
+vsBASE.Red <- inner_join(vsBASE2.2, select(RedRate_3gas_vsBASE,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
 
 variable_BAU.Red <- as.vector(unique(vsBAU.Red$VARIABLE))
 write(variable_BAU.Red, "../output/variable_BAU.Red.txt")
@@ -130,6 +145,17 @@ plot_BAU.Red <- as.vector(plot_BAU.Red_load$V1)
 name_BAU.Red <- plot_BAU.Red %>% str_sub(start = 22)
 name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="|", replacement="_", fixed=TRUE)
 name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
+name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="/", replacement="per", fixed=TRUE)
+
+variable_BASE.Red <- as.vector(unique(vsBASE.Red$VARIABLE))
+write(variable_BASE.Red, "../output/variable_BASE.Red.txt")
+unit_BaSE.Red <- unique(select(vsBAU.Red, c("VARIABLE","UNIT")))
+plot_BASE.Red_load <- read.table("../define/plot_BASE.Red.txt",header=F,sep="\t",)
+plot_BASE.Red <- as.vector(plot_BASE.Red_load$V1)
+name_BASE.Red <- plot_BASE.Red %>% str_sub(start = 23)
+name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="|", replacement="_", fixed=TRUE)
+name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
+name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="/", replacement="_", fixed=TRUE)
 
 #-------------------------
 # Effort sharing
@@ -176,8 +202,21 @@ for (i in 1:length(plot_BAU.Red)){
       ylab("%") + xlab("3 gases emission reduction rate from BAU (%)") +
       MyThemeLine_grid + 
       ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=pastelpal1)
-    outname <- paste0("../output/fig/CrossCountries/",name_BAU.Red[i],".png")
+    outname <- paste0("../output/fig/CrossCountries_vsBAU/",name_BAU.Red[i],".png")
     ggsave(g1, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
+  }
+}
+
+for (i in 1:length(plot_BASE.Red)){
+  vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i]) 
+  if(nrow(vsBASE.Red.sel)>=2){
+    g2 <- ggplot() +
+      geom_point(data=vsBASE.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION),shape=21) + 
+      ylab("%") + xlab("3 gases emission reduction rate from 2010 (%)") +
+      MyThemeLine_grid + 
+      ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
+    outname <- paste0("../output/fig/CrossCountries_vsBASE/",name_BASE.Red[i],".png")
+    ggsave(g2, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
   }
 }
 
@@ -187,7 +226,7 @@ for(i in Country_List){
   maxv <- subset(TGT, Country==i, c(MAX))
   minv <- as.vector(minv$MIN)
   maxv <- as.vector(maxv$MAX)
-  g2 <- ggplot(subset(EA, Country==i & Year==2050), aes(x=Approach, y=Emission_Pathway, group=Approach, shape=Approach, colour=Goal)) +
+  g3 <- ggplot(subset(EA, Country==i & Year==2050), aes(x=Approach, y=Emission_Pathway, group=Approach, shape=Approach, colour=Goal)) +
     geom_point() + geom_line() + labs(y="Emission Pathway (MtCO2eq/year)", title=i) + facet_wrap(~Goal) + 
     geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Emission), linetype="dashed", colour="red") +
     geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red10), linetype="dashed", colour="gray") +
@@ -203,6 +242,6 @@ for(i in Country_List){
     annotate("rect", ymin=minv, ymax=maxv, xmin=-Inf, xmax=Inf, alpha=0.2, fill=spectpal[10]) +
     MyThemeLine_grid
   outname <- paste0("../output/fig/EffortSharing/Emission_Pathway_",i,".png")
-  ggsave(g2, file=outname, dpi=600, width=8, height=5, limitsize=FALSE)
+  ggsave(g3, file=outname, dpi=600, width=8, height=5, limitsize=FALSE)
 }
 

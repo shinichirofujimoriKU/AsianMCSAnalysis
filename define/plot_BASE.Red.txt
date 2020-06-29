@@ -1,0 +1,59 @@
+Change rate from 2010|Agricultural Demand
+Change rate from 2010|Agricultural Production
+Change rate from 2010|Capacity Additions|Electricity|Biomass
+Change rate from 2010|Capacity Additions|Electricity|Biomass|w/o CCS
+Change rate from 2010|Capacity Additions|Electricity|Coal
+Change rate from 2010|Capacity Additions|Electricity|Coal|w/o CCS
+Change rate from 2010|Capacity Additions|Electricity|Gas
+Change rate from 2010|Capacity Additions|Electricity|Gas|w/o CCS
+Change rate from 2010|Capacity Additions|Electricity|Geothermal
+Change rate from 2010|Capacity Additions|Electricity|Hydro
+Change rate from 2010|Capacity Additions|Electricity|Oil
+Change rate from 2010|Capacity Additions|Electricity|Oil|w/o CCS
+Change rate from 2010|Capacity Additions|Electricity|Solar
+Change rate from 2010|Capacity Additions|Electricity|Solar|PV
+Change rate from 2010|Capacity Additions|Electricity|Wind
+Change rate from 2010|Capacity Additions|Electricity|Wind|Onshore
+Change rate from 2010|Capacity|Electricity
+Change rate from 2010|Capacity|Electricity|Biomass
+Change rate from 2010|Capacity|Electricity|Biomass|w/o CCS
+Change rate from 2010|Capacity|Electricity|Coal
+Change rate from 2010|Capacity|Electricity|Coal|w/o CCS
+Change rate from 2010|Capacity|Electricity|Gas
+Change rate from 2010|Capacity|Electricity|Gas|w/o CCS
+Change rate from 2010|Capacity|Electricity|Geothermal
+Change rate from 2010|Capacity|Electricity|Hydro
+Change rate from 2010|Capacity|Electricity|Oil
+Change rate from 2010|Capacity|Electricity|Oil|w/o CCS
+Change rate from 2010|Capacity|Electricity|Other
+Change rate from 2010|Capacity|Electricity|Solar
+Change rate from 2010|Capacity|Electricity|Solar|PV
+Change rate from 2010|Capacity|Electricity|Wind
+Change rate from 2010|Capacity|Electricity|Wind|Onshore
+Change rate from 2010|Carbon Intensity
+Change rate from 2010|Energy Intensity
+Change rate from 2010|Final Energy
+Change rate from 2010|Final Energy|Electricity
+Change rate from 2010|Final Energy|Gases
+Change rate from 2010|Food Demand
+Change rate from 2010|GDP|MER
+Change rate from 2010|GDP|PPP
+Change rate from 2010|Investment|Energy Supply
+Change rate from 2010|Price|Primary Energy|Coal
+Change rate from 2010|Price|Primary Energy|Gas
+Change rate from 2010|Price|Primary Energy|Oil
+Change rate from 2010|Price|Secondary Energy|Electricity
+Change rate from 2010|Primary Energy
+Change rate from 2010|Primary Energy|Biomass
+Change rate from 2010|Primary Energy|Coal
+Change rate from 2010|Primary Energy|Gas
+Change rate from 2010|Primary Energy|Oil
+Change rate from 2010|Primary Energy|Solar
+Change rate from 2010|Primary Energy|Wind
+Change rate from 2010|Secondary Energy|Electricity
+Change rate from 2010|Population|Risk of Hunger
+Change rate from 2010|Population
+Change rate from 2010|Carbon Intensity(3 Gases/PE)
+Change rate from 2010|Energy Intensity(PE/GDP|PPP)
+Change rate from 2010|Share of Reneable Energy
+Change rate from 2010|Share of Reneable Energy|Non-Biomass

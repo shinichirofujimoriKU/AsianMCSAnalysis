@@ -30,6 +30,8 @@ Change rate from BAU|Capacity|Electricity|Solar
 Change rate from BAU|Capacity|Electricity|Solar|PV
 Change rate from BAU|Capacity|Electricity|Wind
 Change rate from BAU|Capacity|Electricity|Wind|Onshore
+Change rate from 2010|Carbon Intensity
+Change rate from 2010|Energy Intensity
 Change rate from BAU|Final Energy
 Change rate from BAU|Final Energy|Electricity
 Change rate from BAU|Final Energy|Gases
@@ -52,3 +54,8 @@ Change rate from BAU|Secondary Energy|Electricity
 Change rate from BAU|Population|Risk of Hunger
 Change rate from BAU|Population
 Change rate from BAU|Policy Cost|GDP Loss rate
+Change rate from 2010|Carbon Intensity(3 Gases/PE)
+Change rate from 2010|Energy Intensity(PE/GDP|PPP)
+Change rate from 2010|Share of Reneable Energy
+Change rate from 2010|Share of Reneable Energy|Non-Biomass
+

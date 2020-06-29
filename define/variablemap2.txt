@@ -1159,3 +1159,7 @@ VARIABLE2	VARIABLE
 "Yield|Oilcrops"	Yield|Oilcrops
 "Yield|Sugarcrops"	Yield|Sugarcrops
 "Emissions|3 Gases"	Emissions|3 Gases
+"Carbon Intensity(3 Gases/PE)"	Carbon Intensity(3 Gases/PE)
+"Energy Intensity(PE/GDP|PPP)"	Energy Intensity(PE/GDP|PPP)
+"Share of Reneable Energy"	Share of Reneable Energy
+"Share of Reneable Energy|Non-Biomass"	Share of Reneable Energy|Non-Biomass
