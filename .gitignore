@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+/prog/*.lst
+/output/
