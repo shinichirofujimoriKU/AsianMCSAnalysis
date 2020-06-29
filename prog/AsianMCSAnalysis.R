@@ -1,5 +1,5 @@
 # This program is for Asian Mid-Centry Strategy Analysis
-# 26, 06, 2020
+# 29, 06, 2020
 # Yuki Ochi
 
 library(gdxrrw)
@@ -124,7 +124,13 @@ vsBASE2.1 <- mutate(vsBASE2.1, VARIABLE_vsBASE = paste(!!!rlang::syms(c("vsBASE"
 vsBASE2.2 <- vsBASE2.1 %>% select(-VARIABLE) %>% select(-vsBASE) %>%
   rename(VARIABLE = VARIABLE_vsBASE) %>% select(append(colhead,c("YEAR","VALUE")))
 
-ALLDATA3.0 <- bind_rows(ALLDATA2.1, vsBAU2.2)
+bind_rows_all <- function(dfs, ...){
+  base <- dfs[1]
+  lapply(dfs[-1], function(i) base <<- bind_rows(base, i, ...))
+  return(base)
+}
+
+ALLDATA3.0 <- bind_rows_all(list(ALLDATA2.1, vsBAU2.2,vsBASE2.2))
 
 RedRate_3gas_vsBAU <- vsBAU2.2 %>% subset(VARIABLE=="Change rate from BAU|Emissions|3 Gases") %>%
   select(-VARIABLE) %>% rename(ReductionRate = VALUE)
@@ -134,16 +140,18 @@ RedRate_3gas_vsBASE <- vsBASE2.2 %>% subset(VARIABLE=="Change rate from 2010|Emi
   select(-VARIABLE) %>% rename(ReductionRate = VALUE)
 RedRate_3gas_vsBASE$ReductionRate <- -1 * RedRate_3gas_vsBASE$ReductionRate 
 
-vsBAU.Red <- inner_join(vsBAU2.2, select(RedRate_3gas_vsBAU,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
-vsBASE.Red <- inner_join(vsBASE2.2, select(RedRate_3gas_vsBASE,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
+vsBAU.Red <- inner_join(ALLDATA3.0, select(RedRate_3gas_vsBAU,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
+vsBASE.Red <- inner_join(ALLDATA3.0, select(RedRate_3gas_vsBASE,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
 
 variable_BAU.Red <- as.vector(unique(vsBAU.Red$VARIABLE))
 write(variable_BAU.Red, "../output/variable_BAU.Red.txt")
 unit_BaU.Red <- unique(select(vsBAU.Red, c("VARIABLE","UNIT")))
 plot_BAU.Red_load <- read.table("../define/plot_BAU.Red.txt",header=F,sep="\t",)
 plot_BAU.Red <- as.vector(plot_BAU.Red_load$V1)
-name_BAU.Red <- plot_BAU.Red %>% str_sub(start = 22)
-name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="|", replacement="_", fixed=TRUE)
+unit_BAU.Red_load <- unique(select(vsBAU.Red,c("VARIABLE","UNIT")))
+unit_BAU.Red <- left_join(rename(plot_BAU.Red_load,VARIABLE=V1),unit_BAU.Red_load)
+#name_BAU.Red <- plot_BAU.Red %>% str_sub(start = 22)
+name_BAU.Red <- lapply(plot_BAU.Red, gsub, pattern="|", replacement="_", fixed=TRUE)
 name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
 name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="/", replacement="per", fixed=TRUE)
 
@@ -152,10 +160,16 @@ write(variable_BASE.Red, "../output/variable_BASE.Red.txt")
 unit_BaSE.Red <- unique(select(vsBAU.Red, c("VARIABLE","UNIT")))
 plot_BASE.Red_load <- read.table("../define/plot_BASE.Red.txt",header=F,sep="\t",)
 plot_BASE.Red <- as.vector(plot_BASE.Red_load$V1)
-name_BASE.Red <- plot_BASE.Red %>% str_sub(start = 23)
-name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="|", replacement="_", fixed=TRUE)
+unit_BASE.Red_load <- unique(select(vsBASE.Red,c("VARIABLE","UNIT")))
+unit_BASE.Red <- left_join(rename(plot_BASE.Red_load,VARIABLE=V1),unit_BASE.Red_load)
+#name_BASE.Red <- plot_BASE.Red %>% str_sub(start = 23)
+name_BASE.Red <- lapply(plot_BASE.Red, gsub, pattern="|", replacement="_", fixed=TRUE)
 name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
 name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="/", replacement="_", fixed=TRUE)
+
+GDPpCap <- ALLDATA2.1 %>% subset(VARIABLE=="GDP per capita") %>%
+  select(-VARIABLE) %>% rename(GDPpCap = VALUE)
+vsGDPpCap <- inner_join(ALLDATA2.1, select(GDPpCap,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
 
 #-------------------------
 # Effort sharing
@@ -199,7 +213,7 @@ for (i in 1:length(plot_BAU.Red)){
   if(nrow(vsBAU.Red.sel)>=2){
     g1 <- ggplot() +
       geom_point(data=vsBAU.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION),shape=21) + 
-      ylab("%") + xlab("3 gases emission reduction rate from BAU (%)") +
+      ylab(unit_BAU.Red$UNIT[i]) + xlab("3 gases emission reduction rate from BAU (%)") +
       MyThemeLine_grid + 
       ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/CrossCountries_vsBAU/",name_BAU.Red[i],".png")
@@ -212,7 +226,7 @@ for (i in 1:length(plot_BASE.Red)){
   if(nrow(vsBASE.Red.sel)>=2){
     g2 <- ggplot() +
       geom_point(data=vsBASE.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION),shape=21) + 
-      ylab("%") + xlab("3 gases emission reduction rate from 2010 (%)") +
+      ylab(unit_BASE.Red$UNIT[i]) + xlab("3 gases emission reduction rate from 2010 (%)") +
       MyThemeLine_grid + 
       ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/CrossCountries_vsBASE/",name_BASE.Red[i],".png")
