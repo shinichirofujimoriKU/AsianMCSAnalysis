@@ -218,7 +218,7 @@ for (i in 1:length(plot_BAU.Red)){
       MyThemeLine_grid + 
       ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/CrossCountries_vsBAU/",name_BAU.Red[i],".png")
-    ggsave(g1, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
+    ggsave(g1, file=outname, dpi=600, width=4, height=3, limitsize=FALSE)
   }
 }
 
@@ -231,7 +231,7 @@ for (i in 1:length(plot_BASE.Red)){
       MyThemeLine_grid + 
       ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/CrossCountries_vsBASE/",name_BASE.Red[i],".png")
-    ggsave(g2, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
+    ggsave(g2, file=outname, dpi=600, width=4, height=3, limitsize=FALSE)
   }
 }
 
@@ -257,6 +257,6 @@ for(i in Country_List){
     annotate("rect", ymin=minv, ymax=maxv, xmin=-Inf, xmax=Inf, alpha=0.2, fill=spectpal[10]) +
     MyThemeLine_grid
   outname <- paste0("../output/fig/EffortSharing/Emission_Pathway_",i,".png")
-  ggsave(g3, file=outname, dpi=600, width=8, height=5, limitsize=FALSE)
+  ggsave(g3, file=outname, dpi=600, width=4, height=5, limitsize=FALSE)
 }
 
