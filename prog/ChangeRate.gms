@@ -7,6 +7,8 @@ $include ../output/allvariables2.txt
 "Emissions|3 Gases"
 "Energy Intensity(PE/GDP|PPP)"
 "Carbon Intensity(3 Gases/PE)"
+"Energy Intensity Improvement Speed(PE/GDP|PPP)"
+"Carbon Intensity Improvement Speed(3 Gases/PE)"
 "Share of Reneable Energy"
 "Share of Reneable Energy|Non-Biomass"
 /
@@ -43,6 +45,16 @@ ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $",YEAR
 
 ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)
          =ALLDATA(MODELN,SCENARIO,REGION,"Emissions|3 Gases","Mt CO2-equiv/yr",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR);
+
+LOOP(YEAR,
+         ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity Improvement Speed(PE/GDP|PPP)","%/year",YEAR)
+                 $(ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $",YEAR)>0 AND ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $",YEAR-1)>0)
+                 =-((ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $",YEAR-1))**(1/5)-1)*100;
+
+         ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity Improvement Speed(3 Gases/PE)","%/year",YEAR)
+                 $(ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR)>0 AND ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR-1)>0)
+                 =-((ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR-1))**(1/5)-1)*100;
+);
 
 ALLDATA(MODELN,SCENARIO,REGION,"Share of Reneable Energy|Non-Biomass","%",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)
          =ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy|Non-Biomass Renewables","EJ/yr",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)*100;
