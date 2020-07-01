@@ -1,6 +1,6 @@
 =======
 # This program is for Asian Mid-Centry Strategy Analysis
-# 29, 06, 2020
+# 30, 06, 2020
 # Yuki Ochi
 
 library(gdxrrw)

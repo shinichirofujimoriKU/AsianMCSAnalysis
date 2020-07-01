@@ -62,5 +62,8 @@ Carbon Intensity(3 Gases/PE)
 Energy Intensity(PE/GDP|PPP)
 Carbon Intensity Improvement Speed(3 Gases/PE)
 Energy Intensity Improvement Speed(PE/GDP|PPP)
+Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020
+Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020
 Share of Reneable Energy
 Share of Reneable Energy|Non-Biomass
+Electrification Rate
