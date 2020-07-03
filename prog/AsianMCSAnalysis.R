@@ -24,6 +24,8 @@ dir.create("../output/fig/")
 dir.create("../output/fig/CrossCountries_vsBAU/")
 dir.create("../output/fig/CrossCountries_vsBASE/")
 dir.create("../output/fig/EffortSharing/")
+dir.create("../output/fig/CrossCountries_vsBASE_woBaU/")
+
 
 #-------------------------
 # Set figure theme
@@ -232,6 +234,8 @@ for (i in 1:length(plot_BASE.Red)){
       ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/CrossCountries_vsBASE/",name_BASE.Red[i],".png")
     ggsave(g2, file=outname, dpi=600, width=4, height=3, limitsize=FALSE)
+    g2.1 <- g2 + xlim(c(0, NA))
+    ggsave(g2.1, file=paste0("../output/fig/CrossCountries_vsBASE_woBaU/",name_BASE.Red[i],".png"), dpi=600, width=4, height=3, limitsize=FALSE)
   }
 }
 
