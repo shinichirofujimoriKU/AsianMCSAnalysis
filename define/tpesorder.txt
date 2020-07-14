@@ -1,0 +1,12 @@
+"Primary Energy|Coal|w/o CCS"	1
+"Primary Energy|Coal|w/ CCS"	2
+"Primary Energy|Oil"	3
+"Primary Energy|Gas|w/o CCS"	4
+"Primary Energy|Gas|w/ CCS"	5
+"Primary Energy|Hydro"	6
+"Primary Energy|Nuclear"	7
+"Primary Energy|Solar"	8
+"Primary Energy|Wind"	9
+"Primary Energy|Biomass"	10
+"Primary Energy|Geothermal"	11
+"Primary Energy|Other"	12
