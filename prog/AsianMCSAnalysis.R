@@ -1,6 +1,5 @@
-=======
 # This program is for Asian Mid-Centry Strategy Analysis
-# 30, 06, 2020
+# 15, 07, 2020
 # Yuki Ochi
 
 library(gdxrrw)
@@ -25,7 +24,7 @@ dir.create("../output/fig/CrossCountries_vsBAU/")
 dir.create("../output/fig/CrossCountries_vsBASE/")
 dir.create("../output/fig/EffortSharing/")
 dir.create("../output/fig/CrossCountries_vsBASE_woBaU/")
-
+dir.create("../output/fig/PrimaryEnergy")
 
 #-------------------------
 # Set figure theme
@@ -33,6 +32,7 @@ dir.create("../output/fig/CrossCountries_vsBASE_woBaU/")
 pastelpal1 <- brewer.pal(9, "Pastel1")
 spectpal <- brewer.pal(11, "Spectral")
 AR6pal <- c("C1: 1.5C with no or low OS"="#8fbc8f","C2: 1.5C with high OS"="#7fffd4","C3: lower 2C"="#6495ed","C4: higher 2C"="#f0e68c","C5: below 2.5C"="#ffa07a","C6: below 3.0C"="#ee82ee","C7: above 3.0C"="#a9a9a9")
+tpespalette <- c("Primary Energy|Coal|w/o CCS"="#000000","Primary Energy|Coal|w/ CCS"="#7f878f","Primary Energy|Oil"="#ff2800","Primary Energy|Gas|w/o CCS"="#9a0079","Primary Energy|Gas|w/ CCS"="#c7b2de","Primary Energy|Hydro"="#0041ff","Primary Energy|Nuclear"="#663300","Primary Energy|Solar"="#b4ebfa","Primary Energy|Wind"="#ff9900","Primary Energy|Geothermal"="#edc58f","Primary Energy|Biomass"="#35a16b","Primary Energy|Biomass|w/ CCS"="#cbf266","Primary Energy|Other"="#ffff99")
 
 MyThemeLine_grid <- theme_bw() +
   theme(
@@ -133,7 +133,7 @@ bind_rows_all <- function(dfs, ...){
   return(base)
 }
 
-ALLDATA3.0 <- bind_rows_all(list(ALLDATA2.1, vsBAU2.2,vsBASE2.2))
+ALLDATA3.0 <- bind_rows_all(list(ALLDATA2.1, vsBAU2.2, vsBASE2.2))
 
 RedRate_3gas_vsBAU <- vsBAU2.2 %>% subset(VARIABLE=="Change rate from BAU|Emissions|3 Gases") %>%
   select(-VARIABLE) %>% rename(ReductionRate = VALUE)
@@ -153,7 +153,6 @@ plot_BAU.Red_load <- read.table("../define/plot_BAU.Red.txt",header=F,sep="\t",)
 plot_BAU.Red <- as.vector(plot_BAU.Red_load$V1)
 unit_BAU.Red_load <- unique(select(vsBAU.Red,c("VARIABLE","UNIT")))
 unit_BAU.Red <- left_join(rename(plot_BAU.Red_load,VARIABLE=V1),unit_BAU.Red_load)
-#name_BAU.Red <- plot_BAU.Red %>% str_sub(start = 22)
 name_BAU.Red <- lapply(plot_BAU.Red, gsub, pattern="|", replacement="_", fixed=TRUE)
 name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
 name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="/", replacement="per", fixed=TRUE)
@@ -165,7 +164,6 @@ plot_BASE.Red_load <- read.table("../define/plot_BASE.Red.txt",header=F,sep="\t"
 plot_BASE.Red <- as.vector(plot_BASE.Red_load$V1)
 unit_BASE.Red_load <- unique(select(vsBASE.Red,c("VARIABLE","UNIT")))
 unit_BASE.Red <- left_join(rename(plot_BASE.Red_load,VARIABLE=V1),unit_BASE.Red_load)
-#name_BASE.Red <- plot_BASE.Red %>% str_sub(start = 23)
 name_BASE.Red <- lapply(plot_BASE.Red, gsub, pattern="|", replacement="_", fixed=TRUE)
 name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
 name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="/", replacement="_", fixed=TRUE)
@@ -173,6 +171,12 @@ name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="/", replacement="_", fixed
 GDPpCap <- ALLDATA2.1 %>% subset(VARIABLE=="GDP per capita") %>%
   select(-VARIABLE) %>% rename(GDPpCap = VALUE)
 vsGDPpCap <- inner_join(ALLDATA2.1, select(GDPpCap,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
+
+tpesorder <- read.table("../define/tpesorder.txt",sep="\t",header=F) 
+scenarioorder <- read.table("../define/scenarioorder.txt",sep="\t",header=F) 
+PE <- subset(ALLDATA3.0, VARIABLE %in% tpesorder$V1)
+PE$VARIABLE <- factor(PE$VARIABLE, levels=tpesorder$V1)
+PE$SCENARIO <- factor(PE$SCENARIO, levels=scenarioorder$V1)
 
 #-------------------------
 # Effort sharing
@@ -198,12 +202,17 @@ EMI$Red90 <- EMI$Emission * 0.1
 TGT <- data.frame(Country=c(Country_List))
 TGT$MIN <- 0
 TGT$MAX <- 0
+TGT2 <- data.frame(Country=c(Country_List))
+TGT2$MIN <- 0
+TGT2$MAX <- 0
 n <- 0
 for(i in Country_List){
   n <- n + 1
   if(i=="JPN"){
     TGT[n,2] <- min((subset(EMI, Country==i & Type=="GHGinLU" & Year>=1990, c(Emission)))) * 0.2
     TGT[n,3] <- max((subset(EMI, Country==i & Type=="GHGinLU" & Year>=1990, c(Emission)))) * 0.2
+    TGT2[n,2] <- TGT[n,2]
+    TGT2[n,3] <- 469
   }
 }
 
@@ -220,7 +229,7 @@ for (i in 1:length(plot_BAU.Red)){
       MyThemeLine_grid + 
       ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/CrossCountries_vsBAU/",name_BAU.Red[i],".png")
-    ggsave(g1, file=outname, dpi=600, width=4, height=3, limitsize=FALSE)
+    ggsave(g1, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
   }
 }
 
@@ -233,7 +242,7 @@ for (i in 1:length(plot_BASE.Red)){
       MyThemeLine_grid + 
       ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/CrossCountries_vsBASE/",name_BASE.Red[i],".png")
-    ggsave(g2, file=outname, dpi=600, width=4, height=3, limitsize=FALSE)
+    ggsave(g2, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
     g2.1 <- g2 + xlim(c(0, NA))
     ggsave(g2.1, file=paste0("../output/fig/CrossCountries_vsBASE_woBaU/",name_BASE.Red[i],".png"), dpi=600, width=4, height=3, limitsize=FALSE)
   }
@@ -245,6 +254,10 @@ for(i in Country_List){
   maxv <- subset(TGT, Country==i, c(MAX))
   minv <- as.vector(minv$MIN)
   maxv <- as.vector(maxv$MAX)
+  minv2 <- subset(TGT2, Country==i, c(MIN))
+  maxv2 <- subset(TGT2, Country==i, c(MAX))
+  minv2 <- as.vector(minv2$MIN)
+  maxv2 <- as.vector(maxv2$MAX)
   g3 <- ggplot(subset(EA, Country==i & Year==2050), aes(x=Approach, y=Emission_Pathway, group=Approach, shape=Approach, colour=Goal)) +
     geom_point() + geom_line() + labs(y="Emission Pathway (MtCO2eq/year)", title=i) + facet_wrap(~Goal) + 
     geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Emission), linetype="dashed", colour="red") +
@@ -259,8 +272,17 @@ for(i in Country_List){
     geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red90), linetype="dashed", colour="gray") +
     geom_hline(yintercept=0, linetype="dashed", colour="black") +
     annotate("rect", ymin=minv, ymax=maxv, xmin=-Inf, xmax=Inf, alpha=0.2, fill=spectpal[10]) +
+    annotate("rect", ymin=minv2, ymax=maxv2, xmin=-Inf, xmax=Inf, alpha=0.2, fill=spectpal[4]) +
     MyThemeLine_grid
   outname <- paste0("../output/fig/EffortSharing/Emission_Pathway_",i,".png")
-  ggsave(g3, file=outname, dpi=600, width=4, height=5, limitsize=FALSE)
+  ggsave(g3, file=outname, dpi=600, width=8, height=5, limitsize=FALSE)
 }
 
+# Primary energy supply by fuel
+for(i in Country_List){
+  g4 <- ggplot(subset(PE, REGION==i & YEAR==2050), aes(x=SCENARIO, y=VALUE, fill=VARIABLE)) +
+    geom_bar(stat="identity") + labs(y="Primary Energy (EJ/year)", title=i) + 
+    MyThemeLine_grid + scale_fill_manual(values=tpespalette)
+  outname <- paste0("../output/fig/PrimaryEnergy/Primary_Energy_",i,".png")
+  ggsave(g4, file=outname, dpi=600, width=7, height=5, limitsize=FALSE)
+}
