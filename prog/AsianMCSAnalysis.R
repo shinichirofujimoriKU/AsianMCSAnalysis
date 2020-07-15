@@ -1,4 +1,4 @@
-# This program is for Asian Mid-Centry Strategy Analysis
+# This program is for Asian Mid-Centry Strategy Analysis #####
 # 15, 07, 2020
 # Yuki Ochi
 

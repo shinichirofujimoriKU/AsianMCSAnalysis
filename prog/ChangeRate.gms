@@ -14,6 +14,7 @@ $include ../output/allvariables2.txt
 "Share of Reneable Energy"
 "Share of Reneable Energy|Non-Biomass"
 "Electrification Rate"
+"CCS Rate"
 /
 UNIT/
 $include ../output/allunits.txt
@@ -77,6 +78,11 @@ ALLDATA(MODELN,SCENARIO,REGION,"Share of Reneable Energy","%",YEAR)$ALLDATA(MODE
 
 ALLDATA(MODELN,SCENARIO,REGION,"Electrification Rate","%",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Final Energy","EJ/yr",YEAR)
          =ALLDATA(MODELN,SCENARIO,REGION,"Final Energy|Electricity","EJ/yr",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"Final Energy","EJ/yr",YEAR)*100;
+
+ALLDATA(MODELN,SCENARIO,REGION,"CCS Rate","%",YEAR)$(ALLDATA(MODELN,SCENARIO,REGION,"Emissions|Kyoto Gases","Mt CO2-equiv/yr",YEAR)+ALLDATA(MODELN,SCENARIO,REGION,"Carbon Sequestration|CCS","Mt CO2/yr",YEAR))
+         =ALLDATA(MODELN,SCENARIO,REGION,"Carbon Sequestration|CCS","Mt CO2/yr",YEAR)
+         /(ALLDATA(MODELN,SCENARIO,REGION,"Emissions|Kyoto Gases","Mt CO2-equiv/yr",YEAR)+ALLDATA(MODELN,SCENARIO,REGION,"Carbon Sequestration|CCS","Mt CO2/yr",YEAR));
+
 
 * Calculate Change rate compared with BAU and base year
 vsBAU(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR)$(ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR) AND ALLDATA(MODELN,"BAU",REGION,VARIABLE2,UNIT,YEAR))

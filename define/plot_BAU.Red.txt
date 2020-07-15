@@ -67,3 +67,4 @@ Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020
 Share of Reneable Energy
 Share of Reneable Energy|Non-Biomass
 Electrification Rate
+CCS Rate

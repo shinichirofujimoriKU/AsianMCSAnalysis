@@ -1168,3 +1168,4 @@ VARIABLE2	VARIABLE
 "Share of Reneable Energy"	Share of Reneable Energy
 "Share of Reneable Energy|Non-Biomass"	Share of Reneable Energy|Non-Biomass
 "Electrification Rate"	Electrification Rate
+"CCS Rate"	CCS Rate
