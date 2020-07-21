@@ -275,7 +275,7 @@ for(i in Country_List){
     annotate("rect", ymin=minv2, ymax=maxv2, xmin=-Inf, xmax=Inf, alpha=0.2, fill=spectpal[4]) +
     MyThemeLine_grid
   outname <- paste0("../output/fig/EffortSharing/Emission_Pathway_",i,".png")
-  ggsave(g3, file=outname, dpi=600, width=8, height=5, limitsize=FALSE)
+  ggsave(g3, file=outname, dpi=600, width=5, height=3, limitsize=FALSE)
 }
 
 # Primary energy supply by fuel
