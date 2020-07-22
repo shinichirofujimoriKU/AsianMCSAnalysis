@@ -66,5 +66,6 @@ Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020
 Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020
 Share of Reneable Energy
 Share of Reneable Energy|Non-Biomass
+Share of Low Carbon Energy Source
 Electrification Rate
 CCS Rate

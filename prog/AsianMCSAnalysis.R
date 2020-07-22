@@ -1,4 +1,4 @@
-# This program is for Asian Mid-Centry Strategy Analysis #####
+# This program is for Asian Mid-Centry Strategy Analysis
 # 15, 07, 2020
 # Yuki Ochi
 
@@ -25,6 +25,8 @@ dir.create("../output/fig/CrossCountries_vsBASE/")
 dir.create("../output/fig/EffortSharing/")
 dir.create("../output/fig/CrossCountries_vsBASE_woBaU/")
 dir.create("../output/fig/PrimaryEnergy")
+dir.create("../output/fig/Timeseries")
+dir.create("../output/fig/GlobalEmissionPathway")
 
 #-------------------------
 # Set figure theme
@@ -53,6 +55,22 @@ MyThemeLine_grid2 <- MyThemeLine_grid +
     strip.text.x = element_text(size=10),
     legend.text = element_text(size = 7),
     legend.title = element_text(size = 7)
+  )
+
+MyThemeLine_GEP <- theme_bw() +
+  theme(
+    panel.border=element_rect(fill=NA),
+    panel.grid.minor = element_line(color = NA), 
+    axis.line=element_line(colour="black"),
+    panel.background=element_rect(fill = "white"),
+    panel.grid.major=element_blank(),
+    strip.background=element_rect(fill="white", colour="white"),
+    strip.text.x = element_text(size=7, colour = "black", angle = 0,face="bold"),
+    axis.text.x=element_text(angle=45, vjust=0.9, hjust=1, margin = unit(c(t = 0.3, r = 0, b = 0, l = 0), "cm")),
+    axis.text.y=element_text(margin = unit(c(t = 0, r = 0.3, b = 0, l = 0), "cm")),
+    legend.text = element_text(size = 7),
+    legend.title = element_text(size = 7),
+    axis.ticks.length=unit(-0.15,"cm")
   )
 
 #-------------------------
@@ -134,6 +152,18 @@ bind_rows_all <- function(dfs, ...){
 }
 
 ALLDATA3.0 <- bind_rows_all(list(ALLDATA2.1, vsBAU2.2, vsBASE2.2))
+ALLDATA3.0$YEAR <- as.numeric(levels(ALLDATA3.0$YEAR))[ALLDATA3.0$YEAR]
+scenarioorder <- read.table("../define/scenarioorder.txt",sep="\t",header=F) 
+ALLDATA3.0$SCENARIO <- factor(ALLDATA3.0$SCENARIO, levels=scenarioorder$V1)
+variable_ALL <- as.vector(unique(ALLDATA3.0$VARIABLE))
+write(variable_ALL, "../output/variable_ALL.txt")
+plot_TS_load <- read.table("../define/plot_TS.txt",header=F,sep="\t",)
+plot_TS <- as.vector(plot_TS_load$V1)
+unit_ALL <- unique(select(ALLDATA3.0, c("VARIABLE","UNIT")))
+unit_TS <- left_join(rename(plot_TS_load,VARIABLE=V1),unit_ALL)
+name_TS <- lapply(plot_TS, gsub, pattern="|", replacement="_", fixed=TRUE)
+name_TS <- lapply(name_TS, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
+name_TS <- lapply(name_TS, gsub, pattern="/", replacement="per", fixed=TRUE)
 
 RedRate_3gas_vsBAU <- vsBAU2.2 %>% subset(VARIABLE=="Change rate from BAU|Emissions|3 Gases") %>%
   select(-VARIABLE) %>% rename(ReductionRate = VALUE)
@@ -148,7 +178,6 @@ vsBASE.Red <- inner_join(ALLDATA3.0, select(RedRate_3gas_vsBASE,-UNIT), by=c("MO
 
 variable_BAU.Red <- as.vector(unique(vsBAU.Red$VARIABLE))
 write(variable_BAU.Red, "../output/variable_BAU.Red.txt")
-unit_BaU.Red <- unique(select(vsBAU.Red, c("VARIABLE","UNIT")))
 plot_BAU.Red_load <- read.table("../define/plot_BAU.Red.txt",header=F,sep="\t",)
 plot_BAU.Red <- as.vector(plot_BAU.Red_load$V1)
 unit_BAU.Red_load <- unique(select(vsBAU.Red,c("VARIABLE","UNIT")))
@@ -159,7 +188,6 @@ name_BAU.Red <- lapply(name_BAU.Red, gsub, pattern="/", replacement="per", fixed
 
 variable_BASE.Red <- as.vector(unique(vsBASE.Red$VARIABLE))
 write(variable_BASE.Red, "../output/variable_BASE.Red.txt")
-unit_BaSE.Red <- unique(select(vsBAU.Red, c("VARIABLE","UNIT")))
 plot_BASE.Red_load <- read.table("../define/plot_BASE.Red.txt",header=F,sep="\t",)
 plot_BASE.Red <- as.vector(plot_BASE.Red_load$V1)
 unit_BASE.Red_load <- unique(select(vsBASE.Red,c("VARIABLE","UNIT")))
@@ -173,7 +201,6 @@ GDPpCap <- ALLDATA2.1 %>% subset(VARIABLE=="GDP per capita") %>%
 vsGDPpCap <- inner_join(ALLDATA2.1, select(GDPpCap,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
 
 tpesorder <- read.table("../define/tpesorder.txt",sep="\t",header=F) 
-scenarioorder <- read.table("../define/scenarioorder.txt",sep="\t",header=F) 
 PE <- subset(ALLDATA3.0, VARIABLE %in% tpesorder$V1)
 PE$VARIABLE <- factor(PE$VARIABLE, levels=tpesorder$V1)
 PE$SCENARIO <- factor(PE$SCENARIO, levels=scenarioorder$V1)
@@ -215,6 +242,21 @@ for(i in Country_List){
     TGT2[n,3] <- 469
   }
 }
+
+#-------------------------
+# World Data of SR1.5
+#-------------------------
+WORLDDATA <- read.csv("../data/iamc15_scenario_data_world_r1.csv", header=T) 
+WORLDDATA1 <-WORLDDATA %>% rename("2000"=X2000,"2005"=X2005,"2010"=X2010,"2015"=X2015,"2020"=X2020,"2025"=X2025,"2030"=X2030,"2035"=X2035,"2040"=X2040,"2045"=X2045,"2050"=X2050,"2055"=X2055,"2060"=X2060,"2065"=X2065,"2070"=X2070,"2075"=X2075,"2080"=X2080,"2085"=X2085,"2090"=X2090,"2095"=X2095,"2100"=X2100) %>%
+  gather(key=Year,value=Value,-Model,-Scenario,-Region,-Variable,-Unit)
+row.has.na.WORLDDATA1 <- apply(WORLDDATA1, 1, function(x){any(is.na(x))})
+WORLDDATA1 <- WORLDDATA1[!row.has.na.WORLDDATA1,]
+WORLDDATA1$MDLSCN <- paste(WORLDDATA1$Model, WORLDDATA1$Scenario, sep="-")
+mdlscnmap <- read.table("../define/mdlscnmap.txt",sep="\t",header=T) 
+WORLDDATA2 <- WORLDDATA1 %>% inner_join(mdlscnmap, by="MDLSCN") %>% filter(Category!="excluded")
+WORLDEMI <- subset(WORLDDATA2, Variable=="Emissions|Kyoto Gases")
+WORLDEMI$Year <- as.numeric(as.character(WORLDEMI$Year))
+WORLDEMI1 <- WORLDEMI %>% group_by(Region,Category,Variable,Year) %>% summarise(max=max(Value) , min=min(Value),median=median(Value))
 
 #-------------------------
 # Make Graphs
@@ -286,3 +328,51 @@ for(i in Country_List){
   outname <- paste0("../output/fig/PrimaryEnergy/Primary_Energy_",i,".png")
   ggsave(g4, file=outname, dpi=600, width=7, height=5, limitsize=FALSE)
 }
+
+# Time series graphs of each variables (Cross-countries)
+for (i in 1:length(plot_TS)){
+  if(nrow(ALLDATA3.0)>=2){
+    g5 <- ggplot(data=subset(ALLDATA3.0, VARIABLE==plot_TS[i]), aes(x=YEAR, y=VALUE)) +
+      geom_point(aes(group=interaction(REGION,SCENARIO), color=REGION, shape=SCENARIO)) + 
+      geom_line(aes(group=interaction(REGION,SCENARIO), color=REGION)) + ylab(unit_TS$UNIT[i]) + xlab("YEAR") +
+      MyThemeLine_grid + 
+      ggtitle(label=plot_TS[i]) + scale_colour_manual(values=pastelpal1)
+    outname <- paste0("../output/fig/Timeseries/",name_TS[i],".png")
+    ggsave(g5, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
+  }
+}
+
+# Global emission pathways
+ylist <- c(2050,2100)
+
+for(yr in 1:length(ylist)){
+  g6 <- ggplot() + 
+    geom_line(data=subset(WORLDEMI, Year<=ylist[yr]), aes(x=Year, y=Value, color=Category, group=MDLSCN), alpha=1.0, size=0.3) +
+    geom_ribbon(data=subset(WORLDEMI1, Year<=ylist[yr]), aes(x=Year, ymin=min, ymax=max, fill=Category, group=MDLSCN), stat="identity", alpha=0.2) +
+    geom_errorbar(data=subset(WORLDEMI1, Year==ylist[yr]), aes(x=ylist[yr]+as.numeric(Category)*2, ymin=min, ymax=max, color=Category), width=0.5, alpha=0.5) +
+    geom_point(data=subset(WORLDEMI, Year==ylist[yr]), aes(x=ylist[yr]+as.numeric(Category)*2, y=Value, color=Category, shape=Category), alpha=1) + xlab("") +
+    MyThemeLine_GEP + ylab("Emissions(Mt CO2-equiv/yr)")
+#    scale_color_manual(values=ColorVecSce) + scale_fill_manual(values=ColorVecSce) + scale_shape_manual(values=shapevector)
+  outname <- paste("../output/fig/GlobalEmissionPathway/GlobalEmissionPathway",ylist[yr],".png",sep="")
+  g7 <- g6
+  ggsave(g7, file=outname, dpi = 600, width=8, height=7, limitsize=FALSE)
+}
+
+
+
+# for(yr in 1:length(ylist)){
+#   g6 <- ggplot() + 
+#     geom_line(subset(WORLDEMI, Year<=ylist[yr]), aes(x=Year, y=Value, color=Category,group=Category), alpha=1.0, size=0.3) +
+#     geom_ribbon(data=WORLDEMI1[WORLDEMI1$Year<=ylist[yr]],aes(x=Year, ymin=min,ymax=max,fill=Category,group=Category),stat="identity",alpha=0.2)  +
+#     geom_errorbar(data=WORLDEMI1[WORLDEMI1$Year==ylist[yr]],aes(x=ylist[yr]+as.numeric(Category)*2, ymin = min, ymax = max, color=Category), width = 0.5, alpha=0.5) +
+#     geom_point(data=WORLDEMI[WORLDEMI$Year==ylist[yr]],aes(x=ylist[yr]+as.numeric(Category)*2, y=Value, color=Category,shape=Category), alpha=1) + xlab("")+
+#     MyThemeLine + scale_color_manual(values=ColorVecSce) + scale_fill_manual(values=ColorVecSce) + ylab("Emissions(Mt CO2-equiv/yr)") + 
+#     scale_shape_manual(values=shapevector)
+#   g7 <- g6 +facet_wrap(~VARIABLE,scale="free",ncol=2) +
+#     annotate("segment",x=2010,xend=ylist[yr],y=0,yend=0,linetype="dashed",color="grey") +
+#     scale_x_continuous(breaks=seq(2010,ylist[yr],by=(ylist[yr]-2000)/10),limits=c(2010,ylist[yr]+8)) +
+#     theme(strip.text = element_blank())
+#   outname <- paste("../output/fig/GlobalEmissionPathway",ylist[yr],".png",sep="")
+#   ggsave(g7, file=outname, dpi = 600, width=8, height=7, limitsize=FALSE)
+# }
+# 

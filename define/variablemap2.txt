@@ -969,7 +969,7 @@ VARIABLE2	VARIABLE
 "Primary Energy|Coal|Electricity|w/ CCS"	Primary Energy|Coal|Electricity|w/ CCS
 "Primary Energy|Coal|Electricity|w/o CCS"	Primary Energy|Coal|Electricity|w/o CCS
 "Primary Energy|Coal|w/ CCS"	Primary Energy|Coal|w/ CCS
-"Primary Energy|Coal|w/o CCS"	Primary Energy|Coal|w/o CCS
+c	Primary Energy|Coal|w/o CCS
 "Primary Energy|Fossil"	Primary Energy|Fossil
 "Primary Energy|Fossil|w/ CCS"	Primary Energy|Fossil|w/ CCS
 "Primary Energy|Fossil|w/o CCS"	Primary Energy|Fossil|w/o CCS
@@ -1167,5 +1167,6 @@ VARIABLE2	VARIABLE
 "Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020"	Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020
 "Share of Reneable Energy"	Share of Reneable Energy
 "Share of Reneable Energy|Non-Biomass"	Share of Reneable Energy|Non-Biomass
+"Share of Low Carbon Energy Source"	Share of Low Carbon Energy Source
 "Electrification Rate"	Electrification Rate
 "CCS Rate"	CCS Rate

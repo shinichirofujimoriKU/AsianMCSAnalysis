@@ -13,6 +13,7 @@ $include ../output/allvariables2.txt
 "Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020"
 "Share of Reneable Energy"
 "Share of Reneable Energy|Non-Biomass"
+"Share of Low Carbon Energy Source"
 "Electrification Rate"
 "CCS Rate"
 /
@@ -74,6 +75,13 @@ ALLDATA(MODELN,SCENARIO,REGION,"Share of Reneable Energy|Non-Biomass","%",YEAR)$
 ALLDATA(MODELN,SCENARIO,REGION,"Share of Reneable Energy","%",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)
          =(ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy|Non-Biomass Renewables","EJ/yr",YEAR)
          +ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy|Biomass","EJ/yr",YEAR))
+         /ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)*100;
+
+ALLDATA(MODELN,SCENARIO,REGION,"Share of Low Carbon Energy Source","%",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)
+         =(ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy|Non-Biomass Renewables","EJ/yr",YEAR)
+         +ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy|Biomass","EJ/yr",YEAR)
+         +ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy|Nuclear","EJ/yr",YEAR)
+         +ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy|Fossil|w/ CCS","EJ/yr",YEAR))
          /ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)*100;
 
 ALLDATA(MODELN,SCENARIO,REGION,"Electrification Rate","%",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Final Energy","EJ/yr",YEAR)
