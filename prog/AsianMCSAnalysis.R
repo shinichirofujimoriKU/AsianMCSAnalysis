@@ -254,9 +254,9 @@ WORLDDATA1 <- WORLDDATA1[!row.has.na.WORLDDATA1,]
 WORLDDATA1$MDLSCN <- paste(WORLDDATA1$Model, WORLDDATA1$Scenario, sep="-")
 mdlscnmap <- read.table("../define/mdlscnmap.txt",sep="\t",header=T) 
 WORLDDATA2 <- WORLDDATA1 %>% inner_join(mdlscnmap, by="MDLSCN") %>% filter(Category!="excluded")
-WORLDEMI <- subset(WORLDDATA2, Variable=="Emissions|Kyoto Gases")
-WORLDEMI$Year <- as.numeric(as.character(WORLDEMI$Year))
-WORLDEMI1 <- WORLDEMI %>% group_by(Region,Category,Variable,Year) %>% summarise(max=max(Value) , min=min(Value),median=median(Value))
+GEP <- subset(WORLDDATA2, Variable=="Emissions|Kyoto Gases")
+GEP$Year <- as.numeric(as.character(GEP$Year))
+GEP1 <- GEP %>% group_by(Region,Category,Variable,Year) %>% summarise(max=max(Value) , min=min(Value),median=median(Value))
 
 #-------------------------
 # Make Graphs
@@ -347,32 +347,16 @@ ylist <- c(2050,2100)
 
 for(yr in 1:length(ylist)){
   g6 <- ggplot() + 
-    geom_line(data=subset(WORLDEMI, Year<=ylist[yr]), aes(x=Year, y=Value, color=Category, group=MDLSCN), alpha=1.0, size=0.3) +
-    geom_ribbon(data=subset(WORLDEMI1, Year<=ylist[yr]), aes(x=Year, ymin=min, ymax=max, fill=Category, group=MDLSCN), stat="identity", alpha=0.2) +
-    geom_errorbar(data=subset(WORLDEMI1, Year==ylist[yr]), aes(x=ylist[yr]+as.numeric(Category)*2, ymin=min, ymax=max, color=Category), width=0.5, alpha=0.5) +
-    geom_point(data=subset(WORLDEMI, Year==ylist[yr]), aes(x=ylist[yr]+as.numeric(Category)*2, y=Value, color=Category, shape=Category), alpha=1) + xlab("") +
+    geom_line(data=subset(GEP, Year<=ylist[yr]), aes(x=Year, y=Value, color=Category, group=MDLSCN), alpha=1.0, size=0.3) +
+    geom_ribbon(data=subset(GEP1, Year<=ylist[yr]), aes(x=Year, ymin=min, ymax=max, fill=Category, group=Category), stat="identity", alpha=0.2) +
+    geom_errorbar(data=subset(GEP1, Year==ylist[yr]), aes(x=ylist[yr]+as.numeric(Category)*2, ymin=min, ymax=max, color=Category), width=0.5, alpha=0.5) +
+    geom_point(data=subset(GEP, Year==ylist[yr]), aes(x=ylist[yr]+as.numeric(Category)*2, y=Value, color=Category, shape=Category), alpha=1) + xlab("") +
     MyThemeLine_GEP + ylab("Emissions(Mt CO2-equiv/yr)")
 #    scale_color_manual(values=ColorVecSce) + scale_fill_manual(values=ColorVecSce) + scale_shape_manual(values=shapevector)
+  g7 <- g6 + facet_wrap(~Variable,scale="free",ncol=2) +
+    annotate("segment",x=2010,xend=ylist[yr],y=0,yend=0,linetype="dashed",color="grey") +
+    scale_x_continuous(breaks=seq(2010,ylist[yr],by=(ylist[yr]-2000)/10),limits=c(2010,ylist[yr]+8)) +
+    theme(strip.text = element_blank())
   outname <- paste("../output/fig/GlobalEmissionPathway/GlobalEmissionPathway",ylist[yr],".png",sep="")
-  g7 <- g6
   ggsave(g7, file=outname, dpi = 600, width=8, height=7, limitsize=FALSE)
 }
-
-
-
-# for(yr in 1:length(ylist)){
-#   g6 <- ggplot() + 
-#     geom_line(subset(WORLDEMI, Year<=ylist[yr]), aes(x=Year, y=Value, color=Category,group=Category), alpha=1.0, size=0.3) +
-#     geom_ribbon(data=WORLDEMI1[WORLDEMI1$Year<=ylist[yr]],aes(x=Year, ymin=min,ymax=max,fill=Category,group=Category),stat="identity",alpha=0.2)  +
-#     geom_errorbar(data=WORLDEMI1[WORLDEMI1$Year==ylist[yr]],aes(x=ylist[yr]+as.numeric(Category)*2, ymin = min, ymax = max, color=Category), width = 0.5, alpha=0.5) +
-#     geom_point(data=WORLDEMI[WORLDEMI$Year==ylist[yr]],aes(x=ylist[yr]+as.numeric(Category)*2, y=Value, color=Category,shape=Category), alpha=1) + xlab("")+
-#     MyThemeLine + scale_color_manual(values=ColorVecSce) + scale_fill_manual(values=ColorVecSce) + ylab("Emissions(Mt CO2-equiv/yr)") + 
-#     scale_shape_manual(values=shapevector)
-#   g7 <- g6 +facet_wrap(~VARIABLE,scale="free",ncol=2) +
-#     annotate("segment",x=2010,xend=ylist[yr],y=0,yend=0,linetype="dashed",color="grey") +
-#     scale_x_continuous(breaks=seq(2010,ylist[yr],by=(ylist[yr]-2000)/10),limits=c(2010,ylist[yr]+8)) +
-#     theme(strip.text = element_blank())
-#   outname <- paste("../output/fig/GlobalEmissionPathway",ylist[yr],".png",sep="")
-#   ggsave(g7, file=outname, dpi = 600, width=8, height=7, limitsize=FALSE)
-# }
-# 
