@@ -384,9 +384,10 @@ for (i in 1:length(plot_TS)){
 for (r in Country_List){
   dir.create(paste0("../output/fig/Timeseries/",r))
   for (i in 1:length(plot_BAU.Red)){
-    if(nrow(filter(ALLDATA3.1, VARIABLE %in% plot_BAU.Red & REGION==r))>=2){
+#    for (i in 73:73){
+      if(nrow(filter(ALLDATA3.1, VARIABLE %in% plot_BAU.Red[i] & REGION==r))>=2){
       g5 <- ggplot(data=subset(ALLDATA3.1, VARIABLE==plot_BAU.Red[i] & REGION==r), aes(x=YEAR, y=VALUE)) +
-        geom_point(aes(group=SCENARIO, color=SCENARIO), shape=11) + 
+        geom_point(aes(group=SCENARIO, color=SCENARIO), shape=1) + 
         geom_line(aes(group=SCENARIO, color=SCENARIO)) + ylab(unit_BAU.Red$UNIT[i]) + xlab("YEAR") +
         MyThemeLine_grid + 
         ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=YlOrRdpal1)

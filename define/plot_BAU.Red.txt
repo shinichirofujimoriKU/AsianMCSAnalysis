@@ -1,35 +1,5 @@
 Change rate from BAU|Agricultural Demand
 Change rate from BAU|Agricultural Production
-Change rate from BAU|Capacity Additions|Electricity|Biomass
-Change rate from BAU|Capacity Additions|Electricity|Biomass|w/o CCS
-Change rate from BAU|Capacity Additions|Electricity|Coal
-Change rate from BAU|Capacity Additions|Electricity|Coal|w/o CCS
-Change rate from BAU|Capacity Additions|Electricity|Gas
-Change rate from BAU|Capacity Additions|Electricity|Gas|w/o CCS
-Change rate from BAU|Capacity Additions|Electricity|Geothermal
-Change rate from BAU|Capacity Additions|Electricity|Hydro
-Change rate from BAU|Capacity Additions|Electricity|Oil
-Change rate from BAU|Capacity Additions|Electricity|Oil|w/o CCS
-Change rate from BAU|Capacity Additions|Electricity|Solar
-Change rate from BAU|Capacity Additions|Electricity|Solar|PV
-Change rate from BAU|Capacity Additions|Electricity|Wind
-Change rate from BAU|Capacity Additions|Electricity|Wind|Onshore
-Change rate from BAU|Capacity|Electricity
-Change rate from BAU|Capacity|Electricity|Biomass
-Change rate from BAU|Capacity|Electricity|Biomass|w/o CCS
-Change rate from BAU|Capacity|Electricity|Coal
-Change rate from BAU|Capacity|Electricity|Coal|w/o CCS
-Change rate from BAU|Capacity|Electricity|Gas
-Change rate from BAU|Capacity|Electricity|Gas|w/o CCS
-Change rate from BAU|Capacity|Electricity|Geothermal
-Change rate from BAU|Capacity|Electricity|Hydro
-Change rate from BAU|Capacity|Electricity|Oil
-Change rate from BAU|Capacity|Electricity|Oil|w/o CCS
-Change rate from BAU|Capacity|Electricity|Other
-Change rate from BAU|Capacity|Electricity|Solar
-Change rate from BAU|Capacity|Electricity|Solar|PV
-Change rate from BAU|Capacity|Electricity|Wind
-Change rate from BAU|Capacity|Electricity|Wind|Onshore
 Change rate from 2010|Carbon Intensity
 Change rate from 2010|Energy Intensity
 Change rate from BAU|Final Energy
