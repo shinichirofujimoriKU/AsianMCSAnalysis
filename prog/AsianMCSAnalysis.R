@@ -197,6 +197,28 @@ name_BASE.Red <- lapply(plot_BASE.Red, gsub, pattern="|", replacement="_", fixed
 name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
 name_BASE.Red <- lapply(name_BASE.Red, gsub, pattern="/", replacement="_", fixed=TRUE)
 
+vsBAU.Red$d_CHN[vsBAU.Red$REGION=="CHN"] <- 1
+vsBAU.Red$d_CHN[vsBAU.Red$REGION!="CHN"] <- 0
+vsBAU.Red$d_IND[vsBAU.Red$REGION=="IND"] <- 1
+vsBAU.Red$d_IND[vsBAU.Red$REGION!="IND"] <- 0
+vsBAU.Red$d_KOR[vsBAU.Red$REGION=="KOR"] <- 1
+vsBAU.Red$d_KOR[vsBAU.Red$REGION!="KOR"] <- 0
+vsBAU.Red$d_THA[vsBAU.Red$REGION=="THA"] <- 1
+vsBAU.Red$d_THA[vsBAU.Red$REGION!="THA"] <- 0
+vsBAU.Red$d_VNM[vsBAU.Red$REGION=="VNM"] <- 1
+vsBAU.Red$d_VNM[vsBAU.Red$REGION!="VNM"] <- 0
+
+vsBASE.Red$d_CHN[vsBASE.Red$REGION=="CHN"] <- 1
+vsBASE.Red$d_CHN[vsBASE.Red$REGION!="CHN"] <- 0
+vsBASE.Red$d_IND[vsBASE.Red$REGION=="IND"] <- 1
+vsBASE.Red$d_IND[vsBASE.Red$REGION!="IND"] <- 0
+vsBASE.Red$d_KOR[vsBASE.Red$REGION=="KOR"] <- 1
+vsBASE.Red$d_KOR[vsBASE.Red$REGION!="KOR"] <- 0
+vsBASE.Red$d_THA[vsBASE.Red$REGION=="THA"] <- 1
+vsBASE.Red$d_THA[vsBASE.Red$REGION!="THA"] <- 0
+vsBASE.Red$d_VNM[vsBASE.Red$REGION=="VNM"] <- 1
+vsBASE.Red$d_VNM[vsBASE.Red$REGION!="VNM"] <- 0
+
 GDPpCap <- ALLDATA2.1 %>% subset(VARIABLE=="GDP per capita") %>%
   select(-VARIABLE) %>% rename(GDPpCap = VALUE)
 vsGDPpCap <- inner_join(ALLDATA2.1, select(GDPpCap,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
@@ -264,10 +286,12 @@ GEP1 <- GEP %>% group_by(Region,Category,Variable,Year) %>% summarise(max=max(Va
 #-------------------------
 # Relation between each variables and GHG reduction rate (Cross-countries)
 for (i in 1:length(plot_BAU.Red)){
-  vsBAU.Red.sel <- filter(vsBAU.Red, YEAR %in% c(2050) & VARIABLE==plot_BAU.Red[i]) 
+  vsBAU.Red.sel <- filter(vsBAU.Red, YEAR %in% c(2050) & VARIABLE==plot_BAU.Red[i])
+  vsBAU.REG <- lm(VALUE ~ ReductionRate + d_CHN + d_IND + d_KOR + d_THA + d_VNM, vsBAU.Red.sel)
   if(nrow(vsBAU.Red.sel)>=2){
     g1 <- ggplot() +
-      geom_point(data=vsBAU.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION),shape=21) + 
+      geom_point(data=vsBAU.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION), shape=21) +
+      geom_abline(intercept=vsBAU.REG[[1]][1], slope=vsBAU.REG[[1]][2], color="red") +
       ylab(unit_BAU.Red$UNIT[i]) + xlab("3 gases emission reduction rate from BAU (%)") +
       MyThemeLine_grid + 
       ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=pastelpal1)
@@ -278,9 +302,11 @@ for (i in 1:length(plot_BAU.Red)){
 
 for (i in 1:length(plot_BASE.Red)){
   vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i]) 
+  vsBASE.REG <- lm(VALUE ~ ReductionRate + d_CHN + d_IND + d_KOR + d_THA + d_VNM, vsBASE.Red.sel)
   if(nrow(vsBASE.Red.sel)>=2){
     g2 <- ggplot() +
       geom_point(data=vsBASE.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION),shape=21) + 
+      geom_abline(intercept=vsBASE.REG[[1]][1], slope=vsBASE.REG[[1]][2], color="red") +
       ylab(unit_BASE.Red$UNIT[i]) + xlab("3 gases emission reduction rate from 2010 (%)") +
       MyThemeLine_grid + 
       ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
@@ -362,4 +388,3 @@ for(yr in 1:length(ylist)){
   ggsave(g7, file=outname, dpi = 600, width=8, height=7, limitsize=FALSE)
 }
 
-# Global

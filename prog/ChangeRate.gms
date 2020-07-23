@@ -19,7 +19,7 @@ $include ../output/allvariables2.txt
 /
 UNIT/
 $include ../output/allunits.txt
-"CO2-equiv/PE EJ"
+"t CO2-equiv/PE EJ"
 /
 YEAR
 VAR_LossRate(VARIABLE2)/
