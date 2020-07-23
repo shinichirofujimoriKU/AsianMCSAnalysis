@@ -152,14 +152,15 @@ bind_rows_all <- function(dfs, ...){
 }
 
 ALLDATA3.0 <- bind_rows_all(list(ALLDATA2.1, vsBAU2.2, vsBASE2.2))
-ALLDATA3.0$YEAR <- as.numeric(levels(ALLDATA3.0$YEAR))[ALLDATA3.0$YEAR]
+ALLDATA3.1 <- ALLDATA3.0
+ALLDATA3.1$YEAR <- as.numeric(levels(ALLDATA3.1$YEAR))[ALLDATA3.1$YEAR]
 scenarioorder <- read.table("../define/scenarioorder.txt",sep="\t",header=F) 
-ALLDATA3.0$SCENARIO <- factor(ALLDATA3.0$SCENARIO, levels=scenarioorder$V1)
-variable_ALL <- as.vector(unique(ALLDATA3.0$VARIABLE))
+ALLDATA3.1$SCENARIO <- factor(ALLDATA3.1$SCENARIO, levels=scenarioorder$V1)
+variable_ALL <- as.vector(unique(ALLDATA3.1$VARIABLE))
 write(variable_ALL, "../output/variable_ALL.txt")
 plot_TS_load <- read.table("../define/plot_TS.txt",header=F,sep="\t",)
 plot_TS <- as.vector(plot_TS_load$V1)
-unit_ALL <- unique(select(ALLDATA3.0, c("VARIABLE","UNIT")))
+unit_ALL <- unique(select(ALLDATA3.1, c("VARIABLE","UNIT")))
 unit_TS <- left_join(rename(plot_TS_load,VARIABLE=V1),unit_ALL)
 name_TS <- lapply(plot_TS, gsub, pattern="|", replacement="_", fixed=TRUE)
 name_TS <- lapply(name_TS, gsub, pattern="w/o", replacement="wo", fixed=TRUE)
@@ -331,8 +332,8 @@ for(i in Country_List){
 
 # Time series graphs of each variables (Cross-countries)
 for (i in 1:length(plot_TS)){
-  if(nrow(ALLDATA3.0)>=2){
-    g5 <- ggplot(data=subset(ALLDATA3.0, VARIABLE==plot_TS[i]), aes(x=YEAR, y=VALUE)) +
+  if(nrow(ALLDATA3.1)>=2){
+    g5 <- ggplot(data=subset(ALLDATA3.1, VARIABLE==plot_TS[i]), aes(x=YEAR, y=VALUE)) +
       geom_point(aes(group=interaction(REGION,SCENARIO), color=REGION, shape=SCENARIO)) + 
       geom_line(aes(group=interaction(REGION,SCENARIO), color=REGION)) + ylab(unit_TS$UNIT[i]) + xlab("YEAR") +
       MyThemeLine_grid + 
@@ -360,3 +361,5 @@ for(yr in 1:length(ylist)){
   outname <- paste("../output/fig/GlobalEmissionPathway/GlobalEmissionPathway",ylist[yr],".png",sep="")
   ggsave(g7, file=outname, dpi = 600, width=8, height=7, limitsize=FALSE)
 }
+
+# Global
