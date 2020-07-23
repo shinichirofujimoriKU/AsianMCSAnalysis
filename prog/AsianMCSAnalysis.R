@@ -33,6 +33,7 @@ dir.create("../output/fig/GlobalEmissionPathway")
 #-------------------------
 pastelpal1 <- brewer.pal(9, "Pastel1")
 spectpal <- brewer.pal(11, "Spectral")
+YlOrRdpal1 <- brewer.pal(9, "YlOrRd")
 AR6pal <- c("C1: 1.5C with no or low OS"="#8fbc8f","C2: 1.5C with high OS"="#7fffd4","C3: lower 2C"="#6495ed","C4: higher 2C"="#f0e68c","C5: below 2.5C"="#ffa07a","C6: below 3.0C"="#ee82ee","C7: above 3.0C"="#a9a9a9")
 tpespalette <- c("Primary Energy|Coal|w/o CCS"="#000000","Primary Energy|Coal|w/ CCS"="#7f878f","Primary Energy|Oil"="#ff2800","Primary Energy|Gas|w/o CCS"="#9a0079","Primary Energy|Gas|w/ CCS"="#c7b2de","Primary Energy|Hydro"="#0041ff","Primary Energy|Nuclear"="#663300","Primary Energy|Solar"="#b4ebfa","Primary Energy|Wind"="#ff9900","Primary Energy|Geothermal"="#edc58f","Primary Energy|Biomass"="#35a16b","Primary Energy|Biomass|w/ CCS"="#cbf266","Primary Energy|Other"="#ffff99")
 
@@ -285,9 +286,18 @@ GEP1 <- GEP %>% group_by(Region,Category,Variable,Year) %>% summarise(max=max(Va
 # Make Graphs
 #-------------------------
 # Relation between each variables and GHG reduction rate (Cross-countries)
+regresults <- as.list(plot_BAU.Red)
+names(regresults) <- names(plot_BAU.Red)
+
 for (i in 1:length(plot_BAU.Red)){
   vsBAU.Red.sel <- filter(vsBAU.Red, YEAR %in% c(2050) & VARIABLE==plot_BAU.Red[i])
   vsBAU.REG <- lm(VALUE ~ ReductionRate + d_CHN + d_IND + d_KOR + d_THA + d_VNM, vsBAU.Red.sel)
+  regresults[[plot_BAU.Red[i]]] <- summary(vsBAU.REG)
+  if (i==1){
+    reg_summ <- cbind(as.character(plot_BAU.Red[i]),tibble::rownames_to_column(as.data.frame(regresults[[plot_BAU.Red[i]]]$coefficients), "factors"))
+  }else{
+    reg_summ <- rbind(reg_summ, cbind(as.character(plot_BAU.Red[i]),tibble::rownames_to_column(as.data.frame(regresults[[plot_BAU.Red[i]]]$coefficients), "factors")) )
+  }
   if(nrow(vsBAU.Red.sel)>=2){
     g1 <- ggplot() +
       geom_point(data=vsBAU.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION), shape=21) +
@@ -299,6 +309,8 @@ for (i in 1:length(plot_BAU.Red)){
     ggsave(g1, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
   }
 }
+write.table(reg_summ,file="../output/regression.txt", append = FALSE, row.names=TRUE, quote = FALSE, sep = ",")
+
 
 for (i in 1:length(plot_BASE.Red)){
   vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i]) 
@@ -368,14 +380,30 @@ for (i in 1:length(plot_TS)){
     ggsave(g5, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
   }
 }
+#Time series for country
+for (r in Country_List){
+  dir.create(paste0("../output/fig/Timeseries/",r))
+  for (i in 1:length(plot_BAU.Red)){
+    if(nrow(filter(ALLDATA3.1, VARIABLE %in% plot_BAU.Red & REGION==r))>=2){
+      g5 <- ggplot(data=subset(ALLDATA3.1, VARIABLE==plot_BAU.Red[i] & REGION==r), aes(x=YEAR, y=VALUE)) +
+        geom_point(aes(group=SCENARIO, color=SCENARIO), shape=11) + 
+        geom_line(aes(group=SCENARIO, color=SCENARIO)) + ylab(unit_BAU.Red$UNIT[i]) + xlab("YEAR") +
+        MyThemeLine_grid + 
+        ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=YlOrRdpal1)
+      outname <- paste0("../output/fig/Timeseries/",r,"/",name_BAU.Red[i],".png")
+      ggsave(g5, file=outname, dpi=600, width=5, height=4, limitsize=FALSE)
+    }
+  }
+}
 
 # Global emission pathways
 ylist <- c(2050,2100)
-
+ylist10 <- c(2000,2010,2020,2030,20340,2050,2060,2070,2080,2090,2100)
+#ScalerEmi <- 1000
 for(yr in 1:length(ylist)){
   g6 <- ggplot() + 
     geom_line(data=subset(GEP, Year<=ylist[yr]), aes(x=Year, y=Value, color=Category, group=MDLSCN), alpha=1.0, size=0.3) +
-    geom_ribbon(data=subset(GEP1, Year<=ylist[yr]), aes(x=Year, ymin=min, ymax=max, fill=Category, group=Category), stat="identity", alpha=0.2) +
+    geom_ribbon(data=subset(GEP1, Year<=ylist[yr] & Year %in% ylist10), aes(x=Year, ymin=min, ymax=max, fill=Category, group=Category), stat="identity", alpha=0.2) +
     geom_errorbar(data=subset(GEP1, Year==ylist[yr]), aes(x=ylist[yr]+as.numeric(Category)*2, ymin=min, ymax=max, color=Category), width=0.5, alpha=0.5) +
     geom_point(data=subset(GEP, Year==ylist[yr]), aes(x=ylist[yr]+as.numeric(Category)*2, y=Value, color=Category, shape=Category), alpha=1) + xlab("") +
     MyThemeLine_GEP + ylab("Emissions(Mt CO2-equiv/yr)")
@@ -385,6 +413,6 @@ for(yr in 1:length(ylist)){
     scale_x_continuous(breaks=seq(2010,ylist[yr],by=(ylist[yr]-2000)/10),limits=c(2010,ylist[yr]+8)) +
     theme(strip.text = element_blank())
   outname <- paste("../output/fig/GlobalEmissionPathway/GlobalEmissionPathway",ylist[yr],".png",sep="")
-  ggsave(g7, file=outname, dpi = 600, width=8, height=7, limitsize=FALSE)
+  ggsave(g7, file=outname, dpi = 600, width=5, height=4, limitsize=FALSE)
 }
 
