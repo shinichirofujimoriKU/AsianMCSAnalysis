@@ -288,6 +288,8 @@ GEP1 <- GEP %>% group_by(Region,Category,Variable,Year) %>% summarise(max=max(Va
 # Relation between each variables and GHG reduction rate (Cross-countries)
 regresults <- as.list(plot_BAU.Red)
 names(regresults) <- names(plot_BAU.Red)
+regresults2 <- as.list(plot_BASE.Red)
+names(regresults2) <- names(plot_BASE.Red)
 
 for (i in 1:length(plot_BAU.Red)){
   vsBAU.Red.sel <- filter(vsBAU.Red, YEAR %in% c(2050) & VARIABLE==plot_BAU.Red[i])
@@ -309,16 +311,24 @@ for (i in 1:length(plot_BAU.Red)){
     ggsave(g1, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
   }
 }
-write.table(reg_summ,file="../output/regression.txt", append = FALSE, row.names=TRUE, quote = FALSE, sep = ",")
+write.table(reg_summ,file="../output/regression_BaU.txt", append = FALSE, row.names=TRUE, quote = FALSE, sep = ",")
 
 
 for (i in 1:length(plot_BASE.Red)){
-  vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i]) 
+  vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i] & SCENARIO!="BaU") 
   vsBASE.REG <- lm(VALUE ~ ReductionRate + d_CHN + d_IND + d_KOR + d_THA + d_VNM, vsBASE.Red.sel)
+  regresults2[[plot_BASE.Red[i]]] <- summary(vsBASE.REG)
+  if (i==1){
+    reg_summ <- cbind(as.character(plot_BASE.Red[i]),tibble::rownames_to_column(as.data.frame(regresults2[[plot_BASE.Red[i]]]$coefficients), "factors"))
+  }else{
+    reg_summ <- rbind(reg_summ, cbind(as.character(plot_BASE.Red[i]),tibble::rownames_to_column(as.data.frame(regresults2[[plot_BASE.Red[i]]]$coefficients), "factors")) )
+  }
+  vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i]) 
+  aveint <- c(as.numeric(vsBASE.REG[[1]]["d_IND"]),as.numeric(vsBASE.REG[[1]]["d_VNM"]),as.numeric(vsBASE.REG[[1]]["d_THA"]),as.numeric(vsBASE.REG[[1]]["d_CHN"]),as.numeric(vsBASE.REG[[1]]["d_KOR"]))
   if(nrow(vsBASE.Red.sel)>=2){
     g2 <- ggplot() +
       geom_point(data=vsBASE.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION),shape=21) + 
-      geom_abline(intercept=vsBASE.REG[[1]][1], slope=vsBASE.REG[[1]][2], color="red") +
+      geom_abline(intercept=vsBASE.REG[[1]][1]+mean(aveint), slope=vsBASE.REG[[1]][2], color="red") +
       ylab(unit_BASE.Red$UNIT[i]) + xlab("3 gases emission reduction rate from 2010 (%)") +
       MyThemeLine_grid + 
       ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
@@ -328,6 +338,7 @@ for (i in 1:length(plot_BASE.Red)){
     ggsave(g2.1, file=paste0("../output/fig/CrossCountries_vsBASE_woBaU/",name_BASE.Red[i],".png"), dpi=600, width=4, height=3, limitsize=FALSE)
   }
 }
+write.table(reg_summ,file="../output/regression_Base.txt", append = FALSE, row.names=TRUE, quote = FALSE, sep = ",")
 
 # GHG emissions in 2050 for 1.5/2 degree goal in each effort sharing approach (By country)
 for(i in Country_List){
