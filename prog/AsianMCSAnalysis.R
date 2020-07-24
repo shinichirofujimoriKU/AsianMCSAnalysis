@@ -300,10 +300,11 @@ for (i in 1:length(plot_BAU.Red)){
   }else{
     reg_summ <- rbind(reg_summ, cbind(as.character(plot_BAU.Red[i]),tibble::rownames_to_column(as.data.frame(regresults[[plot_BAU.Red[i]]]$coefficients), "factors")) )
   }
+  aveint <- c(as.numeric(vsBAU.REG[[1]]["d_IND"]),as.numeric(vsBAU.REG[[1]]["d_VNM"]),as.numeric(vsBAU.REG[[1]]["d_THA"]),as.numeric(vsBAU.REG[[1]]["d_CHN"]),as.numeric(vsBAU.REG[[1]]["d_KOR"]))
   if(nrow(vsBAU.Red.sel)>=2){
     g1 <- ggplot() +
       geom_point(data=vsBAU.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION), shape=21) +
-      geom_abline(intercept=vsBAU.REG[[1]][1], slope=vsBAU.REG[[1]][2], color="red") +
+      geom_abline(intercept=vsBAU.REG[[1]][1]+mean(aveint), slope=vsBAU.REG[[1]][2], color="red") +
       ylab(unit_BAU.Red$UNIT[i]) + xlab("3 gases emission reduction rate from BAU (%)") +
       MyThemeLine_grid + 
       ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=pastelpal1)
