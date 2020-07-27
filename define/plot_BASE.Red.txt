@@ -23,6 +23,7 @@ Change rate from 2010|Primary Energy|Wind
 Change rate from 2010|Secondary Energy|Electricity
 Change rate from 2010|Population|Risk of Hunger
 Change rate from 2010|Population
+Change rate from BAU|Policy Cost|GDP Loss rate
 Change rate from 2010|Carbon Intensity(3 Gases/PE)
 Change rate from 2010|Energy Intensity(PE/GDP|PPP)
 Change rate from 2010|Share of Reneable Energy
