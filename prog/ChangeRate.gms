@@ -89,7 +89,7 @@ ALLDATA(MODELN,SCENARIO,REGION,"Electrification Rate","%",YEAR)$ALLDATA(MODELN,S
 
 ALLDATA(MODELN,SCENARIO,REGION,"CCS Rate","%",YEAR)$(ALLDATA(MODELN,SCENARIO,REGION,"Emissions|Kyoto Gases","Mt CO2-equiv/yr",YEAR)+ALLDATA(MODELN,SCENARIO,REGION,"Carbon Sequestration|CCS","Mt CO2/yr",YEAR))
          =ALLDATA(MODELN,SCENARIO,REGION,"Carbon Sequestration|CCS","Mt CO2/yr",YEAR)
-         /(ALLDATA(MODELN,SCENARIO,REGION,"Emissions|Kyoto Gases","Mt CO2-equiv/yr",YEAR)+ALLDATA(MODELN,SCENARIO,REGION,"Carbon Sequestration|CCS","Mt CO2/yr",YEAR));
+         /(ALLDATA(MODELN,SCENARIO,REGION,"Emissions|CO2","Mt CO2/yr",YEAR)+ALLDATA(MODELN,SCENARIO,REGION,"Carbon Sequestration|CCS","Mt CO2/yr",YEAR))*100;
 
 
 * Calculate Change rate compared with BAU and base year
