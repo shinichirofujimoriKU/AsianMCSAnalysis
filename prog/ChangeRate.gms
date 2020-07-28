@@ -49,7 +49,7 @@ ALLDATA(MODELN,SCENARIO,REGION,"Emissions|3 Gases","Mt CO2-equiv/yr",YEAR)
 ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"GDP|PPP","billion US$2005/yr",YEAR)
          =ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"GDP|PPP","billion US$2005/yr",YEAR);
 
-ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)
+ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","t CO2-equiv/PE EJ",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)
          =ALLDATA(MODELN,SCENARIO,REGION,"Emissions|3 Gases","Mt CO2-equiv/yr",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR);
 
 LOOP(YEAR,
@@ -58,16 +58,16 @@ LOOP(YEAR,
                  =-((ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $",YEAR-1))**(1/5)-1)*100;
 
          ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity Improvement Speed(3 Gases/PE)","%/year",YEAR)
-                 $(ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR)>0 AND ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR-1)>0)
-                 =-((ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR-1))**(1/5)-1)*100;
+                 $(ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","t CO2-equiv/PE EJ",YEAR)>0 AND ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","t CO2-equiv/PE EJ",YEAR-1)>0)
+                 =-((ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","t CO2-equiv/PE EJ",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","t CO2-equiv/PE EJ",YEAR-1))**(1/5)-1)*100;
 );
 
 ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020","%/year",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $","2020")
          =-(ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $",YEAR)-ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $","2020"))
          /ALLDATA(MODELN,SCENARIO,REGION,"Energy Intensity(PE/GDP|PPP)","PE GJ/GDP $","2020")/30*100;
-ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020","%/year",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ","2020")
-         =-(ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ",YEAR)-ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ","2020"))
-         /ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","CO2-equiv/PE EJ","2020")/30*100;
+ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020","%/year",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","t CO2-equiv/PE EJ","2020")
+         =-(ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","t CO2-equiv/PE EJ",YEAR)-ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","t CO2-equiv/PE EJ","2020"))
+         /ALLDATA(MODELN,SCENARIO,REGION,"Carbon Intensity(3 Gases/PE)","t CO2-equiv/PE EJ","2020")/30*100;
 
 ALLDATA(MODELN,SCENARIO,REGION,"Share of Reneable Energy|Non-Biomass","%",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)
          =ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy|Non-Biomass Renewables","EJ/yr",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"Primary Energy","EJ/yr",YEAR)*100;
