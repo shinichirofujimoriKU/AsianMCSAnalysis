@@ -9,3 +9,4 @@ Share of Reneable Energy|Non-Biomass
 Share of Low Carbon Energy Source
 Electrification Rate
 CCS Rate
+Additional Investment per GDP

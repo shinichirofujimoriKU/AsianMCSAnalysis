@@ -1170,3 +1170,5 @@ c	Primary Energy|Coal|w/o CCS
 "Share of Low Carbon Energy Source"	Share of Low Carbon Energy Source
 "Electrification Rate"	Electrification Rate
 "CCS Rate"	CCS Rate
+"Additional Investment"	Additional Investment
+"Additional Investment per GDP"	Additional Investment per GDP

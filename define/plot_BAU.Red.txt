@@ -42,3 +42,4 @@ CCS Rate
 Emissions|CO2
 Policy Cost|GDP Loss rate
 Price|Carbon
+Additional Investment per GDP

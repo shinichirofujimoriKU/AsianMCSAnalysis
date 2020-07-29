@@ -16,6 +16,8 @@ $include ../output/allvariables2.txt
 "Share of Low Carbon Energy Source"
 "Electrification Rate"
 "CCS Rate"
+"Additional Investment"
+"Additional Investment per GDP"
 /
 UNIT/
 $include ../output/allunits.txt
@@ -91,6 +93,12 @@ ALLDATA(MODELN,SCENARIO,REGION,"CCS Rate","%",YEAR)$(ALLDATA(MODELN,SCENARIO,REG
          =ALLDATA(MODELN,SCENARIO,REGION,"Carbon Sequestration|CCS","Mt CO2/yr",YEAR)
          /(ALLDATA(MODELN,SCENARIO,REGION,"Emissions|CO2","Mt CO2/yr",YEAR)+ALLDATA(MODELN,SCENARIO,REGION,"Carbon Sequestration|CCS","Mt CO2/yr",YEAR))*100;
 
+ALLDATA(MODELN,SCENARIO,REGION,"Additional Investment","billion US$2005/yr",YEAR)
+         =(ALLDATA(MODELN,SCENARIO,REGION,"Investment|Energy Supply","billion US$2005/yr",YEAR)-ALLDATA(MODELN,"BAU",REGION,"Investment|Energy Supply","billion US$2005/yr",YEAR))
+         +ALLDATA(MODELN,SCENARIO,REGION,"Investment|Energy Demand|Efficiency and Decarbonization","billion US$2005/yr",YEAR);
+
+ALLDATA(MODELN,SCENARIO,REGION,"Additional Investment per GDP","-",YEAR)$ALLDATA(MODELN,SCENARIO,REGION,"GDP|MER","billion US$2005/yr",YEAR)
+         =ALLDATA(MODELN,SCENARIO,REGION,"Additional Investment","billion US$2005/yr",YEAR)/ALLDATA(MODELN,SCENARIO,REGION,"GDP|MER","billion US$2005/yr",YEAR);
 
 * Calculate Change rate compared with BAU and base year
 vsBAU(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR)$(ALLDATA(MODELN,SCENARIO,REGION,VARIABLE2,UNIT,YEAR) AND ALLDATA(MODELN,"BAU",REGION,VARIABLE2,UNIT,YEAR))

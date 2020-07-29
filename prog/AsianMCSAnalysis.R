@@ -176,7 +176,8 @@ RedRate_3gas_vsBASE <- vsBASE2.2 %>% subset(VARIABLE=="Change rate from 2010|Emi
 RedRate_3gas_vsBASE$ReductionRate <- -1 * RedRate_3gas_vsBASE$ReductionRate 
 
 vsBAU.Red <- inner_join(ALLDATA3.0, select(RedRate_3gas_vsBAU,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
-vsBASE.Red <- inner_join(ALLDATA3.0, select(RedRate_3gas_vsBASE,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR"))
+vsBASE.Red <- inner_join(ALLDATA3.0, select(RedRate_3gas_vsBASE,-UNIT), by=c("MODEL","SCENARIO","REGION","YEAR")) %>%
+  filter(SCENARIO!="BAU")
 
 variable_BAU.Red <- as.vector(unique(vsBAU.Red$VARIABLE))
 write(variable_BAU.Red, "../output/variable_BAU.Red.txt")
@@ -294,6 +295,7 @@ names(regresults2) <- names(plot_BASE.Red)
 for (i in 1:length(plot_BAU.Red)){
   vsBAU.Red.sel <- filter(vsBAU.Red, YEAR %in% c(2050) & VARIABLE==plot_BAU.Red[i])
   vsBAU.REG <- lm(VALUE ~ ReductionRate + d_CHN + d_IND + d_KOR + d_THA + d_VNM, vsBAU.Red.sel)
+  vsBAU.REG.res <- summary(vsBAU.REG)
   regresults[[plot_BAU.Red[i]]] <- summary(vsBAU.REG)
   if (i==1){
     reg_summ <- cbind(as.character(plot_BAU.Red[i]),tibble::rownames_to_column(as.data.frame(regresults[[plot_BAU.Red[i]]]$coefficients), "factors"))
@@ -303,11 +305,13 @@ for (i in 1:length(plot_BAU.Red)){
   aveint <- c(as.numeric(vsBAU.REG[[1]]["d_IND"]),as.numeric(vsBAU.REG[[1]]["d_VNM"]),as.numeric(vsBAU.REG[[1]]["d_THA"]),as.numeric(vsBAU.REG[[1]]["d_CHN"]),as.numeric(vsBAU.REG[[1]]["d_KOR"]))
   lma <- signif(vsBAU.REG[[1]][2],2)
   lmb <- signif(vsBAU.REG[[1]][1]+mean(aveint),2)
+  adjR2 <- signif(vsBAU.REG.res[[9]],4)
   if(nrow(vsBAU.Red.sel)>=2){
     g1 <- ggplot() +
       geom_point(data=vsBAU.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION), shape=21) +
       geom_abline(intercept=vsBAU.REG[[1]][1]+mean(aveint), slope=vsBAU.REG[[1]][2], color="red") +
       annotate("text", x=-Inf, y=Inf, label=paste("y=",lma,"x",ifelse(lmb>0,"+",""),lmb), hjust=-0.2, vjust=2) +
+      annotate("text", x=-Inf, y=Inf, label=paste("Adj R-squared=",adjR2), hjust=-0.1, vjust=4, size=3) +
       ylab(unit_BAU.Red$UNIT[i]) + xlab("3 gases emission reduction rate from BAU (%)") +
       MyThemeLine_grid + 
       ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=pastelpal1)
@@ -317,26 +321,27 @@ for (i in 1:length(plot_BAU.Red)){
 }
 write.table(reg_summ,file="../output/regression_BaU.txt", append = FALSE, row.names=TRUE, quote = FALSE, sep = ",")
 
-
 for (i in 1:length(plot_BASE.Red)){
-  vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i] & SCENARIO!="BaU") 
+  vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i] & SCENARIO!="BAU") 
   vsBASE.REG <- lm(VALUE ~ ReductionRate + d_CHN + d_IND + d_KOR + d_THA + d_VNM, vsBASE.Red.sel)
+  vsBASE.REG.res <- summary(vsBASE.REG)
   regresults2[[plot_BASE.Red[i]]] <- summary(vsBASE.REG)
   if (i==1){
     reg_summ <- cbind(as.character(plot_BASE.Red[i]),tibble::rownames_to_column(as.data.frame(regresults2[[plot_BASE.Red[i]]]$coefficients), "factors"))
   }else{
     reg_summ <- rbind(reg_summ, cbind(as.character(plot_BASE.Red[i]),tibble::rownames_to_column(as.data.frame(regresults2[[plot_BASE.Red[i]]]$coefficients), "factors")) )
   }
-  vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i]) 
   aveint <- c(as.numeric(vsBASE.REG[[1]]["d_IND"]),as.numeric(vsBASE.REG[[1]]["d_VNM"]),as.numeric(vsBASE.REG[[1]]["d_THA"]),as.numeric(vsBASE.REG[[1]]["d_CHN"]),as.numeric(vsBASE.REG[[1]]["d_KOR"]))
   lma <- signif(vsBASE.REG[[1]][2],2)
   lmb <- signif(vsBASE.REG[[1]][1]+mean(aveint),2)
+  adjR2 <- signif(vsBASE.REG.res[[9]],4)
   if(nrow(vsBASE.Red.sel)>=2){
     g2 <- ggplot() +
       geom_point(data=vsBASE.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION),shape=21) + 
       geom_abline(intercept=vsBASE.REG[[1]][1]+mean(aveint), slope=vsBASE.REG[[1]][2], color="red") +
       ylab(unit_BASE.Red$UNIT[i]) + xlab("3 gases emission reduction rate from 2010 (%)") +
-      annotate("text", x=-Inf, y=Inf, label=paste("y=",lma,"x",ifelse(lmb>0,"+",""),lmb), hjust=-0.2, vjust=2) +
+      annotate("text", x=-Inf, y=Inf, label=paste("y=",lma,"x",ifelse(lmb>0,"+",""),lmb), hjust=-0.2, vjust=2, size=3) +
+      annotate("text", x=-Inf, y=Inf, label=paste("Adj R-squared=",adjR2), hjust=-0.1, vjust=4, size=3) +
       MyThemeLine_grid + 
       ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/CrossCountries_vsBASE/",name_BASE.Red[i],".png")
