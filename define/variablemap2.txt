@@ -969,7 +969,7 @@ VARIABLE2	VARIABLE
 "Primary Energy|Coal|Electricity|w/ CCS"	Primary Energy|Coal|Electricity|w/ CCS
 "Primary Energy|Coal|Electricity|w/o CCS"	Primary Energy|Coal|Electricity|w/o CCS
 "Primary Energy|Coal|w/ CCS"	Primary Energy|Coal|w/ CCS
-c	Primary Energy|Coal|w/o CCS
+"Primary Energy|Coal|w/o CCS"	Primary Energy|Coal|w/o CCS
 "Primary Energy|Fossil"	Primary Energy|Fossil
 "Primary Energy|Fossil|w/ CCS"	Primary Energy|Fossil|w/ CCS
 "Primary Energy|Fossil|w/o CCS"	Primary Energy|Fossil|w/o CCS

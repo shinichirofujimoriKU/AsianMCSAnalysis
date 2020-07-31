@@ -43,3 +43,8 @@ Emissions|CO2
 Policy Cost|GDP Loss rate
 Price|Carbon
 Additional Investment per GDP
+Primary Energy
+Emissions|Kyoto Gases
+Final Energy
+Population
+GDP|MER

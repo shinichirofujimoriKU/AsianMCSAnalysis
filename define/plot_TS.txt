@@ -10,3 +10,5 @@ Share of Low Carbon Energy Source
 Electrification Rate
 CCS Rate
 Additional Investment per GDP
+Primary Energy
+Emissions|Kyoto Gases

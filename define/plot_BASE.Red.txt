@@ -40,3 +40,6 @@ Share of Low Carbon Energy Source
 Electrification Rate
 CCS Rate
 Additional Investment per GDP
+Policy Cost|GDP Loss rate
+Price|Carbon
+Additional Investment per GDP

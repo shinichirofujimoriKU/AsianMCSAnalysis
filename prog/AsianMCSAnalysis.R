@@ -26,6 +26,7 @@ dir.create("../output/fig/EffortSharing/")
 dir.create("../output/fig/CrossCountries_vsBASE_woBaU/")
 dir.create("../output/fig/PrimaryEnergy")
 dir.create("../output/fig/Timeseries")
+dir.create("../output/fig/Timeseries/merged")
 dir.create("../output/fig/GlobalEmissionPathway")
 
 #-------------------------
@@ -33,6 +34,8 @@ dir.create("../output/fig/GlobalEmissionPathway")
 #-------------------------
 pastelpal1 <- brewer.pal(9, "Pastel1")
 spectpal <- brewer.pal(11, "Spectral")
+RdYlGn <- brewer.pal(11, "RdYlGn")
+RdYlGn <- c(RdYlGn[1:5],RdYlGn[7:11])
 YlOrRdpal1 <- brewer.pal(9, "YlOrRd")
 AR6pal <- c("C1: 1.5C with no or low OS"="#8fbc8f","C2: 1.5C with high OS"="#7fffd4","C3: lower 2C"="#6495ed","C4: higher 2C"="#f0e68c","C5: below 2.5C"="#ffa07a","C6: below 3.0C"="#ee82ee","C7: above 3.0C"="#a9a9a9")
 tpespalette <- c("Primary Energy|Coal|w/o CCS"="#000000","Primary Energy|Coal|w/ CCS"="#7f878f","Primary Energy|Oil"="#ff2800","Primary Energy|Gas|w/o CCS"="#9a0079","Primary Energy|Gas|w/ CCS"="#c7b2de","Primary Energy|Hydro"="#0041ff","Primary Energy|Nuclear"="#663300","Primary Energy|Solar"="#b4ebfa","Primary Energy|Wind"="#ff9900","Primary Energy|Geothermal"="#edc58f","Primary Energy|Biomass"="#35a16b","Primary Energy|Biomass|w/ CCS"="#cbf266","Primary Energy|Other"="#ffff99")
@@ -321,6 +324,9 @@ for (i in 1:length(plot_BAU.Red)){
 }
 write.table(reg_summ,file="../output/regression_BaU.txt", append = FALSE, row.names=TRUE, quote = FALSE, sep = ",")
 
+RelBase <- as.list(plot_BASE.Red)
+names(RelBase) <- plot_BASE.Red 
+
 for (i in 1:length(plot_BASE.Red)){
   vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i] & SCENARIO!="BAU") 
   vsBASE.REG <- lm(VALUE ~ ReductionRate + d_CHN + d_IND + d_KOR + d_THA + d_VNM, vsBASE.Red.sel)
@@ -339,18 +345,26 @@ for (i in 1:length(plot_BASE.Red)){
     g2 <- ggplot() +
       geom_point(data=vsBASE.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION),shape=21) + 
       geom_abline(intercept=vsBASE.REG[[1]][1]+mean(aveint), slope=vsBASE.REG[[1]][2], color="red") +
-      ylab(unit_BASE.Red$UNIT[i]) + xlab("3 gases emission reduction rate from 2010 (%)") +
+      ylab(unit_BASE.Red$UNIT[i]) + xlab("Emissions reduction rates from 2010") +
       annotate("text", x=-Inf, y=Inf, label=paste("y=",lma,"x",ifelse(lmb>0,"+",""),lmb), hjust=-0.2, vjust=2, size=3) +
-      annotate("text", x=-Inf, y=Inf, label=paste("Adj R-squared=",adjR2), hjust=-0.1, vjust=4, size=3) +
-      MyThemeLine_grid + 
+      annotate("text", x=-Inf, y=Inf, label=substitute(paste(R^2,"=",n), list(n=adjR2)), hjust=-0.4, vjust=2.5, size=3) +
+      MyThemeLine_grid + theme(plot.title = element_text(size=8))+ 
       ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/CrossCountries_vsBASE/",name_BASE.Red[i],".png")
     ggsave(g2, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
     g2.1 <- g2 + xlim(c(0, NA))
+    RelBase[[plot_BASE.Red[i]]] <- g2.1 
     ggsave(g2.1, file=paste0("../output/fig/CrossCountries_vsBASE_woBaU/",name_BASE.Red[i],".png"), dpi=600, width=4, height=3, limitsize=FALSE)
   }
 }
-write.table(reg_summ,file="../output/regression_Base.txt", append = FALSE, row.names=TRUE, quote = FALSE, sep = ",")
+write.table(reg_summ,file="../output/regression_Base.txt", append = FALSE, row.names=FALSE, quote = FALSE, sep = ",")
+
+p_legend <- gtable::gtable_filter(ggplotGrob(RelBase[["Policy Cost|GDP Loss rate"]]), pattern = "guide-box")
+pp1.1 <- plot_grid(RelBase[["Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020"]]+theme(legend.position="none")+ggtitle("Energy intensity change rate"),RelBase[["Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020"]]+theme(legend.position="none")+ggtitle("Carbon intensity change rate"),RelBase[["Share of Low Carbon Energy Source"]]+theme(legend.position="none"),p_legend,align = "hv",ncol=4,rel_widths=c(1,1,1,0.3))
+pp1.2 <- plot_grid(RelBase[["Electrification Rate"]]+theme(legend.position="none"),RelBase[["Price|Carbon"]]+theme(legend.position="none"),RelBase[["Policy Cost|GDP Loss rate"]]+theme(legend.position="none"),NULL,align = "hv",ncol=4,rel_widths=c(1,1,1,0.3))
+pp1 <- plot_grid(pp1.1,pp1.2,ncol=1,rel_heights = c(1,1)) +  draw_plot_label(label = c("a","b","c","d","e","f"), size = 12,x = c(0.00,0.3,0.63,0.00,0.3,0.63), y = c(1, 1,1,0.52,0.52,0.52)) 
+outname <- paste0("../output/fig/CrossCountries_vsBASE_woBaU_merge1.png")
+ggsave(pp1, file=outname, dpi = 250, width=10, height=6,limitsize=FALSE)
 
 # GHG emissions in 2050 for 1.5/2 degree goal in each effort sharing approach (By country)
 for(i in Country_List){
@@ -376,10 +390,10 @@ for(i in Country_List){
     geom_hline(data=subset(EMI, Country==i & Type=="GHGinLU" & Year==2010), aes(yintercept=Red90), linetype="dashed", colour="gray") +
     geom_hline(yintercept=0, linetype="dashed", colour="black") +
     annotate("rect", ymin=minv, ymax=maxv, xmin=-Inf, xmax=Inf, alpha=0.2, fill=spectpal[10]) +
-    annotate("rect", ymin=minv2, ymax=maxv2, xmin=-Inf, xmax=Inf, alpha=0.2, fill=spectpal[4]) +
+    annotate("rect", ymin=minv2, ymax=maxv2, xmin=-Inf, xmax=Inf, alpha=0.2, fill=spectpal[2]) +
     MyThemeLine_grid
   outname <- paste0("../output/fig/EffortSharing/Emission_Pathway_",i,".png")
-  ggsave(g3, file=outname, dpi=600, width=5, height=3, limitsize=FALSE)
+  ggsave(g3, file=outname, dpi=600, width=4, height=5, limitsize=FALSE)
 }
 
 # Primary energy supply by fuel
@@ -394,7 +408,7 @@ for(i in Country_List){
 # Time series graphs of each variables (Cross-countries)
 for (i in 1:length(plot_TS)){
   if(nrow(ALLDATA3.1)>=2){
-    g5 <- ggplot(data=subset(ALLDATA3.1, VARIABLE==plot_TS[i]), aes(x=YEAR, y=VALUE)) +
+    g5 <- ggplot(data=subset(ALLDATA3.1, VARIABLE==plot_TS[i] & YEAR>=2010), aes(x=YEAR, y=VALUE)) +
       geom_point(aes(group=interaction(REGION,SCENARIO), color=REGION, shape=SCENARIO)) + 
       geom_line(aes(group=interaction(REGION,SCENARIO), color=REGION)) + ylab(unit_TS$UNIT[i]) + xlab("YEAR") +
       MyThemeLine_grid + 
@@ -404,21 +418,33 @@ for (i in 1:length(plot_TS)){
   }
 }
 #Time series for country
+TimeSerieslist <- as.list(plot_BAU.Red)
+names(TimeSerieslist) <- plot_BAU.Red 
+
 for (r in Country_List){
   dir.create(paste0("../output/fig/Timeseries/",r))
   for (i in 1:length(plot_BAU.Red)){
 #    for (i in 73:73){
       if(nrow(filter(ALLDATA3.1, VARIABLE %in% plot_BAU.Red[i] & REGION==r))>=2){
-      g5 <- ggplot(data=subset(ALLDATA3.1, VARIABLE==plot_BAU.Red[i] & REGION==r), aes(x=YEAR, y=VALUE)) +
+      g5 <- ggplot(data=subset(ALLDATA3.1, VARIABLE==plot_BAU.Red[i] & REGION==r& YEAR>=2010), aes(x=YEAR, y=VALUE)) +
         geom_point(aes(group=SCENARIO, color=SCENARIO), shape=1) + 
         geom_line(aes(group=SCENARIO, color=SCENARIO)) + ylab(unit_BAU.Red$UNIT[i]) + xlab("YEAR") +
-        MyThemeLine_grid + 
-        ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=YlOrRdpal1)
+        MyThemeLine_grid + theme(plot.title = element_text(size=8))+ 
+        ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=RdYlGn)
+      TimeSerieslist[[plot_BAU.Red[i]]] <- g5
       outname <- paste0("../output/fig/Timeseries/",r,"/",name_BAU.Red[i],".png")
-      ggsave(g5, file=outname, dpi=600, width=5, height=4, limitsize=FALSE)
+      ggsave(g5, file=outname, dpi=600, width=4, height=3, limitsize=FALSE)
     }
   }
+  p_legend <- gtable::gtable_filter(ggplotGrob(TimeSerieslist[["Emissions|CO2"]]), pattern = "guide-box")
+  pp1.1 <- plot_grid(TimeSerieslist[["Population"]]+theme(legend.position="none"),TimeSerieslist[["GDP|MER"]]+theme(legend.position="none"),TimeSerieslist[["Price|Carbon"]]+theme(legend.position="none"),TimeSerieslist[["Policy Cost|GDP Loss rate"]]+theme(legend.position="none"),NULL,align = "hv",ncol=5,rel_widths=c(1,1,1,1,0.3))
+  pp1.2 <- plot_grid(TimeSerieslist[["Primary Energy"]]+theme(legend.position="none"),TimeSerieslist[["Final Energy"]]+theme(legend.position="none"),TimeSerieslist[["Emissions|CO2"]]+theme(legend.position="none"),TimeSerieslist[["Emissions|Kyoto Gases"]]+theme(legend.position="none"),NULL,align = "hv",ncol=5,rel_widths=c(1,1,1,1,0.3))
+  pp1.3 <- plot_grid(TimeSerieslist[["Carbon Intensity(3 Gases/PE)"]]+theme(legend.position="none"),TimeSerieslist[["Energy Intensity(PE/GDP|PPP)"]]+theme(legend.position="none"),TimeSerieslist[["Share of Low Carbon Energy Source"]]+theme(legend.position="none"),TimeSerieslist[["Electrification Rate"]]+theme(legend.position="none"),p_legend,align = "hv",ncol=5,rel_widths=c(1,1,1,1,0.3))
+  pp1 <- plot_grid(pp1.1,pp1.2,pp1.3,ncol=1,rel_heights = c(1,1,1)) +  draw_plot_label(label = c("a","b","c","d","e","f","g","h","i","j","k","l"), size = 12,x = c(0.03,0.23,0.48,0.73,0.03,0.23,0.48,0.73,0.03,0.23,0.48,0.73), y = c(1, 1,1,1,0.68,0.68,0.68,0.68,0.35,0.35,0.35,0.35)) 
+  outname <- paste0("../output/fig/Timeseries/merged/",r,"_merge1.png")
+  ggsave(pp1, file=outname, dpi = 250, width=12, height=10,limitsize=FALSE)
 }
+  
 
 # Global emission pathways
 ylist <- c(2050,2100)
@@ -439,4 +465,6 @@ for(yr in 1:length(ylist)){
   outname <- paste("../output/fig/GlobalEmissionPathway/GlobalEmissionPathway",ylist[yr],".png",sep="")
   ggsave(g7, file=outname, dpi = 600, width=5, height=4, limitsize=FALSE)
 }
+
+
 
