@@ -13,6 +13,7 @@ library(grid)
 library(gridExtra)
 library(RColorBrewer)
 library(scales)
+library(tableone)
 library(cowplot)
 
 #-------------------------
@@ -367,6 +368,8 @@ outname <- paste0("../output/fig/CrossCountries_vsBASE_woBaU_merge1.png")
 ggsave(pp1, file=outname, dpi = 250, width=10, height=6,limitsize=FALSE)
 
 # GHG emissions in 2050 for 1.5/2 degree goal in each effort sharing approach (By country)
+Emit2050fig <- as.list(Country_List)
+names(Emit2050fig) <- Country_List 
 for(i in Country_List){
   minv <- subset(TGT, Country==i, c(MIN))
   maxv <- subset(TGT, Country==i, c(MAX))
@@ -393,16 +396,21 @@ for(i in Country_List){
     annotate("rect", ymin=minv2, ymax=maxv2, xmin=-Inf, xmax=Inf, alpha=0.2, fill=spectpal[2]) +
     MyThemeLine_grid
   outname <- paste0("../output/fig/EffortSharing/Emission_Pathway_",i,".png")
-  ggsave(g3, file=outname, dpi=600, width=4, height=5, limitsize=FALSE)
+  ggsave(g3, file=outname, dpi=600, width=3, height=4, limitsize=FALSE)
+  Emit2050fig[[i]] <-g3
 }
 
 # Primary energy supply by fuel
+#Time series for country
+TPESfig <- as.list(Country_List)
+names(TPESfig) <- Country_List 
 for(i in Country_List){
   g4 <- ggplot(subset(PE, REGION==i & YEAR==2050), aes(x=SCENARIO, y=VALUE, fill=VARIABLE)) +
     geom_bar(stat="identity") + labs(y="Primary Energy (EJ/year)", title=i) + 
     MyThemeLine_grid + scale_fill_manual(values=tpespalette)
   outname <- paste0("../output/fig/PrimaryEnergy/Primary_Energy_",i,".png")
-  ggsave(g4, file=outname, dpi=600, width=7, height=5, limitsize=FALSE)
+  ggsave(g4, file=outname, dpi=600, width=5, height=3.5, limitsize=FALSE)
+  TPESfig[[i]] <- g4
 }
 
 # Time series graphs of each variables (Cross-countries)
@@ -414,12 +422,14 @@ for (i in 1:length(plot_TS)){
       MyThemeLine_grid + 
       ggtitle(label=plot_TS[i]) + scale_colour_manual(values=pastelpal1)
     outname <- paste0("../output/fig/Timeseries/",name_TS[i],".png")
-    ggsave(g5, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
+    ggsave(g5, file=outname, dpi=600, width=4, height=4, limitsize=FALSE)
   }
 }
 #Time series for country
 TimeSerieslist <- as.list(plot_BAU.Red)
 names(TimeSerieslist) <- plot_BAU.Red 
+TimeSerieslistJPN <- as.list(plot_BAU.Red)
+names(TimeSerieslistJPN) <- plot_BAU.Red 
 
 for (r in Country_List){
   dir.create(paste0("../output/fig/Timeseries/",r))
@@ -434,6 +444,9 @@ for (r in Country_List){
       TimeSerieslist[[plot_BAU.Red[i]]] <- g5
       outname <- paste0("../output/fig/Timeseries/",r,"/",name_BAU.Red[i],".png")
       ggsave(g5, file=outname, dpi=600, width=4, height=3, limitsize=FALSE)
+    }
+    if(r=="JPN"){
+      TimeSerieslistJPN[[i]] <- g5
     }
   }
   p_legend <- gtable::gtable_filter(ggplotGrob(TimeSerieslist[["Emissions|CO2"]]), pattern = "guide-box")
@@ -463,8 +476,29 @@ for(yr in 1:length(ylist)){
     scale_x_continuous(breaks=seq(2010,ylist[yr],by=(ylist[yr]-2000)/10),limits=c(2010,ylist[yr]+8)) +
     theme(strip.text = element_blank())
   outname <- paste("../output/fig/GlobalEmissionPathway/GlobalEmissionPathway",ylist[yr],".png",sep="")
-  ggsave(g7, file=outname, dpi = 600, width=5, height=4, limitsize=FALSE)
+  ggsave(g7, file=outname, dpi = 600, width=4, height=3, limitsize=FALSE)
 }
 
+MyThemeLine_jpn <- theme_bw() +
+  theme(
+    strip.text.x = element_text(size=10, colour = "black", angle = 0,face="bold"),
+    axis.text.x=element_text(size=10,angle=45, vjust=0.9, hjust=1, margin = unit(c(t = 0.3, r = 0, b = 0, l = 0), "cm")),
+    axis.text.y=element_text(size=10,margin = unit(c(t = 0, r = 0.3, b = 0, l = 0), "cm")),
+    legend.text = element_text(size = 10),
+  )
 
+p_legend <- gtable::gtable_filter(ggplotGrob(TimeSerieslistJPN[["Emissions|CO2"]]), pattern = "guide-box")
+
+pp2.1 <- plot_grid(NULL,g7+MyThemeLine_jpn,NULL,align = "hv",ncol=3,rel_widths=c(0.4,1.2,1.5))
+pp2.2 <- plot_grid(NULL,Emit2050fig[["JPN"]]+ggtitle("")+MyThemeLine_jpn,align = "hv",ncol=2,rel_widths=c(2.2,2))
+pp2.3 <- plot_grid(NULL,TimeSerieslistJPN[["Emissions|CO2"]]+MyThemeLine_jpn+ggtitle("")+theme(legend.position="none"),p_legend,NULL,TPESfig[["JPN"]]+MyThemeLine_jpn+ggtitle(""),align = "hv",ncol=6,rel_widths=c(0.1,1.2,0.5,0.3,2))
+pp2.4 <- plot_grid(NULL,TimeSerieslistJPN[["Price|Carbon"]]+MyThemeLine_jpn+theme(legend.position="none")+ggtitle(""),TimeSerieslistJPN[["Policy Cost|GDP Loss rate"]]+MyThemeLine_jpn+ggtitle(""),align = "hv",ncol=3,rel_widths=c(2.1,0.85,1.15))
+garr0 <- grid::curveGrob(0.75, 0.75, 0.75, 0.73,curvature=0, gp=gpar(fill="black"),arrow=arrow(type="closed", length=unit(3,"mm")))
+garr1 <- grid::curveGrob(0.40, 0.5, 0.5, 0.65,curvature=0, gp=gpar(fill="black"),arrow=arrow(type="closed", length=unit(3,"mm")))
+garr2 <- grid::curveGrob(0.40, 0.4, 0.5, 0.4,curvature=0, gp=gpar(fill="black"),arrow=arrow(type="closed", length=unit(3,"mm")))
+garr3 <- grid::curveGrob(0.40, 0.3, 0.5, 0.2,curvature=0, gp=gpar(fill="black"),arrow=arrow(type="closed", length=unit(3,"mm")))
+pp2 <- plot_grid(pp2.1,pp2.2,pp2.3,pp2.4,ncol=1,rel_heights = c(1,1,1,1)) +  draw_plot_label(label = c("a","b","c","d","e","f","g"), size = 12,x = c(0.15,0.48,0.03,0.48,0.48,0.48,0.73), y = c(1,   1,0.5,0.75,0.5,0.25,0.25))+
+  draw_grob(garr0) +draw_grob(garr1) +draw_grob(garr2)+draw_grob(garr3)  
+ggsave(pp2, file="../output/fig/fig1.png", dpi = 250, width=12, height=12,limitsize=FALSE)
+ggsave(pp2, file="../output/fig/fig1.svg", dpi = 250, width=12, height=12,limitsize=FALSE)
 
