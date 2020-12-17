@@ -37,6 +37,7 @@ pastelpal1 <- brewer.pal(9, "Pastel1")
 spectpal <- brewer.pal(11, "Spectral")
 RdYlGn <- brewer.pal(11, "RdYlGn")
 RdYlGn <- c(RdYlGn[1:5],RdYlGn[7:11])
+Set1pal <- brewer.pal(8, "Set1")
 YlOrRdpal1 <- brewer.pal(9, "YlOrRd")
 AR6pal <- c("C1: 1.5C with no or low OS"="#8fbc8f","C2: 1.5C with high OS"="#7fffd4","C3: lower 2C"="#6495ed","C4: higher 2C"="#f0e68c","C5: below 2.5C"="#ffa07a","C6: below 3.0C"="#ee82ee","C7: above 3.0C"="#a9a9a9")
 tpespalette <- c("Primary Energy|Coal|w/o CCS"="#000000","Primary Energy|Coal|w/ CCS"="#7f878f","Primary Energy|Oil"="#ff2800","Primary Energy|Gas|w/o CCS"="#9a0079","Primary Energy|Gas|w/ CCS"="#c7b2de","Primary Energy|Hydro"="#0041ff","Primary Energy|Nuclear"="#663300","Primary Energy|Solar"="#b4ebfa","Primary Energy|Wind"="#ff9900","Primary Energy|Geothermal"="#edc58f","Primary Energy|Biomass"="#35a16b","Primary Energy|Biomass|w/ CCS"="#cbf266","Primary Energy|Other"="#ffff99")
@@ -105,6 +106,7 @@ colhead2 <- c("MODELN","SCENARIO","REGION","VARIABLE2","UNIT")
 
 variablemap <- read.table("../define/variablemap.txt",sep="\t",header=T) 
 variablemap2 <- read.table("../define/variablemap2.txt",sep="\t",header=T) 
+variablemap3 <- read.table("../define/varmap3.txt",sep="\t",header=F) 
 
 ALLDATA1.1 <- ALLDATA1.0 %>% gather(key=YEAR,value=VALUE,-MODEL,-SCENARIO,-REGION,-VARIABLE,-UNIT) %>% 
   inner_join(variablemap,by="VARIABLE") %>% select(-VARIABLE) %>% rename(MODELN = MODEL) %>%
@@ -359,6 +361,7 @@ for (i in 1:length(plot_BASE.Red)){
   }
 }
 write.table(reg_summ,file="../output/regression_Base.txt", append = FALSE, row.names=FALSE, quote = FALSE, sep = ",")
+reg_summ_all <- cbind(c("all"),reg_summ)
 
 p_legend <- gtable::gtable_filter(ggplotGrob(RelBase[["Policy Cost|GDP Loss rate"]]), pattern = "guide-box")
 pp1.1 <- plot_grid(RelBase[["Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020"]]+theme(legend.position="none")+ggtitle("Energy intensity change rate"),RelBase[["Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020"]]+theme(legend.position="none")+ggtitle("Carbon intensity change rate"),RelBase[["Share of Low Carbon Energy Source"]]+theme(legend.position="none"),p_legend,align = "hv",ncol=4,rel_widths=c(1,1,1,0.3))
@@ -497,8 +500,66 @@ garr0 <- grid::curveGrob(0.75, 0.75, 0.75, 0.73,curvature=0, gp=gpar(fill="black
 garr1 <- grid::curveGrob(0.40, 0.5, 0.5, 0.65,curvature=0, gp=gpar(fill="black"),arrow=arrow(type="closed", length=unit(3,"mm")))
 garr2 <- grid::curveGrob(0.40, 0.4, 0.5, 0.4,curvature=0, gp=gpar(fill="black"),arrow=arrow(type="closed", length=unit(3,"mm")))
 garr3 <- grid::curveGrob(0.40, 0.3, 0.5, 0.2,curvature=0, gp=gpar(fill="black"),arrow=arrow(type="closed", length=unit(3,"mm")))
+garr4 <- grid::curveGrob(0.64, 0.72, 0.65, 0.70,curvature=0, gp=gpar(color="red",fill="red"),arrow=arrow(type="closed", length=unit(3,"mm")))
+garr5 <- grid::curveGrob(0.64, 0.6, 0.65, 0.65,curvature=0, gp=gpar(color="red",fill="red"),arrow=arrow(type="closed", length=unit(3,"mm")))
 pp2 <- plot_grid(pp2.1,pp2.2,pp2.3,pp2.4,ncol=1,rel_heights = c(1,1,1,1)) +  draw_plot_label(label = c("a","b","c","d","e","f","g"), size = 12,x = c(0.15,0.48,0.03,0.48,0.48,0.48,0.73), y = c(1,   1,0.5,0.75,0.5,0.25,0.25))+
-  draw_grob(garr0) +draw_grob(garr1) +draw_grob(garr2)+draw_grob(garr3)  
-ggsave(pp2, file="../output/fig/fig1.png", dpi = 250, width=12, height=12,limitsize=FALSE)
-ggsave(pp2, file="../output/fig/fig1.svg", dpi = 250, width=12, height=12,limitsize=FALSE)
+  draw_grob(garr0) +draw_grob(garr1) +draw_grob(garr2)+draw_grob(garr3) + draw_grob(garr4)  +draw_grob(garr5)  +
+  annotate("text",x=0.6,y=0.74,label="Base year emissions",hjust=0.2,vjust=0.2) +
+  annotate("text",x=0.62,y=0.59,label="National long-term \ntarget space",hjust=0.2,vjust=0.2)
+ggsave(pp2, file="../output/fig/fig1.png", dpi = 250, width=12, height=14,limitsize=FALSE)
+ggsave(pp2, file="../output/fig/fig1.svg", dpi = 250, width=12, height=14,limitsize=FALSE)
+
+
+#---- sensitivty test to exclude a country
+for (i in 1:length(plot_BASE.Red)){
+  for (r in Country_List){
+  vsBASE.Red.sel <- filter(vsBASE.Red, YEAR %in% c(2050) & VARIABLE==plot_BASE.Red[i] & SCENARIO!="BAU" & REGION!=r) 
+  vsBASE.REG <- lm(VALUE ~ ReductionRate + d_CHN + d_IND + d_KOR + d_THA + d_VNM, vsBASE.Red.sel)
+  vsBASE.REG.res <- summary(vsBASE.REG)
+  regresults2[[plot_BASE.Red[i]]] <- summary(vsBASE.REG)
+  if (i==1){
+    reg_summ_r <- cbind(as.character(r),as.character(plot_BASE.Red[i]),tibble::rownames_to_column(as.data.frame(regresults2[[plot_BASE.Red[i]]]$coefficients), "factors"))
+  }else{
+    reg_summ_r <- rbind(reg_summ_r, cbind(as.character(r),as.character(plot_BASE.Red[i]),tibble::rownames_to_column(as.data.frame(regresults2[[plot_BASE.Red[i]]]$coefficients), "factors")) )
+  }
+  aveint <- c(as.numeric(vsBASE.REG[[1]]["d_IND"]),as.numeric(vsBASE.REG[[1]]["d_VNM"]),as.numeric(vsBASE.REG[[1]]["d_THA"]),as.numeric(vsBASE.REG[[1]]["d_CHN"]),as.numeric(vsBASE.REG[[1]]["d_KOR"]))
+  lma <- signif(vsBASE.REG[[1]][2],2)
+  lmb <- signif(vsBASE.REG[[1]][1]+mean(aveint),2)
+  adjR2 <- signif(vsBASE.REG.res[[9]],4)
+  if(nrow(vsBASE.Red.sel)<=-1){
+    g2 <- ggplot() +
+      geom_point(data=vsBASE.Red.sel, aes(x=ReductionRate, y=VALUE, color=REGION, fill=REGION),shape=21) + 
+      geom_abline(intercept=vsBASE.REG[[1]][1]+mean(aveint), slope=vsBASE.REG[[1]][2], color="red") +
+      ylab(unit_BASE.Red$UNIT[i]) + xlab("Emissions reduction rates from 2010") +
+      annotate("text", x=-Inf, y=Inf, label=paste("y=",lma,"x",ifelse(lmb>0,"+",""),lmb), hjust=-0.2, vjust=2, size=3) +
+      annotate("text", x=-Inf, y=Inf, label=substitute(paste(R^2,"=",n), list(n=adjR2)), hjust=-0.4, vjust=2.5, size=3) +
+      MyThemeLine_grid + theme(plot.title = element_text(size=8))+ 
+      ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
+    outname <- paste0("../output/fig/CrossCountries_vsBASE/",name_BASE.Red[i],".png")
+    ggsave(g2, file=outname, dpi=600, width=6, height=5, limitsize=FALSE)
+    g2.1 <- g2 + xlim(c(0, NA))
+    RelBase[[plot_BASE.Red[i]]] <- g2.1 
+    ggsave(g2.1, file=paste0("../output/fig/CrossCountries_vsBASE_woBaU/",name_BASE.Red[i],".png"), dpi=600, width=4, height=3, limitsize=FALSE)
+  }
+  }
+}
+colnames(reg_summ_r) <- c("R","VarName0","factors","Estimate","StdE","t value","Pr(>|t|)")
+colnames(reg_summ_all) <- colnames(reg_summ_r)
+names(variablemap3) <- c("VarName0","VarName")
+VarListReg <- c("Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020","Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020","Share of Low Carbon Energy Source","Electrification Rate","Price|Carbon","Policy Cost|GDP Loss rate")
+reg_summ_r2 <- rbind(reg_summ_r,reg_summ_all) %>% filter(VarName0 %in% variablemap3$VarName0) %>% inner_join(variablemap3)
+reg_summ_r2$`StdE` <- as.numeric(reg_summ_r2$`StdE`)
+write.table(reg_summ_r2,file="../output/regression_Base_excludecountry.csv", append = FALSE, row.names=FALSE, quote = FALSE, sep = ",")
+for (n in c("ReductionRate")){ # c("(Intercept)","ReductionRate")
+  g3 <- ggplot() +
+    geom_point(data=filter(reg_summ_r2,factors==n), aes(x=R, y=Estimate, color=R, fill=R),shape=21)+ 
+    geom_errorbar(data=filter(reg_summ_r2,factors==n), aes(x=R, ymax=Estimate+StdE, ymin=Estimate-StdE,color=R)) + 
+    xlab("")+ylab("Unit depending on indicators")+scale_color_manual(values=Set1pal)+scale_fill_manual(values=Set1pal)+
+    #  annotate("text", x=-Inf, y=Inf, label=paste("y=",lma,"x",ifelse(lmb>0,"+",""),lmb), hjust=-0.2, vjust=2, size=3) +
+    #  annotate("text", x=-Inf, y=Inf, label=substitute(paste(R^2,"=",n), list(n=adjR2)), hjust=-0.4, vjust=2.5, size=3) +
+    MyThemeLine_grid + theme(plot.title = element_text(size=8),legend.title=element_blank())
+  g4 <- g3 + facet_wrap(~VarName,scale="free") + theme(strip.text.x = element_text(size = 8))
+  ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
+  ggsave(g4, file=paste0("../output/fig/CrossCountries_vsBASE_woBaU/ExclReg.png"), dpi=600, width=9, height=6, limitsize=FALSE)
+}
 
