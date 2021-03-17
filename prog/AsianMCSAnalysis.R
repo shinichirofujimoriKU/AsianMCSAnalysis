@@ -29,6 +29,7 @@ dir.create("../output/fig/PrimaryEnergy")
 dir.create("../output/fig/Timeseries")
 dir.create("../output/fig/Timeseries/merged")
 dir.create("../output/fig/GlobalEmissionPathway")
+dir.create("../output/fig/4paper")
 
 #-------------------------
 # Set figure theme
@@ -36,11 +37,13 @@ dir.create("../output/fig/GlobalEmissionPathway")
 pastelpal1 <- brewer.pal(9, "Pastel1")
 spectpal <- brewer.pal(11, "Spectral")
 RdYlGn <- brewer.pal(11, "RdYlGn")
+RdYlBu <- brewer.pal(11, "RdYlBu")
 RdYlGn <- c(RdYlGn[1:5],RdYlGn[7:11])
 Set1pal <- brewer.pal(8, "Set1")
 YlOrRdpal1 <- brewer.pal(9, "YlOrRd")
 AR6pal <- c("C1: 1.5C with no or low OS"="#8fbc8f","C2: 1.5C with high OS"="#7fffd4","C3: lower 2C"="#6495ed","C4: higher 2C"="#f0e68c","C5: below 2.5C"="#ffa07a","C6: below 3.0C"="#ee82ee","C7: above 3.0C"="#a9a9a9")
 tpespalette <- c("Primary Energy|Coal|w/o CCS"="#000000","Primary Energy|Coal|w/ CCS"="#7f878f","Primary Energy|Oil"="#ff2800","Primary Energy|Gas|w/o CCS"="#9a0079","Primary Energy|Gas|w/ CCS"="#c7b2de","Primary Energy|Hydro"="#0041ff","Primary Energy|Nuclear"="#663300","Primary Energy|Solar"="#b4ebfa","Primary Energy|Wind"="#ff9900","Primary Energy|Geothermal"="#edc58f","Primary Energy|Biomass"="#35a16b","Primary Energy|Biomass|w/ CCS"="#cbf266","Primary Energy|Other"="#ffff99")
+RdYlBu <- c(RdYlBu[1:5],RdYlBu[7:11])
 
 MyThemeLine_grid <- theme_bw() +
   theme(
@@ -337,8 +340,10 @@ for (i in 1:length(plot_BASE.Red)){
   regresults2[[plot_BASE.Red[i]]] <- summary(vsBASE.REG)
   if (i==1){
     reg_summ <- cbind(as.character(plot_BASE.Red[i]),tibble::rownames_to_column(as.data.frame(regresults2[[plot_BASE.Red[i]]]$coefficients), "factors"))
+    RegOrigData <- vsBASE.Red.sel
   }else{
     reg_summ <- rbind(reg_summ, cbind(as.character(plot_BASE.Red[i]),tibble::rownames_to_column(as.data.frame(regresults2[[plot_BASE.Red[i]]]$coefficients), "factors")) )
+    RegOrigData <- rbind(RegOrigData,vsBASE.Red.sel)
   }
   aveint <- c(as.numeric(vsBASE.REG[[1]]["d_IND"]),as.numeric(vsBASE.REG[[1]]["d_VNM"]),as.numeric(vsBASE.REG[[1]]["d_THA"]),as.numeric(vsBASE.REG[[1]]["d_CHN"]),as.numeric(vsBASE.REG[[1]]["d_KOR"]))
   lma <- signif(vsBASE.REG[[1]][2],2)
@@ -361,14 +366,17 @@ for (i in 1:length(plot_BASE.Red)){
   }
 }
 write.table(reg_summ,file="../output/regression_Base.txt", append = FALSE, row.names=FALSE, quote = FALSE, sep = ",")
+RegOrigData <- RegOrigData %>% filter(VARIABLE %in% c("Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020","Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020","Share of Low Carbon Energy Source","Electrification Rate","Price|Carbon","Policy Cost|GDP Loss rate"))
+write.table(RegOrigData,file="../output/SourceDataFig2.txt", append = FALSE, row.names=FALSE, quote = FALSE, sep = ",")
+
 reg_summ_all <- cbind(c("all"),reg_summ)
 
 p_legend <- gtable::gtable_filter(ggplotGrob(RelBase[["Policy Cost|GDP Loss rate"]]), pattern = "guide-box")
 pp1.1 <- plot_grid(RelBase[["Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020"]]+theme(legend.position="none")+ggtitle("Energy intensity change rate"),RelBase[["Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020"]]+theme(legend.position="none")+ggtitle("Carbon intensity change rate"),RelBase[["Share of Low Carbon Energy Source"]]+theme(legend.position="none"),p_legend,align = "hv",ncol=4,rel_widths=c(1,1,1,0.3))
 pp1.2 <- plot_grid(RelBase[["Electrification Rate"]]+theme(legend.position="none"),RelBase[["Price|Carbon"]]+theme(legend.position="none"),RelBase[["Policy Cost|GDP Loss rate"]]+theme(legend.position="none"),NULL,align = "hv",ncol=4,rel_widths=c(1,1,1,0.3))
 pp1 <- plot_grid(pp1.1,pp1.2,ncol=1,rel_heights = c(1,1)) +  draw_plot_label(label = c("a","b","c","d","e","f"), size = 12,x = c(0.00,0.3,0.63,0.00,0.3,0.63), y = c(1, 1,1,0.52,0.52,0.52)) 
-outname <- paste0("../output/fig/CrossCountries_vsBASE_woBaU_merge1.png")
-ggsave(pp1, file=outname, dpi = 250, width=10, height=6,limitsize=FALSE)
+ggsave(pp1, file=paste0("../output/fig/CrossCountries_vsBASE_woBaU_merge1.png"), dpi = 250, width=10, height=6,limitsize=FALSE)
+ggsave(pp1, file=paste0("../output/fig/4paper/Fig2.svg"), dpi = 250, width=10, height=6,limitsize=FALSE)
 
 # GHG emissions in 2050 for 1.5/2 degree goal in each effort sharing approach (By country)
 Emit2050fig <- as.list(Country_List)
@@ -443,7 +451,7 @@ for (r in Country_List){
         geom_point(aes(group=SCENARIO, color=SCENARIO), shape=1) + 
         geom_line(aes(group=SCENARIO, color=SCENARIO)) + ylab(unit_BAU.Red$UNIT[i]) + xlab("YEAR") +
         MyThemeLine_grid + theme(plot.title = element_text(size=8))+ 
-        ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=RdYlGn)
+        ggtitle(label=plot_BAU.Red[i]) + scale_colour_manual(values=RdYlBu)
       TimeSerieslist[[plot_BAU.Red[i]]] <- g5
       outname <- paste0("../output/fig/Timeseries/",r,"/",name_BAU.Red[i],".png")
       ggsave(g5, file=outname, dpi=600, width=4, height=3, limitsize=FALSE)
@@ -457,10 +465,12 @@ for (r in Country_List){
   pp1.2 <- plot_grid(TimeSerieslist[["Primary Energy"]]+theme(legend.position="none"),TimeSerieslist[["Final Energy"]]+theme(legend.position="none"),TimeSerieslist[["Emissions|CO2"]]+theme(legend.position="none"),TimeSerieslist[["Emissions|Kyoto Gases"]]+theme(legend.position="none"),NULL,align = "hv",ncol=5,rel_widths=c(1,1,1,1,0.3))
   pp1.3 <- plot_grid(TimeSerieslist[["Carbon Intensity(3 Gases/PE)"]]+theme(legend.position="none"),TimeSerieslist[["Energy Intensity(PE/GDP|PPP)"]]+theme(legend.position="none"),TimeSerieslist[["Share of Low Carbon Energy Source"]]+theme(legend.position="none"),TimeSerieslist[["Electrification Rate"]]+theme(legend.position="none"),p_legend,align = "hv",ncol=5,rel_widths=c(1,1,1,1,0.3))
   pp1 <- plot_grid(pp1.1,pp1.2,pp1.3,ncol=1,rel_heights = c(1,1,1)) +  draw_plot_label(label = c("a","b","c","d","e","f","g","h","i","j","k","l"), size = 12,x = c(0.03,0.23,0.48,0.73,0.03,0.23,0.48,0.73,0.03,0.23,0.48,0.73), y = c(1, 1,1,1,0.68,0.68,0.68,0.68,0.35,0.35,0.35,0.35)) 
-  outname <- paste0("../output/fig/Timeseries/merged/",r,"_merge1.png")
-  ggsave(pp1, file=outname, dpi = 250, width=12, height=10,limitsize=FALSE)
+  ggsave(pp1, file=paste0("../output/fig/Timeseries/merged/",r,"_merge1.png"), dpi = 250, width=12, height=10,limitsize=FALSE)
+  ggsave(pp1, file=paste0("../output/fig/4paper/SIFigure",r,".svg"), dpi = 250, width=12, height=10,limitsize=FALSE)
 }
-  
+JPNDATA <- filter(ALLDATA3.1, REGION=="JPN" & YEAR>=2010 & VARIABLE %in% c("Population","GDP|MER","Price|Carbon","Policy Cost|GDP Loss rate","Primary Energy","Final Energy","Emissions|CO2","Emissions|Kyoto Gases","Carbon Intensity(3 Gases/PE)","Energy Intensity(PE/GDP|PPP)","Share of Low Carbon Energy Source","Electrification Rate"))
+write.table(JPNDATA,file="../output/SourceDataFig1.txt", append = FALSE, row.names=FALSE, quote = FALSE, sep = ",")
+
 
 # Global emission pathways
 ylist <- c(2050,2100)
@@ -507,7 +517,7 @@ pp2 <- plot_grid(pp2.1,pp2.2,pp2.3,pp2.4,ncol=1,rel_heights = c(1,1,1,1)) +  dra
   annotate("text",x=0.6,y=0.74,label="Base year emissions",hjust=0.2,vjust=0.2) +
   annotate("text",x=0.62,y=0.59,label="National long-term \ntarget space",hjust=0.2,vjust=0.2)
 ggsave(pp2, file="../output/fig/fig1.png", dpi = 250, width=12, height=14,limitsize=FALSE)
-ggsave(pp2, file="../output/fig/fig1.svg", dpi = 250, width=12, height=14,limitsize=FALSE)
+ggsave(pp2, file="../output/fig/4paper/fig1.svg", dpi = 250, width=12, height=14,limitsize=FALSE)
 
 
 #---- sensitivty test to exclude a country
@@ -561,5 +571,6 @@ for (n in c("ReductionRate")){ # c("(Intercept)","ReductionRate")
   g4 <- g3 + facet_wrap(~VarName,scale="free") + theme(strip.text.x = element_text(size = 8))
   ggtitle(label=plot_BASE.Red[i]) + scale_colour_manual(values=pastelpal1)
   ggsave(g4, file=paste0("../output/fig/CrossCountries_vsBASE_woBaU/ExclReg.png"), dpi=600, width=9, height=6, limitsize=FALSE)
+  ggsave(g4, file=paste0("../output/fig/4paper/SIFig7.svg"), dpi=600, width=9, height=6, limitsize=FALSE)
 }
 
