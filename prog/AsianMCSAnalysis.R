@@ -340,8 +340,10 @@ for (i in 1:length(plot_BASE.Red)){
   regresults2[[plot_BASE.Red[i]]] <- summary(vsBASE.REG)
   if (i==1){
     reg_summ <- cbind(as.character(plot_BASE.Red[i]),tibble::rownames_to_column(as.data.frame(regresults2[[plot_BASE.Red[i]]]$coefficients), "factors"))
+    RegOrigData <- vsBASE.Red.sel
   }else{
     reg_summ <- rbind(reg_summ, cbind(as.character(plot_BASE.Red[i]),tibble::rownames_to_column(as.data.frame(regresults2[[plot_BASE.Red[i]]]$coefficients), "factors")) )
+    RegOrigData <- rbind(RegOrigData,vsBASE.Red.sel)
   }
   aveint <- c(as.numeric(vsBASE.REG[[1]]["d_IND"]),as.numeric(vsBASE.REG[[1]]["d_VNM"]),as.numeric(vsBASE.REG[[1]]["d_THA"]),as.numeric(vsBASE.REG[[1]]["d_CHN"]),as.numeric(vsBASE.REG[[1]]["d_KOR"]))
   lma <- signif(vsBASE.REG[[1]][2],2)
@@ -364,6 +366,9 @@ for (i in 1:length(plot_BASE.Red)){
   }
 }
 write.table(reg_summ,file="../output/regression_Base.txt", append = FALSE, row.names=FALSE, quote = FALSE, sep = ",")
+RegOrigData <- RegOrigData %>% filter(VARIABLE %in% c("Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020","Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020","Share of Low Carbon Energy Source","Electrification Rate","Price|Carbon","Policy Cost|GDP Loss rate"))
+write.table(RegOrigData,file="../output/SourceDataFig2.txt", append = FALSE, row.names=FALSE, quote = FALSE, sep = ",")
+
 reg_summ_all <- cbind(c("all"),reg_summ)
 
 p_legend <- gtable::gtable_filter(ggplotGrob(RelBase[["Policy Cost|GDP Loss rate"]]), pattern = "guide-box")
@@ -463,7 +468,9 @@ for (r in Country_List){
   ggsave(pp1, file=paste0("../output/fig/Timeseries/merged/",r,"_merge1.png"), dpi = 250, width=12, height=10,limitsize=FALSE)
   ggsave(pp1, file=paste0("../output/fig/4paper/SIFigure",r,".svg"), dpi = 250, width=12, height=10,limitsize=FALSE)
 }
-  
+JPNDATA <- filter(ALLDATA3.1, REGION=="JPN" & YEAR>=2010 & VARIABLE %in% c("Population","GDP|MER","Price|Carbon","Policy Cost|GDP Loss rate","Primary Energy","Final Energy","Emissions|CO2","Emissions|Kyoto Gases","Carbon Intensity(3 Gases/PE)","Energy Intensity(PE/GDP|PPP)","Share of Low Carbon Energy Source","Electrification Rate"))
+write.table(JPNDATA,file="../output/SourceDataFig1.txt", append = FALSE, row.names=FALSE, quote = FALSE, sep = ",")
+
 
 # Global emission pathways
 ylist <- c(2050,2100)
