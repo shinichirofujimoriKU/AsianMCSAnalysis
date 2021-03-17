@@ -1,0 +1,6 @@
+"Energy Intensity Improvement Speed(PE/GDP|PPP)|vs2020"	"Energy intensity change rate"
+"Carbon Intensity Improvement Speed(3 Gases/PE)|vs2020"	"Carbon intensity change rate"
+"Share of Low Carbon Energy Source"	"Share of Low Carbon Energy Source"
+"Electrification Rate"	"Electrification Rate"
+"Price|Carbon"	"Price|Carbon"
+"Policy Cost|GDP Loss rate"	"Policy Cost|GDP Loss rate"
